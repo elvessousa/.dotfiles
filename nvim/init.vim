@@ -1,24 +1,24 @@
 call plug#begin()
-
 " Appearance 
-Plug 'morhetz/gruvbox'
-Plug 'vim-airline/vim-airline'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'sheerun/vim-polyglot'
+	Plug 'vim-airline/vim-airline'
+
+" Utilities
+	Plug 'terryma/vim-multiple-cursors'
+	Plug 'sheerun/vim-polyglot'
 
 " Completion and linters
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-pyclang'
-Plug 'neoclide/coc.nvim'
-Plug 'w0rp/ale'
-Plug 'jiangmiao/auto-pairs'
+	Plug 'ncm2/ncm2'
+	Plug 'roxma/nvim-yarp'
+	Plug 'ncm2/ncm2-bufword'
+	Plug 'ncm2/ncm2-path'
+	Plug 'ncm2/ncm2-pyclang'
+	Plug 'neoclide/coc.nvim'
+	Plug 'w0rp/ale'
+	Plug 'jiangmiao/auto-pairs'
 
 " Git
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+	Plug 'tpope/vim-fugitive'
+	Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 " Window stuff
@@ -40,17 +40,12 @@ set path+=**
 set background=dark
 
 " Color scheme and themes
-" let g:gruvbox_contrast_dark='hard'
-" let g:gruvbox_italicize_comments=1
-" let g:gruvbox_italicize_strings=1
-" let g:gruvbox_italic=1
-
-let t_Co=256
 colorscheme monokai_pro
+let t_Co=256
 
+" Italics
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
-
 highlight Comment cterm=italic
 
 " File browser
