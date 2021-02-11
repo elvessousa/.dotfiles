@@ -8,6 +8,7 @@ git_file="$(pwd)/git/.gitconfig"
 fish_file="$(pwd)/fish/config.fish"
 fish_path="$HOME/.config/fish/config.fish"
 term_info="$(pwd)/terminal/xterm-256color-italic.terminfo"
+alacritty_conf="$(pwd)/alacritty/alacritty.yml"
 
 # Colors and formatting
 b="$(tput bold)"

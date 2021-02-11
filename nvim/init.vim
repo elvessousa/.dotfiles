@@ -5,6 +5,8 @@ call plug#begin()
 	" Utilities
 	Plug 'terryma/vim-multiple-cursors'
 	Plug 'sheerun/vim-polyglot'
+	Plug 'jiangmiao/auto-pairs'
+	Plug 'tpope/vim-surround'
 
 	" Completion and linters
 	Plug 'ncm2/ncm2'
@@ -14,7 +16,6 @@ call plug#begin()
 	Plug 'ncm2/ncm2-pyclang'
 	Plug 'neoclide/coc.nvim'
 	Plug 'w0rp/ale'
-	Plug 'jiangmiao/auto-pairs'
 
 	" Git
 	Plug 'tpope/vim-fugitive'
@@ -32,6 +33,7 @@ set hidden
 set title
 set number
 set relativenumber
+set cursorline
 set ttimeoutlen=0
 set mouse=a
 set inccommand=split
@@ -71,17 +73,14 @@ autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
 
 " Show syntax highlighting groups for word under cursor
-nmap <C-S-P> :call <SID>SynStack()<CR>
+nmap <M-S-P> :call <SID>SynStack()<CR>
 function! <SID>SynStack()
   if !exists("*synstack")
     return
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
-
-
+endfunc 
 
 " Remappings
 nnoremap <F5> :Vex<CR>
 nnoremap <F4> :q<CR>
-nnoremap <C-F5> :source $VIMRUNTIME/init.vim<CR>
