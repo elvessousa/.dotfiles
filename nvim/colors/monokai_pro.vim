@@ -62,6 +62,8 @@ hi Title ctermfg=255 ctermbg=NONE cterm=bold guibg=NONE guifg=#eeeeee guisp=NONE
 hi Todo ctermfg=11 ctermbg=NONE guibg=NONE guifg=#fed76e guisp=NONE gui=NONE
 hi Type ctermfg=81 ctermbg=NONE cterm=NONE guibg=NONE guifg=#7cdce7 guisp=NONE gui=NONE
 hi Underlined ctermfg=NONE ctermbg=NONE cterm=underline guibg=NONE guifg=NONE guisp=NONE gui=NONE
+hi EndOfBuffer ctermfg=231 ctermbg=235 cterm=NONE guibg=#202020 guifg=#333333 guisp=NONE gui=NONE
+" Ruby
 hi rubyClass ctermfg=204 ctermbg=NONE cterm=NONE guibg=NONE guifg=#fd6389 guisp=NONE gui=NONE
 hi rubyFunction ctermfg=155 ctermbg=NONE cterm=NONE guibg=NONE guifg=#aadb7b guisp=NONE gui=NONE
 hi rubyInterpolationDelimiter ctermfg=NONE ctermbg=NONE cterm=NONE guibg=NONE guifg=NONE guisp=NONE gui=NONE
