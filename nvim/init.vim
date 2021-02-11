@@ -1,12 +1,12 @@
 call plug#begin()
-" Appearance 
+	" Appearance 
 	Plug 'vim-airline/vim-airline'
 
-" Utilities
+	" Utilities
 	Plug 'terryma/vim-multiple-cursors'
 	Plug 'sheerun/vim-polyglot'
 
-" Completion and linters
+	" Completion and linters
 	Plug 'ncm2/ncm2'
 	Plug 'roxma/nvim-yarp'
 	Plug 'ncm2/ncm2-bufword'
@@ -16,7 +16,7 @@ call plug#begin()
 	Plug 'w0rp/ale'
 	Plug 'jiangmiao/auto-pairs'
 
-" Git
+	" Git
 	Plug 'tpope/vim-fugitive'
 	Plug 'airblade/vim-gitgutter'
 call plug#end()
@@ -27,7 +27,6 @@ syntax on
 set nocompatible
 set lazyredraw
 set ttyfast
-set termguicolors
 set splitbelow splitright
 set hidden
 set title
@@ -38,6 +37,11 @@ set mouse=a
 set inccommand=split
 set path+=**
 set background=dark
+
+" True color if available
+if has('termguicolors') 
+	set termguicolors
+endif
 
 " Color scheme and themes
 colorscheme monokai_pro
@@ -66,7 +70,18 @@ command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
 
+" Show syntax highlighting groups for word under cursor
+nmap <C-S-P> :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
+
 
 " Remappings
 nnoremap <F5> :Vex<CR>
 nnoremap <F4> :q<CR>
+nnoremap <C-F5> :source $VIMRUNTIME/init.vim<CR>
