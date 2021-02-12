@@ -18,52 +18,13 @@ n='\033[0m'
 
 # Create symbolic links 
 function createLink() {
+  clear;
+  echo "Creating symlinks to $3 configuration file(s):"
   echo -e " - ${d} $2 ${y}->${b} $1 ${n}"
-  ln -sf $1 $2
-}
-
-# NVIM files installation
-function installNvimConfigs() {
-  if type -p 'nvim' > /dev/null; then
-    echo "Nvim found!";
-    echo -e "${b}Linking nvim init file:${n}"
-    createLink $nvim_folder/init.vim "$nvim_path/init.vim"
-    createLink $nvim_folder/colors $nvim_path/colors
+  if type -p "$3" > /dev/null; then
+    ln -sf $1 $2
   else
-    echo 'NVIM is not installed!'
-  fi
-}
-
-# TMUX config installation
-function installTmuxConfig() {
-  if type -p 'tmux' > /dev/null; then
-    echo 'Linking Tmux config file:';
-    createLink $tmux_file "$HOME/.tmux.conf"
-  else
-    echo 'TMUX is not installed!'
-  fi
-}
-
-
-# Git config installation
-function installGitConfig() {
-  if type -p 'git' > /dev/null; then
-    echo 'Linking Tmux config file:';
-    createLink $git_file "$HOME/.gitconfig"
-  else
-    echo 'Git is not installed!'
-  fi
-}
-
-# Git config installation
-function installFishConfig() {
-  if type -p 'fish' > /dev/null; then
-    echo 'Linking Fish Shell config file:';
-    createLink $fish_file $fish_path
-    cat $fish_file 
-    echo $fish_path
-  else
-    echo 'Fish Shell is not installed!'
+    echo "Ooops: $3 not found."
   fi
 }
 
@@ -108,20 +69,23 @@ while true
 do
   case $answer in
     '1')
-      clear;
-      installNvimConfigs
+      createLink $nvim_folder/init.vim "$nvim_path/init.vim" 'nvim'
+      createLink $nvim_folder/colors/ $nvim_path/colors/ 'nvim'
       break;;
     '2') 
-      installTmuxConfig
+      createLink $tmux_file "$HOME/.tmux.conf" 'tmux'
       break;;
     '3') 
-      installGitConfig
+      createLink $git_file "$HOME/.gitconfig" 'git'
       break;;
     '4') 
-      installFishConfig
+      createLink $fish_file $fish_path 'fish'
       break;;
     '5') 
       configureItalics
+      break;;
+    *)
+      echo "Good luck."
       break;
   esac
 done

@@ -18,7 +18,6 @@ call plug#begin()
 	Plug 'w0rp/ale'
 
 	" Git
-	Plug 'tpope/vim-fugitive'
 	Plug 'airblade/vim-gitgutter'
 call plug#end()
 
@@ -41,7 +40,10 @@ set path+=**
 set background=dark
 
 " True color if available
-if has('termguicolors') 
+let term_program=$TERM_PROGRAM
+
+" Solving Apple Terminal conflicts
+if term_program != 'Apple_Terminal'
 	set termguicolors
 endif
 
