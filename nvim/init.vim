@@ -7,6 +7,7 @@ call plug#begin()
 	Plug 'sheerun/vim-polyglot'
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'tpope/vim-surround'
+	Plug 'ap/vim-css-color'
 
 	" Completion and linters
 	Plug 'ncm2/ncm2'
@@ -38,18 +39,22 @@ set mouse=a
 set inccommand=split
 set path+=**
 set background=dark
+set wildmenu
 
 " True color if available
 let term_program=$TERM_PROGRAM
 
-" Solving Apple Terminal conflicts
 if term_program != 'Apple_Terminal'
 	set termguicolors
+else
+	if $TERM != 'xterm-256color'
+		set termguicolors
+	endif
 endif
 
 " Color scheme and themes
-colorscheme monokai_pro
 let t_Co=256
+colorscheme elf_monokai_pro
 
 " Italics
 let &t_ZH="\e[3m"
@@ -62,6 +67,8 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
+let g:netrw_keepdir = 0
+let g:netrw_localcopydircmd = 'cp -r'
 
 " Tabs size
 set tabstop=2
@@ -74,15 +81,20 @@ command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
 
-" Show syntax highlighting groups for word under cursor
-nmap <M-S-P> :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc 
+" Leader
+let mapleader=','
 
 " Remappings
 nnoremap <F5> :Vex<CR>
-nnoremap <F4> :q<CR>
+nnoremap <F4> :q!<CR>
+nnoremap <F6> :sp<CR>:terminal<CR>
+
+"" Tabs
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+nnoremap <silent> <S-t> :tabnew<CR>
+
+" Show highlight groups
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
