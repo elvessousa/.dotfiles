@@ -23,13 +23,14 @@ font:
   italic:
     family: Victor Mono
     style: Italic
-  size: 15.0
+  size: 14.0
 
 window:
-  padding:
-    x: 2
-    y: 2
-
+  # padding:
+  # x: 2
+  # y: 2
+  title: Terminal
+  dynamic_title: false
   semantic_escape_chars: ',│`|:"'' ()[]{}<>'
   save_to_clipboard: true
   live_config_reload: true
