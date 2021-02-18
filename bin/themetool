@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# Create links for testing syntaxes easily
+theme_name=$2
+theme_file="$(pwd)/${theme_name}"
+target_file=""
+
+# Colors and formatting
+b="$(tput bold)"
+d='\033[2m'
+y='\033[33;33m'
+n='\033[0m'
+
+# Usage
+function showUsage() {
+  echo -e "\n ${y}Usage:${n} $0 ${d}<${n}install${d}/${n}link${d}/${n}remove${d}> <${n}theme-file${d}> <${n}target-software${d}>$n"
+  echo -e "$d ----------------------------------------------------------------------------$n"
+  echo -e " - ${b}install:${n} copy theme file to the target location for the software"
+  echo -e " - ${b}link:${n} create a symlink instead of copying"
+  echo -e " - ${b}test:${n} shows create a symlink instead of copying"
+  echo -e " - ${b}remove:${n} remove installed file"
+  echo -e "$d ----------------------------------------------------------------------------$n"
+  echo -e " - $b<theme-file>:$n path/to/theme.file"
+  echo -e " - $b<target-software>:$n current only nvim is supported"
+  echo -e "$d ----------------------------------------------------------------------------$n"
+}
+
+# Software paths
+if [ "$3" == 'nvim' ]; then
+  target_file="$HOME/.config/nvim/colors/${theme_name}"
+fi
+
+# Actions
+case $1 in
+  install)
+    echo -e " * Installing ${y}$theme_file${n} in ${b}$target_file${n}"
+    cp $theme_file $target_file
+    ;;
+  link)
+    echo -e " * Creating symlinks to ${b}$target_file:${n}"
+    ln -sf $theme_file $target_file
+    ;;
+  remove)
+    echo -e " * Removing ${b}$target_file${n}"
+    rm $target_file
+    ;;
+  test)
+    echo -e " * ${b}Origin:${n} $theme_file -> ${b}Target:${n} $target_file"
+    ;;
+  *)
+    showUsage
+    ;;
+esac
+
+echo -e " Done.\n"
