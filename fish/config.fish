@@ -1,3 +1,4 @@
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="/usr/local/mysql/bin:$PATH"
-export PATH="~/Applications/bin:$PATH"
+set PATH $PATH $HOME/.cargo/bin
+set PATH $PATH /usr/local/mysql/bin
+set PATH $PATH $HOME/Applications/bin
+export PATH

@@ -54,7 +54,7 @@ endif
 
 " Color scheme and themes
 let t_Co=256
-colorscheme elf_theme
+colorscheme elf_sobrio
 
 " Italics
 let &t_ZH="\e[3m"
