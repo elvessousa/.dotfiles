@@ -1,7 +1,7 @@
 " Vim color file
 " Author: Elves Sousa
 " Website: elvessousa.com.br
-" Colorscheme Name: elf_theme
+" Colorscheme Name: elf_sobrio
 " Inspired by https://www.monokai.pro/
 
 set background=dark
