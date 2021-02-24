@@ -15,6 +15,7 @@ call plug#begin()
 	Plug 'ncm2/ncm2-bufword'
 	Plug 'ncm2/ncm2-path'
 	Plug 'ncm2/ncm2-pyclang'
+	Plug 'elixir-editors/vim-elixir'
 	Plug 'neoclide/coc.nvim'
 	Plug 'w0rp/ale'
 
@@ -70,6 +71,12 @@ let g:netrw_winsize = 25
 let g:netrw_keepdir = 0
 let g:netrw_localcopydircmd = 'cp -r'
 
+function! CreateInPreview()
+  let l:filename = input("please enter filename: ")
+  execute 'silent !touch ' . b:netrw_curdir.'/'.l:filename 
+  redraw!
+endf
+
 " Tabs size
 set tabstop=2
 set shiftwidth=2
@@ -93,6 +100,12 @@ nnoremap <F6> :sp<CR>:terminal<CR>
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
+
+" Netrw: create file using touch instead of opening a buffer
+autocmd filetype netrw call Netrw_mappings()
+function! Netrw_mappings()
+  noremap <buffer>% :call CreateInPreview()<cr>
+endfunction
 
 " Show highlight groups
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
