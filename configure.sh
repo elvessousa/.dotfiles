@@ -100,7 +100,7 @@ do
   case $answer in
     '1')
       createLink $nvim_folder/init.vim "$nvim_path/init.vim" 'nvim' 
-      createLink $nvim_folder/colors/ $nvim_path/colors/ 'nvim' 'show'
+      createLink $nvim_folder/colors/ $nvim_path/colors 'nvim' 'show'
       createLink $coc_json $coc_path 'nvim' 'show'
       break;;
     '2') 
