@@ -8,5 +8,6 @@
       "typescript",
       "typescriptreact"
    ],
-   "prettier.singleQuote": true
+   "prettier.singleQuote": true,
+   "elixirLS.dialyzerEnabled": false
 }
