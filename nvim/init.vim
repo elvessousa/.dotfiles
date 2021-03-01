@@ -42,6 +42,8 @@ set path+=**
 set background=dark
 set wildmenu
 
+autocmd FileType scss setl iskeyword+=@-@
+
 " True color if available
 let term_program=$TERM_PROGRAM
 
@@ -64,7 +66,7 @@ highlight Comment cterm=italic
 
 " File browser
 let g:netrw_banner = 0
-let g:netrw_liststyle = 3
+let g:netrw_liststyle = 0
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
@@ -108,6 +110,6 @@ function! Netrw_mappings()
 endfunction
 
 " Show highlight groups
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+map <F12> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
