@@ -4,6 +4,10 @@
 nvim_folder="$(pwd)/nvim"
 nvim_path="$HOME/.config/nvim"
 
+# Vim Plug
+vimplug_file="$HOME/.config/nvim/autoload/plug.vim"
+vimplug_url='https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
 # CoC
 coc_json="$(pwd)/nvim/coc-settings.json"
 coc_path="$nvim_path/coc-settings.json"
@@ -89,6 +93,7 @@ echo -e " ${y}3)${n} Configure ${b}Git${n}"
 echo -e " ${y}4)${n} Configure ${b}Fish Shell${n}"
 echo -e " ${y}5)${n} Configure ${b}italics${n} in terminal"
 echo -e " ${y}6)${n} Configure ${b}Alacritty${n}"
+echo -e " ${y}7)${n} Install ${b}Vim Plug${n}"
 echo -e "$d-------------------------------------------------------$n"
 
 # Input option
@@ -117,6 +122,9 @@ do
       break;;
     '6') 
       createLink $alacritty_file $alacritty_path 'alacritty'
+      break;;
+    '7')
+      curl -fLo $vimplug_file --create-dirs $vimplug_url
       break;;
     *)
       echo " Good luck."
