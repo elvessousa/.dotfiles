@@ -97,6 +97,7 @@ nnoremap <F4> :q!<CR>
 nnoremap <F6> :sp<CR>:terminal<CR>
 
 "" Tabs
+let g:airline#extensions#tabline#enabled = 1
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
