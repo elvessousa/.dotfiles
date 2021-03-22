@@ -17,6 +17,9 @@ call plug#begin()
 	Plug 'elixir-editors/vim-elixir'
 	Plug 'neoclide/coc.nvim'
 	Plug 'w0rp/ale'
+	Plug 'elzr/vim-json'
+	Plug 'plasticboy/vim-markdown'
+	Plug 'godlygeek/tabular'
 
 	" Git
 	Plug 'airblade/vim-gitgutter'
@@ -83,6 +86,15 @@ endf
 set tabstop=2
 set shiftwidth=2
 set expandtab
+
+" Markdown
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_conceal = 0
+
+" Disable math tex conceal feature
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
 
 " Language server stuff
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
