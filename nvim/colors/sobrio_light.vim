@@ -1,0 +1,1 @@
+/home/elvessousa/Sites/themes/sobrio/colors/sobrio_light.vim

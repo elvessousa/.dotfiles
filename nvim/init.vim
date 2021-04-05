@@ -43,6 +43,7 @@ set inccommand=split
 set path+=**
 set background=dark
 set wildmenu
+set clipboard=unnamedplus
 
 " True color if available
 let term_program=$TERM_PROGRAM

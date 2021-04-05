@@ -6,13 +6,13 @@ env:
   # Note that some xterm terminfo databases don't declare support for italics.
   # You can verify this by checking for the presence of `smso` and `sitm` in
   # `infocmp xterm-256color`
-  # TERM: xterm-256color
+  TERM: xterm-256color
 
 font:
   # The normal (roman) font face to use.
   normal:
     family: Victor Mono
-    style: Light 
+    style: Medium 
 
   # The bold font face
   bold:
@@ -23,12 +23,12 @@ font:
   italic:
     family: Victor Mono
     style: Italic
-  size: 11.0
+  size: 11
 
 window:
-  # padding:
-  # x: 2
-  # y: 2
+  padding:
+    x: 12
+    y: 12
   title: Terminal
   dynamic_title: false
   semantic_escape_chars: ',│`|:"'' ()[]{}<>'
@@ -39,28 +39,27 @@ colors:
   # Default colors
   primary:
     background: "#202020"
-    foreground: "#FCFCFA"
+    foreground: "#eeeeee"
 
   # Normal colors
   normal:
-    # black: "#403E41"
-    black: "#202020"
-    red: "#FF6188"
-    green: "#A9DC76"
-    yellow: "#FFD866"
-    blue: "#FC9867"
-    magenta: "#AB9DF2"
+    black: "#3a3b3f"
+    red: "#fd6389"
+    green: "#84afd7"
+    yellow: "#d7af87"
+    blue: "#d7af87"
+    magenta: "#d7d7ff"
     cyan: "#78DCE8"
-    white: "#FCFCFA"
+    white: "#eeeeee"
 
   # Bright colors
   bright:
     black: "#727072"
-    red: "#FF6188"
-    green: "#A9DC76"
-    yellow: "#FFD866"
-    blue: "#FC9867"
-    magenta: "#AB9DF2"
+    red: "#fd6399"
+    green: "#d7d7ff"
+    yellow: "#d7af10"
+    blue: "#d7af10"
+    magenta: "#d7d7ff"
     cyan: "#78DCE8"
-    white: "#FCFCFA"
+    white: "#ffffff"
 
