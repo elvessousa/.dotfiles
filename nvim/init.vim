@@ -8,6 +8,7 @@ call plug#begin()
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'tpope/vim-surround'
 	Plug 'ap/vim-css-color'
+	Plug 'preservim/nerdtree'
 
 	" Completion and linters
 	Plug 'ncm2/ncm2'
@@ -44,6 +45,7 @@ set path+=**
 set background=dark
 set wildmenu
 set clipboard=unnamedplus
+set textwidth=80
 
 " True color if available
 let term_program=$TERM_PROGRAM
@@ -106,7 +108,7 @@ set completeopt=noinsert,menuone,noselect
 let mapleader=','
 
 " Remappings
-nnoremap <F5> :Vex<CR>
+nnoremap <F5> :NERDTreeToggle<CR>
 nnoremap <F4> :q!<CR>
 nnoremap <F6> :sp<CR>:terminal<CR>
 
