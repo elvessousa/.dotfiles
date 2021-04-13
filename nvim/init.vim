@@ -1,6 +1,7 @@
 call plug#begin()
 	" Appearance 
 	Plug 'vim-airline/vim-airline'
+	Plug 'ryanoasis/vim-devicons'
 
 	" Utilities
 	Plug 'terryma/vim-multiple-cursors'
@@ -13,7 +14,7 @@ call plug#begin()
 	" Completion and linters
 	Plug 'ncm2/ncm2'
 	Plug 'roxma/nvim-yarp'
-	Plug 'ncm2/ncm2-bufword'
+	" Plug 'ncm2/ncm2-bufword'
 	Plug 'ncm2/ncm2-path'
 	Plug 'elixir-editors/vim-elixir'
 	Plug 'neoclide/coc.nvim'
