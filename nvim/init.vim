@@ -46,7 +46,6 @@ set path+=**
 set background=dark
 set wildmenu
 set clipboard=unnamedplus
-set textwidth=80
 
 " True color if available
 let term_program=$TERM_PROGRAM
@@ -65,6 +64,7 @@ let t_Co = 256
 colorscheme sobrio
 let g:airline_theme='sobrio'
 let g:airline_powerline_fonts = 1
+
 " Italics
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
@@ -84,7 +84,7 @@ function! CreateInPreview()
   let l:filename = input('please enter filename: ')
   execute 'silent !touch ' . b:netrw_curdir.'/'.l:filename 
   redraw!
-endf
+endfunction
 
 " Tabs size
 set tabstop=2
