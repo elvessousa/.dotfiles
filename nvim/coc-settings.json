@@ -9,5 +9,6 @@
       "typescriptreact"
    ],
    "prettier.singleQuote": true,
+   "typescript.autoClosingTags": true,
    "elixirLS.dialyzerEnabled": false
 }
