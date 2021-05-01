@@ -30,21 +30,21 @@ call plug#end()
 filetype plugin indent on
 syntax on
 
-set lazyredraw
-set ttyfast
-set splitbelow splitright
-set hidden
-set title
-set number
-set relativenumber
-set cursorline
-set ttimeoutlen=0
-set mouse=a
-set inccommand=split
-set path+=**
+" Options
 set background=dark
-set wildmenu
 set clipboard=unnamedplus
+set cursorline
+set hidden
+set inccommand=split
+set mouse=a
+set number
+set path+=**
+set relativenumber
+set splitbelow splitright
+set title
+set ttimeoutlen=0
+set ttyfast
+set wildmenu
 
 " True color if available
 let term_program=$TERM_PROGRAM
@@ -109,7 +109,7 @@ let mapleader=','
 
 " Remappings
 nnoremap <F5> :NERDTreeToggle<CR>
-nnoremap <F4> :q!<CR>
+nnoremap <F4> :bd<CR>
 nnoremap <F6> :sp<CR>:terminal<CR>
 
 "" Tabs
