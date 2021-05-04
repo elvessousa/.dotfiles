@@ -110,6 +110,7 @@ let mapleader=','
 " Remappings
 nnoremap <F5> :NERDTreeToggle<CR>
 nnoremap <F4> :bd<CR>
+nnoremap <C-q> :q!<CR>
 nnoremap <F6> :sp<CR>:terminal<CR>
 
 "" Tabs
