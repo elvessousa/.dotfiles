@@ -1,6 +1,8 @@
 {
    "coc.preferences.formatOnSaveFiletypes": [
       "css", 
+      "sass", 
+      "scss", 
       "markdown", 
       "html", 
       "javascript",
