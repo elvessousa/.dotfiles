@@ -5,12 +5,15 @@
       "scss", 
       "markdown", 
       "html", 
+      "json",
       "javascript",
       "javascriptreact",
       "typescript",
       "typescriptreact"
    ],
    "prettier.singleQuote": true,
+   "javascript.autoClosingTags": true,
    "typescript.autoClosingTags": true,
+   "emmet.includeLanguages": ["javascript", "javascriptreact", "typescript", "typescriptreact", "html"],
    "elixirLS.dialyzerEnabled": false
 }
