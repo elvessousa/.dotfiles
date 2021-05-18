@@ -7,20 +7,17 @@ call plug#begin()
 	Plug 'terryma/vim-multiple-cursors'
 	Plug 'sheerun/vim-polyglot'
 	Plug 'jiangmiao/auto-pairs'
-	Plug 'tpope/vim-surround'
 	Plug 'ap/vim-css-color'
 	Plug 'preservim/nerdtree'
 
-	" Completion and linters
+	" Completion / linters / formatters
 	Plug 'ncm2/ncm2'
 	Plug 'roxma/nvim-yarp'
 	Plug 'ncm2/ncm2-path'
 	Plug 'elixir-editors/vim-elixir'
 	Plug 'neoclide/coc.nvim'
 	Plug 'w0rp/ale'
-	Plug 'elzr/vim-json'
 	Plug 'plasticboy/vim-markdown'
-	Plug 'godlygeek/tabular'
 
 	" Git
 	Plug 'airblade/vim-gitgutter'

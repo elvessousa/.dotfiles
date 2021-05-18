@@ -1,19 +1,26 @@
 {
-   "coc.preferences.formatOnSaveFiletypes": [
-      "css", 
-      "sass", 
-      "scss", 
-      "markdown", 
-      "html", 
-      "json",
-      "javascript",
-      "javascriptreact",
-      "typescript",
-      "typescriptreact"
-   ],
-   "prettier.singleQuote": true,
-   "javascript.autoClosingTags": true,
-   "typescript.autoClosingTags": true,
-   "emmet.includeLanguages": ["javascript", "javascriptreact", "typescript", "typescriptreact", "html"],
-   "elixirLS.dialyzerEnabled": false
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "sass",
+    "scss",
+    "markdown",
+    "html",
+    "json",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "python"
+  ],
+  "prettier.singleQuote": true,
+  "javascript.autoClosingTags": true,
+  "typescript.autoClosingTags": true,
+  "emmet.includeLanguages": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html"
+  ],
+  "elixirLS.dialyzerEnabled": false
 }
