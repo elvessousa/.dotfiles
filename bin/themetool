@@ -30,6 +30,10 @@ if [ "$3" == 'nvim' ]; then
   target_file="$HOME/.config/nvim/colors/${theme_name}"
 fi
 
+if [ "$3" == 'vim' ]; then
+  target_file="$HOME/.vim/colors/${theme_name}"
+fi
+
 # Actions
 case $1 in
   install)

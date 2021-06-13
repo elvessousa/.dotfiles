@@ -12,7 +12,6 @@ call plug#begin()
 
 	" Completion / linters / formatters
 	Plug 'ncm2/ncm2'
-	Plug 'roxma/nvim-yarp'
 	Plug 'ncm2/ncm2-path'
 	Plug 'elixir-editors/vim-elixir'
 	Plug 'neoclide/coc.nvim'
@@ -32,7 +31,7 @@ set background=dark
 set clipboard=unnamedplus
 set cursorline
 set hidden
-set inccommand=split
+"set inccommand=split
 set mouse=a
 set number
 set path+=**
@@ -129,6 +128,5 @@ map <F12> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 " Auto Commands
 augroup auto_commands
 	autocmd FileType scss setl iskeyword+=@-@
-	autocmd BufEnter * call ncm2#enable_for_buffer()
 	autocmd filetype netrw call Netrw_mappings()
 augroup END

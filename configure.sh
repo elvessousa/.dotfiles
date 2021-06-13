@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# VIM
+vim_folder="$(pwd)/vim"
+
 # NVIM
 nvim_folder="$(pwd)/nvim"
 nvim_path="$HOME/.config/nvim"
@@ -87,6 +90,7 @@ echo -e "$d-------------------------------------------------------$n"
 echo -e "$b Configuration files setup script $n"
 echo -e "$d-------------------------------------------------------$n"
 echo ' Select an action below to start:'
+echo -e " ${y}0)${n} Configure ${b}Vim${n}"
 echo -e " ${y}1)${n} Configure ${b}NVim${n}"
 echo -e " ${y}2)${n} Configure ${b}Tmux${n}"
 echo -e " ${y}3)${n} Configure ${b}Git${n}"
@@ -103,6 +107,9 @@ read -p ' - Which option?: ' answer
 while true 
 do
   case $answer in
+    '0')
+      createLink $vim_folder/.vimrc "$HOME/.vimrc" 'vim' 
+      break;;
     '1')
       createLink $nvim_folder/init.vim "$nvim_path/init.vim" 'nvim' 
       createLink $nvim_folder/colors/ $nvim_path/colors 'nvim' 'show'
