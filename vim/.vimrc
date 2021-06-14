@@ -42,6 +42,11 @@ set ttimeoutlen=0
 set ttyfast
 set wildmenu
 
+" Cursors
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
+
 " True color if available
 let term_program=$TERM_PROGRAM
 

@@ -40,7 +40,6 @@ set relativenumber
 set splitbelow splitright
 set title
 set ttimeoutlen=0
-set ttyfast
 set wildmenu
 
 " True color if available
@@ -74,6 +73,7 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 25
 let g:netrw_keepdir = 0
 let g:netrw_localcopydircmd = 'cp -r'
+let NERDTreeShowHidden=1
 
 " Create file without opening buffer
 function! CreateInPreview()
