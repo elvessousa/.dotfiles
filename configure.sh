@@ -2,6 +2,7 @@
 
 # VIM
 vim_folder="$(pwd)/vim"
+vim_path="$HOME/.vim"
 
 # NVIM
 nvim_folder="$(pwd)/nvim"
@@ -13,7 +14,8 @@ vimplug_url='https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # CoC
 coc_json="$(pwd)/nvim/coc-settings.json"
-coc_path="$nvim_path/coc-settings.json"
+coc_nvim_path="$nvim_path/coc-settings.json"
+coc_vim_path="$vim_path/coc-settings.json"
 
 # Tmux
 tmux_file="$(pwd)/tmux/.tmux.conf"
@@ -109,11 +111,13 @@ do
   case $answer in
     '0')
       createLink $vim_folder/.vimrc "$HOME/.vimrc" 'vim' 
+      createLink $nvim_folder/colors/ $vim_path/colors 'vim' 'show'
+      createLink $coc_json $coc_vim_path 'vim' 'show'
       break;;
     '1')
       createLink $nvim_folder/init.vim "$nvim_path/init.vim" 'nvim' 
       createLink $nvim_folder/colors/ $nvim_path/colors 'nvim' 'show'
-      createLink $coc_json $coc_path 'nvim' 'show'
+      createLink $coc_json $coc_nvim_path 'nvim' 'show'
       break;;
     '2') 
       createLink $tmux_file $tmux_path 'tmux'
