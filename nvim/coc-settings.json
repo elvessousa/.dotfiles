@@ -22,5 +22,6 @@
     "typescriptreact",
     "html"
   ],
-  "elixirLS.dialyzerEnabled": false
+  "elixirLS.dialyzerEnabled": false,
+  "codeLens.enable": false
 }
