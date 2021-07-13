@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+/usr/bin/xrandr -d :0 --output eDP --crtc 1
