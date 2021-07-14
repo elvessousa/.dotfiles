@@ -31,8 +31,14 @@ fish_path="$HOME/.config/fish/config.fish"
 
 # Terminal
 term_info="$(pwd)/terminal/xterm-256color-italic.terminfo"
+
+# Alacritty
 alacritty_file="$(pwd)/alacritty/alacritty.yml"
 alacritty_path="$HOME/.config/alacritty/alacritty.yml"
+
+# Kitty
+kitty_file="$(pwd)/kitty/kitty.conf"
+kitty_path="$HOME/.config/kitty/kitty.conf"
 
 # Colors and formatting
 b="$(tput bold)"
@@ -99,7 +105,8 @@ echo -e " ${y}3)${n} Configure ${b}Git${n}"
 echo -e " ${y}4)${n} Configure ${b}Fish Shell${n}"
 echo -e " ${y}5)${n} Configure ${b}italics${n} in terminal"
 echo -e " ${y}6)${n} Configure ${b}Alacritty${n}"
-echo -e " ${y}7)${n} Install ${b}Vim Plug${n}"
+echo -e " ${y}7)${n} Configure ${b}Kitty${n}"
+echo -e " ${y}8)${n} Install ${b}Vim Plug${n}"
 echo -e "$d-------------------------------------------------------$n"
 
 # Input option
@@ -134,7 +141,10 @@ do
     '6') 
       createLink $alacritty_file $alacritty_path 'alacritty'
       break;;
-    '7')
+    '7') 
+      createLink $kitty_file $kitty_path 'kitty'
+      break;;
+    '8')
       curl -fLo $vimplug_file --create-dirs $vimplug_url
       break;;
     *)
