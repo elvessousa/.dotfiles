@@ -11,24 +11,24 @@ env:
 font:
   # The normal (roman) font face to use.
   normal:
-    family: Victor Mono
+    family: VictorMono Nerd Font
     style: Medium 
 
   # The bold font face
   bold:
-    family: Victor Mono
+    family: VictorMono Nerd Font
     style: Bold
 
   # The italic font face
   italic:
-    family: Victor Mono
+    family: VictorMono Nerd Font
     style: Italic
   size: 11
 
 window:
   padding:
-    x: 12
-    y: 12
+    x: 0
+    y: 0
   title: Terminal
   dynamic_title: false
   semantic_escape_chars: ',│`|:"'' ()[]{}<>'
