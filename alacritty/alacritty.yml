@@ -22,7 +22,7 @@ font:
   # The italic font face
   italic:
     family: VictorMono Nerd Font
-    style: Italic
+    style: SemiBold Italic
   size: 11
 
 window:
