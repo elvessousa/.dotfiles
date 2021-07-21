@@ -32,6 +32,7 @@ set clipboard=unnamedplus
 set cursorline
 set hidden
 "set inccommand=split
+set ttymouse=xterm2
 set mouse=a
 set number
 set path+=**
@@ -62,7 +63,8 @@ endif
 " Color scheme and themes
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-let t_Co = 256
+
+" let t_Co = 256
 colorscheme sobrio
 let g:airline_theme='sobrio'
 let g:airline_powerline_fonts = 1
