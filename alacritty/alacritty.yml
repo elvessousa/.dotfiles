@@ -31,9 +31,12 @@ window:
     y: 0
   title: Terminal
   dynamic_title: false
+
+selection:
   semantic_escape_chars: ',│`|:"'' ()[]{}<>'
   save_to_clipboard: true
-  live_config_reload: true
+
+live_config_reload: true
 
 colors:
   # Default colors
