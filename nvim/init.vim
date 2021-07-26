@@ -10,15 +10,9 @@ call plug#begin()
 	Plug 'preservim/nerdtree'
 
 	" Completion / linters / formatters
-	" Plug 'ncm2/ncm2'
-	" Plug 'roxma/nvim-yarp'
-	" Plug 'neoclide/coc.nvim'
+	Plug 'neoclide/coc.nvim'
 	" Plug 'w0rp/ale'
-	Plug 'neovim/nvim-lspconfig'
-	Plug 'kabouzeid/nvim-lspinstall'
-	Plug 'hrsh7th/nvim-compe'
-	Plug 'mattn/emmet-vim'
-	Plug 'dense-analysis/ale'
+	" Plug 'dense-analysis/ale'
 	Plug 'plasticboy/vim-markdown'
 
 	" Git
@@ -100,22 +94,11 @@ let g:tex_conceal = ''
 let g:vim_markdown_math = 1
 
 " Language server stuff
-" command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 set completeopt=noinsert,menuone,noselect
-
-" Lua configuration for newer plugins
-luafile ~/.dotfiles/nvim/lua/lsp.lua
-luafile ~/.dotfiles/nvim/lua/completion.lua
 
 " Leader
 let mapleader=','
-
-" Insert mode remappings
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
 " Normal mode remappings
 nnoremap <F5> :NERDTreeToggle<CR>
@@ -143,13 +126,5 @@ map <F12> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 " Auto Commands
 augroup auto_commands
 	autocmd FileType scss setl iskeyword+=@-@
-	" autocmd BufEnter * call ncm2#enable_for_buffer()
-	autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 1000)
-	autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 1000)
-	autocmd BufWritePre *.jsx lua vim.lsp.buf.formatting_sync(nil, 1000)
-	autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)
-	autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 1000)
-	autocmd BufWritePre *.css lua vim.lsp.buf.formatting_sync(nil, 1000)
-	autocmd BufWritePre *.scss lua vim.lsp.buf.formatting_sync(nil, 1000)
 	autocmd filetype netrw call Netrw_mappings()
 augroup END
