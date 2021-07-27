@@ -4,15 +4,12 @@ call plug#begin()
 	Plug 'ryanoasis/vim-devicons'
 
 	" Utilities
-	Plug 'terryma/vim-multiple-cursors'
 	Plug 'sheerun/vim-polyglot'
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'ap/vim-css-color'
 	Plug 'preservim/nerdtree'
 
 	" Completion / linters / formatters
-	Plug 'ncm2/ncm2'
-	Plug 'ncm2/ncm2-path'
 	Plug 'elixir-editors/vim-elixir'
 	Plug 'neoclide/coc.nvim'
 	Plug 'w0rp/ale'
