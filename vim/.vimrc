@@ -10,9 +10,7 @@ call plug#begin()
 	Plug 'preservim/nerdtree'
 
 	" Completion / linters / formatters
-	Plug 'elixir-editors/vim-elixir'
 	Plug 'neoclide/coc.nvim'
-	Plug 'w0rp/ale'
 	Plug 'plasticboy/vim-markdown'
 
 	" Git

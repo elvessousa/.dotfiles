@@ -11,8 +11,6 @@ call plug#begin()
 
 	" Completion / linters / formatters
 	Plug 'neoclide/coc.nvim'
-	" Plug 'w0rp/ale'
-	" Plug 'dense-analysis/ale'
 	Plug 'plasticboy/vim-markdown'
 
 	" Git
