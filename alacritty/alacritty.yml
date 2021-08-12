@@ -38,6 +38,11 @@ selection:
 
 live_config_reload: true
 
+cursor:
+  style:
+    shape: Block
+    blinking: On
+
 colors:
   # Default colors
   primary:
