@@ -111,7 +111,7 @@ echo -e " ${y}5)${n} Configure ${b}italics${n} in terminal"
 echo -e " ${y}6)${n} Configure ${b}Alacritty${n}"
 echo -e " ${y}7)${n} Configure ${b}Kitty${n}"
 echo -e " ${y}8)${n} Install ${b}Vim Plug${n}"
-echo -e " ${y}8)${n} Configure ${b}i3${n}"
+echo -e " ${y}9)${n} Configure ${b}i3${n}"
 echo -e "$d-------------------------------------------------------$n"
 
 # Input option
