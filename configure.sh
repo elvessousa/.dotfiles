@@ -40,6 +40,10 @@ alacritty_path="$HOME/.config/alacritty/alacritty.yml"
 kitty_file="$(pwd)/kitty/kitty.conf"
 kitty_path="$HOME/.config/kitty/kitty.conf"
 
+# i3
+i3_files="$(pwd)/i3"
+i3_path="$HOME/.config/"
+
 # Colors and formatting
 b="$(tput bold)"
 d='\033[2m' 
@@ -107,6 +111,7 @@ echo -e " ${y}5)${n} Configure ${b}italics${n} in terminal"
 echo -e " ${y}6)${n} Configure ${b}Alacritty${n}"
 echo -e " ${y}7)${n} Configure ${b}Kitty${n}"
 echo -e " ${y}8)${n} Install ${b}Vim Plug${n}"
+echo -e " ${y}8)${n} Configure ${b}i3${n}"
 echo -e "$d-------------------------------------------------------$n"
 
 # Input option
@@ -146,6 +151,9 @@ do
       break;;
     '8')
       curl -fLo $vimplug_file --create-dirs $vimplug_url
+      break;;
+    '9')
+      createLink $i3_files $i3_path 'i3'
       break;;
     *)
       echo " Good luck."
