@@ -41,8 +41,12 @@ kitty_file="$(pwd)/kitty/kitty.conf"
 kitty_path="$HOME/.config/kitty/kitty.conf"
 
 # i3
-i3_files="$(pwd)/i3"
+i3_files="$(pwd)/wms/i3"
 i3_path="$HOME/.config/"
+
+# Sway and Waybar
+sway_files="$(pwd)/wms/sway"
+sway_path="$HOME/.config/"
 
 # Colors and formatting
 b="$(tput bold)"
@@ -112,6 +116,7 @@ echo -e " ${y}6)${n} Configure ${b}Alacritty${n}"
 echo -e " ${y}7)${n} Configure ${b}Kitty${n}"
 echo -e " ${y}8)${n} Install ${b}Vim Plug${n}"
 echo -e " ${y}9)${n} Configure ${b}i3${n}"
+echo -e " ${y}10)${n} Configure ${b}Sway${n} and ${b}Waybar${n}"
 echo -e "$d-------------------------------------------------------$n"
 
 # Input option
@@ -154,6 +159,9 @@ do
       break;;
     '9')
       createLink $i3_files $i3_path 'i3'
+      break;;
+    '10')
+      createLink $sway_files $sway_path 'sway'
       break;;
     *)
       echo " Good luck."
