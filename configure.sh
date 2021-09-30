@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # VIM
-vim_folder="$(pwd)/vim"
+vim_folder="$(pwd)/editors/vim"
 vim_path="$HOME/.vim"
 
 # NVIM
-nvim_folder="$(pwd)/nvim"
+nvim_folder="$(pwd)/editors/nvim"
 nvim_path="$HOME/.config/nvim"
 
 # Vim Plug
@@ -13,12 +13,12 @@ vimplug_file="$HOME/.config/nvim/autoload/plug.vim"
 vimplug_url='https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 # CoC
-coc_json="$(pwd)/nvim/coc-settings.json"
+coc_json="$(pwd)/editors/nvim/coc-settings.json"
 coc_nvim_path="$nvim_path/coc-settings.json"
 coc_vim_path="$vim_path/coc-settings.json"
 
 # Tmux
-tmux_file="$(pwd)/tmux/.tmux.conf"
+tmux_file="$(pwd)/terminal/tmux/.tmux.conf"
 tmux_path="$HOME/.tmux.conf"
 
 # Git
@@ -26,18 +26,18 @@ git_file="$(pwd)/git/.gitconfig"
 git_path="$HOME/.gitconfig"
 
 # Fish
-fish_file="$(pwd)/fish/config.fish"
+fish_file="$(pwd)/terminal/fish/config.fish"
 fish_path="$HOME/.config/fish/config.fish"
 
 # Terminal
 term_info="$(pwd)/terminal/xterm-256color-italic.terminfo"
 
 # Alacritty
-alacritty_file="$(pwd)/alacritty/alacritty.yml"
+alacritty_file="$(pwd)/terminal/alacritty/alacritty.yml"
 alacritty_path="$HOME/.config/alacritty/alacritty.yml"
 
 # Kitty
-kitty_file="$(pwd)/kitty/kitty.conf"
+kitty_file="$(pwd)/terminal/kitty/kitty.conf"
 kitty_path="$HOME/.config/kitty/kitty.conf"
 
 # i3
