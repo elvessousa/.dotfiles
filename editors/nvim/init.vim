@@ -10,7 +10,7 @@ call plug#begin()
 	Plug 'preservim/nerdtree'
 
 	" Completion / linters / formatters
-	Plug 'neoclide/coc.nvim'
+	Plug 'neoclide/coc.nvim',  {'branch': 'master', 'do': 'yarn install'}
 	Plug 'plasticboy/vim-markdown'
 
 	" Git

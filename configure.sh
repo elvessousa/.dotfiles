@@ -45,7 +45,8 @@ i3_files="$(pwd)/wms/i3"
 i3_path="$HOME/.config/"
 
 # Sway and Waybar
-sway_files="$(pwd)/wms/sway"
+sway_files="$(pwd)/wms/sway/sway"
+waybar_files="$(pwd)/wms/sway/waybar"
 sway_path="$HOME/.config/"
 
 # Colors and formatting
@@ -162,6 +163,7 @@ do
       break;;
     '10')
       createLink $sway_files $sway_path 'sway'
+      createLink $waybar_files $sway_path 'waybar'
       break;;
     *)
       echo " Good luck."
