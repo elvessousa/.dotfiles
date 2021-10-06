@@ -37,6 +37,7 @@ selection:
   save_to_clipboard: true
 
 live_config_reload: true
+background_opacity: 0.95
 
 cursor:
   style:
