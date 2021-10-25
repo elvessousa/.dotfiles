@@ -168,7 +168,9 @@ bar {
 include /etc/sway/config.d/*
 
 # Set keyboard layout
-input * xkb_layout "br"
+input * {
+    xkb_layout "br,us"
+} 
 
 # Gaps
 default_border pixel 2
