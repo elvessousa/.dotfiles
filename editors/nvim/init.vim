@@ -12,6 +12,7 @@ call plug#begin()
 	" Completion / linters / formatters
 	Plug 'neoclide/coc.nvim',  {'branch': 'master', 'do': 'yarn install'}
 	Plug 'plasticboy/vim-markdown'
+	Plug 'pantharshit00/vim-prisma'
 
 	" Git
 	Plug 'airblade/vim-gitgutter'
