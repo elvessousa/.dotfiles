@@ -1,7 +1,5 @@
 # Default config for sway
-#
 # Copy this to ~/.config/sway/config and edit it to your liking.
-#
 # Read `man 5 sway` for a complete reference.
 
 ### Variables
@@ -25,7 +23,7 @@ output DP-1 disable
 
 # Wallpapers
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg /home/elvessousa/Imagens/Papéis\ de\ parede/barco.jpg fill
+output * bg /home/elvessousa/Imagens/Papéis\ de\ parede/Julia\ Craice.jpg fill
 
 # Natural scrolling
 input type:pointer {
