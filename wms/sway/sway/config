@@ -22,8 +22,7 @@ output eDP-1 pos 0 0
 output DP-1 disable
 
 # Wallpapers
-# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg /home/elvessousa/Imagens/Papéis\ de\ parede/Julia\ Craice.jpg fill
+exec_always ~/.dotfiles/wms/sway/sway/wallpaper.sh eDP-1
 
 # Natural scrolling
 input type:pointer {
@@ -102,8 +101,6 @@ bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
 # You can "split" the current object of your focus with
-# $mod+b or $mod+v, for horizontal and vertical splits
-# respectively.
 bindsym $mod+b splith
 bindsym $mod+v splitv
 
