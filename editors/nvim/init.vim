@@ -18,7 +18,7 @@ call plug#begin()
 	Plug 'airblade/vim-gitgutter'
 call plug#end()
 
-" Window stuff
+" Syntax
 filetype plugin indent on
 syntax on
 
@@ -30,12 +30,16 @@ set hidden
 set inccommand=split
 set mouse=a
 set number
-set path+=**
 set relativenumber
 set splitbelow splitright
 set title
 set ttimeoutlen=0
 set wildmenu
+
+" Tabs size
+set tabstop=2
+set shiftwidth=2
+set expandtab
 
 " True color if available
 let term_program=$TERM_PROGRAM
@@ -60,26 +64,7 @@ let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 
 " File browser
-let g:netrw_banner = 0
-let g:netrw_liststyle = 0
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
-let g:netrw_keepdir = 0
-let g:netrw_localcopydircmd = 'cp -r'
 let NERDTreeShowHidden=1
-
-" Create file without opening buffer
-function! CreateInPreview()
-  let l:filename = input('please enter filename: ')
-  execute 'silent !touch ' . b:netrw_curdir.'/'.l:filename 
-  redraw!
-endfunction
-
-" Tabs size
-set tabstop=2
-set shiftwidth=2
-set expandtab
 
 " Markdown
 let g:vim_markdown_folding_disabled = 1
@@ -103,7 +88,6 @@ nnoremap <F5> :NERDTreeToggle<CR>
 nnoremap <F4> :bd<CR>
 nnoremap <C-q> :q!<CR>
 nnoremap <F6> :sp<CR>:terminal<CR>
-nnoremap <silent> gf <cmd>lua vim.lsp.buf.formatting()<CR>
 
 "" Tabs
 let g:airline#extensions#tabline#enabled = 1
@@ -111,10 +95,6 @@ nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
 
-" Netrw: create file using touch instead of opening a buffer
-function! Netrw_mappings()
-  noremap <buffer>% :call CreateInPreview()<cr>
-endfunction
 
 " Show highlight groups
 map <F12> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
@@ -124,5 +104,4 @@ map <F12> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 " Auto Commands
 augroup auto_commands
 	autocmd FileType scss setl iskeyword+=@-@
-	autocmd filetype netrw call Netrw_mappings()
 augroup END
