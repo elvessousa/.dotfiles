@@ -1,53 +1,61 @@
+# Alacritty config
+
+# Environment
 env:
-  # TERM env customization.
-  #
-  # If this property is not set, alacritty will set it to xterm-256color.
-  #
-  # Note that some xterm terminfo databases don't declare support for italics.
-  # You can verify this by checking for the presence of `smso` and `sitm` in
-  # `infocmp xterm-256color`
   TERM: xterm-256color
 
+# Fonts
 font:
-  # The normal (roman) font face to use.
   normal:
     family: VictorMono Nerd Font
     style: Medium 
 
-  # The bold font face
   bold:
     family: VictorMono Nerd Font
     style: Bold
 
-  # The italic font face
   italic:
     family: VictorMono Nerd Font
     style: SemiBold Italic
+  
   size: 11
+  use_thin_strokes: true
 
+  offset:
+    x: 0
+    y: 0
+
+  glyph_offset:
+    x: 0
+    y: 0
+
+# Window
 window:
+  dynamic_padding: false
   padding:
     x: 0
     y: 0
   title: Terminal
   dynamic_title: false
 
+live_config_reload: true
+background_opacity: 0.95
+
+# Selection
 selection:
   semantic_escape_chars: ',│`|:"'' ()[]{}<>'
   save_to_clipboard: true
 
-live_config_reload: true
-background_opacity: 0.95
-
+# Cursors
 cursor:
   style:
     shape: Block
     blinking: On
 
+# Default colors
 colors:
-  # Default colors
   primary:
-    background: "#202020"
+    background: "#181818"
     foreground: "#eeeeee"
 
   # Normal colors
