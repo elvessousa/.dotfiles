@@ -53,21 +53,22 @@ cursor:
     blinking: On
 
 # Default colors
-colors:
-  primary:
-    background: "#181818"
-    foreground: "#eeeeee"
+schemes:
+  sobrio: &sobrio
+    primary:
+      background: "#181818"
+      foreground: "#eeeeee"
 
-  # Normal colors
-  normal:
-    black: "#3a3b3f"
-    red: "#fd6389"
-    green: "#2ec27e"
-    yellow: "#d7af87"
-    blue: "#d7af87"
-    magenta: "#d7d7ff"
-    cyan: "#78DCE8"
-    white: "#eeeeee"
+    # Normal colors
+    normal:
+      black: "#3a3b3f"
+      red: "#fd6389"
+      green: "#2ec27e"
+      yellow: "#d7af87"
+      blue: "#d7af87"
+      magenta: "#d7d7ff"
+      cyan: "#78DCE8"
+      white: "#eeeeee"
 
   # Bright colors
   bright:
@@ -80,3 +81,32 @@ colors:
     cyan: "#78DCE8"
     white: "#ffffff"
 
+  sobrio-light: &sobrio-light
+    # Default colors
+    primary:
+      background: "#eeeeee"
+      foreground: "#202020"
+
+    # Normal colors
+    normal:
+      black: "#eeeeee"
+      red: "#dd4c4f"
+      green: "#2ec27e"
+      yellow: "#af875f"
+      blue: "#af875f"
+      magenta: "#9787af"
+      cyan: "#5fafaf"
+      white: "#3a3b3f"
+
+    # Bright colors
+    bright:
+      black: "#727072"
+      red: "#fd6399"
+      green: "#2ec27e"
+      yellow: "#d7af87"
+      blue: "#d7af87"
+      magenta: "#d7d7ff"
+      cyan: "#7cdce7"
+      white: "#ffffff"
+
+colors: *sobrio
