@@ -25,6 +25,7 @@ syntax on
 " Options
 set background=dark
 set clipboard=unnamedplus
+set completeopt=noinsert,menuone,noselect
 set cursorline
 set hidden
 set inccommand=split
@@ -37,12 +38,12 @@ set ttimeoutlen=0
 set wildmenu
 
 " Tabs size
-set tabstop=2
-set shiftwidth=2
 set expandtab
+set shiftwidth=2
+set tabstop=2
 
 " True color if available
-let term_program=$TERM_PROGRAM
+let term_program = $TERM_PROGRAM
 
 " Check for conflicts with Apple Terminal app
 if term_program !=? 'Apple_Terminal'
@@ -56,45 +57,46 @@ endif
 " Color scheme and themes
 let t_Co = 256
 colorscheme sobrio
-let g:airline_theme='sobrio'
+
+" Airline
+let g:airline_theme = 'sobrio'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " Italics
-let &t_ZH="\e[3m"
-let &t_ZR="\e[23m"
+let &t_ZH = "\e[3m"
+let &t_ZR = "\e[23m"
 
 " File browser
-let NERDTreeShowHidden=1
+let NERDTreeShowHidden = 1
 
 " Markdown
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_fenced_languages = ['tsx=typescriptreact']
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_frontmatter = 1
 
 " Disable math tex conceal feature
 let g:tex_conceal = ''
 let g:vim_markdown_math = 1
 
 " Language server stuff
+let g:python3_host_prog = '/usr/bin/python'
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
-set completeopt=noinsert,menuone,noselect
 
 " Leader
-let mapleader=','
+let mapleader = ','
 
 " Normal mode remappings
-nnoremap <F5> :NERDTreeToggle<CR>
-nnoremap <F4> :bd<CR>
 nnoremap <C-q> :q!<CR>
+nnoremap <F4> :bd<CR>
+nnoremap <F5> :NERDTreeToggle<CR>
 nnoremap <F6> :sp<CR>:terminal<CR>
 
 "" Tabs
-let g:airline#extensions#tabline#enabled = 1
-nnoremap <Tab> gt
 nnoremap <S-Tab> gT
+nnoremap <Tab> gt
 nnoremap <silent> <S-t> :tabnew<CR>
-
 
 " Show highlight groups
 map <F12> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
@@ -103,5 +105,6 @@ map <F12> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 
 " Auto Commands
 augroup auto_commands
-	autocmd FileType scss setl iskeyword+=@-@
+	autocmd BufWrite *.py call CocAction('format')
+	autocmd FileType scss setlocal iskeyword+=@-@
 augroup END

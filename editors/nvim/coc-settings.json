@@ -11,8 +11,10 @@
     "typescript",
     "typescriptreact",
     "prisma",
-    "py"
+    "python"
   ],
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "~/.local/bin/black",
   "prettier.singleQuote": true,
   "javascript.autoClosingTags": true,
   "typescript.autoClosingTags": true,
