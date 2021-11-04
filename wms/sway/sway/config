@@ -162,7 +162,7 @@ gaps outer 10
 
 # Colors
 # class                 border  backgr. text  indicator child_border
-client.focused          #afafaf #121212 #ffffff #afafaf #333333
+client.focused          #afafaf #121212 #ffffff #afafaf #181818
 client.focused_inactive #121212 #181818 #ffffff #484e50 #5f676a
 client.unfocused        #121212 #222222 #888888 #292d2e #222222
 client.urgent           #d7af87 #000000 #ffffff #900000 #900000 
