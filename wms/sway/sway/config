@@ -147,13 +147,14 @@ bar {
     swaybar_command waybar
 }
 
-
-include /etc/sway/config.d/*
-
 # Set keyboard layout
 input * {
     xkb_layout "br,us"
-} 
+}
+
+input "7247:2:SEM_HCT_Keyboard" {
+    xkb_layout "us"
+}
 
 # Gaps
 default_border pixel 2
@@ -166,3 +167,5 @@ client.focused          #afafaf #121212 #ffffff #afafaf #181818
 client.focused_inactive #121212 #181818 #ffffff #484e50 #5f676a
 client.unfocused        #121212 #222222 #888888 #292d2e #222222
 client.urgent           #d7af87 #000000 #ffffff #900000 #900000 
+
+include /etc/sway/config.d/*
