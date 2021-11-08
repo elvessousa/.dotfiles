@@ -8,6 +8,7 @@ call plug#begin()
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'ap/vim-css-color'
 	Plug 'preservim/nerdtree'
+	Plug 'kien/ctrlp.vim'
 
 	" Completion / linters / formatters
 	Plug 'neoclide/coc.nvim',  {'branch': 'master', 'do': 'yarn install'}
@@ -69,6 +70,9 @@ let &t_ZR = "\e[23m"
 
 " File browser
 let NERDTreeShowHidden = 1
+
+" CTRLP: Ignore based on gitignore
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " Markdown
 let g:vim_markdown_conceal = 0
