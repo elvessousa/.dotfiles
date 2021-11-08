@@ -1,0 +1,4 @@
+#!/bin/sh
+
+keyboard_file="$(find /sys/class/leds -name '*scrolllock')"
+sudo sh -c "echo 1 > $keyboard_file"
