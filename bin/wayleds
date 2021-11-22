@@ -1,4 +1,5 @@
 #!/bin/sh
 
-keyboard_file="$(find /sys/class/leds -name '*scrolllock')"
-sudo sh -c "echo 1 > $keyboard_file"
+keyboard_file="$(find /sys/class/leds -name '*scrolllock')/brightness"
+echo "Turning on leds on "
+echo '1' > $keyboard_file

@@ -11,6 +11,8 @@ set $right l
 
 # Your preferred terminal emulator
 set $term alacritty
+set $browser librewolf
+set $filemanager nautilus
 
 # Your preferred application launcher
 set $menu wofi --show run
@@ -28,14 +30,11 @@ input type:pointer {
 }
 
 ### Key bindings
-# Start a terminal
 bindsym $mod+Return exec $term
-
-# Kill focused window
 bindsym $mod+Shift+q kill
-
-# Start your launcher
 bindsym $mod+d exec $menu
+bindsym $mod+m exec $browser
+bindsym $mod+n exec $filemanager
 
 # Drag floating windows by holding down $mod and left mouse button.
 floating_modifier $mod normal
