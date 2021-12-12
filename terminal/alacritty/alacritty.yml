@@ -62,24 +62,24 @@ schemes:
     # Normal colors
     normal:
       black: "#3a3b3f"
-      red: "#fd6389"
-      green: "#2ec27e"
-      yellow: "#87afd7"
-      blue: "#d7af87"
-      magenta: "#d7d7ff"
+      blue: "#87afd7"
       cyan: "#78DCE8"
+      green: "#2ec27e"
+      magenta: "#d7d7ff"
+      red: "#fd6389"
       white: "#eeeeee"
+      yellow: "#d7af87"
 
   # Bright colors
   bright:
     black: "#727072"
-    red: "#fd6399"
-    green: "#2ec27e"
-    yellow: "#87afd7"
-    blue: "#d7af10"
-    magenta: "#d7d7ff"
+    blue: "#87afd7"
     cyan: "#78DCE8"
+    green: "#2ec27e"
+    magenta: "#d7d7ff"
+    red: "#fd6399"
     white: "#ffffff"
+    yellow: "#af875f"
 
   sobrio-light: &sobrio-light
     # Default colors
@@ -93,7 +93,7 @@ schemes:
       red: "#dd4c4f"
       green: "#2ec27e"
       yellow: "#af875f"
-      blue: "#af875f"
+      blue: "#6787af"
       magenta: "#9787af"
       cyan: "#5fafaf"
       white: "#3a3b3f"
@@ -104,7 +104,7 @@ schemes:
       red: "#fd6399"
       green: "#2ec27e"
       yellow: "#d7af87"
-      blue: "#d7af87"
+      blue: "#6787af"
       magenta: "#d7d7ff"
       cyan: "#7cdce7"
       white: "#ffffff"
