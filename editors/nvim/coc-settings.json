@@ -11,7 +11,8 @@
     "typescript",
     "typescriptreact",
     "prisma",
-    "python"
+    "python",
+    "rust"
   ],
   "python.formatting.provider": "black",
   "python.formatting.blackPath": "~/.local/bin/black",
