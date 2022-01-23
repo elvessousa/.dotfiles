@@ -110,5 +110,7 @@ map <F12> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 " Auto Commands
 augroup auto_commands
 	autocmd BufWrite *.py call CocAction('format')
+	autocmd BufWrite *.js* call CocAction('runCommand','tsserver.organizeImports')
+	autocmd BufWrite *.ts* call CocAction('runCommand','tsserver.organizeImports')
 	autocmd FileType scss setlocal iskeyword+=@-@
 augroup END
