@@ -112,5 +112,6 @@ augroup auto_commands
 	autocmd BufWrite *.py call CocAction('format')
 	autocmd BufWrite *.js* call CocAction('runCommand','tsserver.organizeImports')
 	autocmd BufWrite *.ts* call CocAction('runCommand','tsserver.organizeImports')
+	autocmd BufWrite *.php call CocAction('runCommand','php-cs-fixer.fix')
 	autocmd FileType scss setlocal iskeyword+=@-@
 augroup END
