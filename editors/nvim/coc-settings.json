@@ -1,21 +1,23 @@
 {
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
-    "sass",
-    "scss",
-    "markdown",
     "html",
-    "json",
     "javascript",
     "javascriptreact",
-    "typescript",
-    "typescriptreact",
+    "json",
+    "markdown",
+    "php",
     "prisma",
     "python",
     "rust"
+    "sass",
+    "scss",
+    "typescript",
+    "typescriptreact",
   ],
   "python.formatting.provider": "black",
   "python.formatting.blackPath": "~/.local/bin/black",
+  "coc.preferences.formatOnType": true,
   "prettier.singleQuote": true,
   "javascript.autoClosingTags": true,
   "typescript.autoClosingTags": true,
@@ -28,4 +30,5 @@
   ],
   "elixirLS.dialyzerEnabled": false,
   "codeLens.enable": false
+  "tsserver.organizeImports": true,
 }
