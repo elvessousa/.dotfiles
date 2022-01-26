@@ -30,5 +30,5 @@
   ],
   "elixirLS.dialyzerEnabled": false,
   "codeLens.enable": false
-  "tsserver.organizeImports": true,
+  //"tsserver.organizeImports": true,
 }

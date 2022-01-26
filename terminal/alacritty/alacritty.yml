@@ -37,9 +37,9 @@ window:
     y: 0
   title: Terminal
   dynamic_title: false
+  opacity: 0.95
 
 live_config_reload: true
-background_opacity: 0.95
 
 # Selection
 selection:

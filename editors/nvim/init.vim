@@ -96,6 +96,7 @@ nnoremap <C-q> :q!<CR>
 nnoremap <F4> :bd<CR>
 nnoremap <F5> :NERDTreeToggle<CR>
 nnoremap <F6> :sp<CR>:terminal<CR>
+nnoremap <F10> :CocCommand tsserver.organizeImports<CR>
 
 "" Tabs
 nnoremap <S-Tab> gT
@@ -110,8 +111,6 @@ map <F12> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 " Auto Commands
 augroup auto_commands
 	autocmd BufWrite *.py call CocAction('format')
-	autocmd BufWrite *.js* call CocAction('runCommand','tsserver.organizeImports')
-	autocmd BufWrite *.ts* call CocAction('runCommand','tsserver.organizeImports')
 	autocmd BufWrite *.php call CocAction('runCommand','php-cs-fixer.fix')
 	autocmd FileType scss setlocal iskeyword+=@-@
 augroup END
