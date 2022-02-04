@@ -3,16 +3,16 @@
 ### Variables
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
-# Home row direction keys, like vim
-set $left h
-set $down j
-set $up k
-set $right l
 
-# Your preferred terminal emulator
-set $term alacritty
+# Preferred applications
 set $browser librewolf
+set $browser2 brave
+set $browser3 epiphany
+set $email geary
 set $filemanager nautilus
+set $photo gimp
+set $term alacritty
+set $vector inkscape
 
 # Your preferred application launcher
 set $menu wofi --show run
@@ -30,11 +30,18 @@ input type:pointer {
 }
 
 ### Key bindings
-bindsym $mod+Return exec $term
-bindsym $mod+Shift+q kill
 bindsym $mod+d exec $menu
+bindsym $mod+Shift+q kill
+
+# Apps
+bindsym $mod+Return exec $term
+bindsym $mod+Shift+b exec $browser2
+bindsym $mod+Shift+i exec $vector
+bindsym $mod+Shift+w exec $browser3
+bindsym $mod+g exec $email
 bindsym $mod+m exec $browser
 bindsym $mod+n exec $filemanager
+bindsym $mod+p exec $photo
 
 # Drag floating windows by holding down $mod and left mouse button.
 floating_modifier $mod normal
@@ -46,24 +53,12 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
 # Move your focus around
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
-
-# Or use $mod+[up|down|left|right]
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # Move the focused window with the same, but add Shift
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
-bindsym $mod+Shift+$right move right
-
-# Ditto, with arrow keys
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -114,21 +109,8 @@ bindsym $mod+space focus mode_toggle
 # Move focus to the parent container
 bindsym $mod+a focus parent
 
-# Scratchpad:
-# Move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
-
-# Show the next scratchpad window or hide the focused scratchpad window.
-bindsym $mod+minus scratchpad show
-
 # Resizing containers:
 mode "resize" {
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
-
-    # Ditto, with arrow keys
     bindsym Left resize shrink width 10px
     bindsym Down resize grow height 10px
     bindsym Up resize shrink height 10px
@@ -162,9 +144,9 @@ gaps outer 10
 
 # Colors
 # class                 border  backgr. text  indicator child_border
-client.focused          #afafaf #121212 #ffffff #afafaf #181818
-client.focused_inactive #121212 #181818 #ffffff #484e50 #5f676a
-client.unfocused        #121212 #222222 #888888 #292d2e #222222
+client.unfocused        #121212 #121212 #ffffff #afafaf #181818
+client.focused_inactive #181818 #181818 #ffffff #484e50 #5f676a
+client.focused          #202020 #202020 #888888 #292d2e #222222
 client.urgent           #d7af87 #000000 #ffffff #900000 #900000 
 
 include /etc/sway/config.d/*
