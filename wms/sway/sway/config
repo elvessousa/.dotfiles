@@ -15,7 +15,7 @@ set $term alacritty
 set $vector inkscape
 
 # Your preferred application launcher
-set $menu wofi --show run
+set $menu wofi --show drun
 
 ### Output configuration
 output eDP-1 pos 0 0
