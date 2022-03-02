@@ -7,23 +7,23 @@ env:
 # Fonts
 font:
   normal:
-    family: VictorMono Nerd Font
+    family: VictorMono Nerd Font Mono
     style: Medium 
 
   bold:
-    family: VictorMono Nerd Font
+    family: VictorMono Nerd Font Mono
     style: Bold
 
   italic:
-    family: VictorMono Nerd Font
-    style: SemiBold Italic
+    family: Victor Mono Nerd Font Mono
+    style: Medium Italic 
   
   size: 11
   use_thin_strokes: true
 
   offset:
     x: 0
-    y: -1
+    y: 0
 
   glyph_offset:
     x: 0
