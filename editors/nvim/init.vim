@@ -11,7 +11,8 @@ call plug#begin()
 	Plug 'kien/ctrlp.vim'
 
 	" Completion / linters / formatters
-	Plug 'neoclide/coc.nvim',  {'branch': 'master', 'do': 'yarn install'}
+	" Plug 'neoclide/coc.nvim',  {'branch': 'master', 'do': 'yarn install'}
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'plasticboy/vim-markdown'
 	Plug 'pantharshit00/vim-prisma'
 
