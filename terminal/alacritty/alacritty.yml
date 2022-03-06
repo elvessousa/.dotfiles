@@ -7,16 +7,16 @@ env:
 # Fonts
 font:
   normal:
-    family: VictorMono Nerd Font Mono
-    style: Medium 
+    family: IBM Plex Mono 
+    style: Book 
 
   bold:
-    family: VictorMono Nerd Font Mono
+    family: IBM Plex Mono 
     style: Bold
 
   italic:
-    family: Victor Mono Nerd Font Mono
-    style: Medium Italic 
+    family: IBM Plex Mono 
+    style:  Italic 
   
   size: 11
   use_thin_strokes: true
