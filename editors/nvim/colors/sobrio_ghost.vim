@@ -1,0 +1,1 @@
+/home/elvessousa/Documentos/Temas/sobrio/colors/sobrio_ghost.vim

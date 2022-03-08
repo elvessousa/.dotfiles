@@ -58,7 +58,7 @@ endif
 
 " Color scheme and themes
 let t_Co = 256
-colorscheme sobrio
+colorscheme sobrio_ghost
 
 " Airline
 let g:airline_theme = 'sobrio'
