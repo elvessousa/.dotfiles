@@ -144,9 +144,9 @@ gaps outer 10
 
 # Colors
 # class                 border  backgr. text  indicator child_border
-client.unfocused        #121212 #121212 #ffffff #afafaf #181818
-client.focused_inactive #181818 #181818 #ffffff #484e50 #5f676a
-client.focused          #202020 #202020 #888888 #292d2e #222222
+client.unfocused        #121212 #121212 #3a3b3f #afafaf #181818
+client.focused_inactive #181818 #181818 #3a3b3f #484e50 #5f676a
+client.focused          #202020 #202020 #ffffff #292d2e #222222
 client.urgent           #d7af87 #000000 #ffffff #900000 #900000 
 
 include /etc/sway/config.d/*
