@@ -33,7 +33,7 @@ font:
 window:
   dynamic_padding: false
   padding:
-    x: 0
+    x: 3
     y: 0
   title: Terminal
   dynamic_title: false
