@@ -5,8 +5,8 @@
 set $mod Mod4
 
 # Preferred applications
-set $browser librewolf
-set $browser2 brave
+set $browser vivaldi-stable
+set $browser2 librewolf
 set $browser3 epiphany
 set $email geary
 set $filemanager nautilus
@@ -38,11 +38,11 @@ bindsym $mod+Shift+q kill
 
 # Apps
 bindsym $mod+Return exec $term
-bindsym $mod+Shift+b exec $browser2
+bindsym $mod+Shift+v exec $browser
 bindsym $mod+Shift+i exec $vector
 bindsym $mod+Shift+w exec $browser3
 bindsym $mod+g exec $email
-bindsym $mod+m exec $browser
+bindsym $mod+m exec $browser2
 bindsym $mod+n exec $filemanager
 bindsym $mod+p exec $photo
 
