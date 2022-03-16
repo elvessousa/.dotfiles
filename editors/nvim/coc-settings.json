@@ -22,13 +22,12 @@
   "prettier.singleQuote": true,
   "javascript.autoClosingTags": true,
   "typescript.autoClosingTags": true,
-  "emmet.includeLanguages": [
-    "html",
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
+  "emmet.includeLanguages": {
+    "html": "html",
+    "rust": "html",
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  },
   "elixirLS.dialyzerEnabled": false,
   "codeLens.enable": false,
   "intelephense.environment.documentRoot": "/home/elvessousa/Documentos/Sites/clients/wordpress",
