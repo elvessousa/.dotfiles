@@ -30,9 +30,7 @@
   },
   "elixirLS.dialyzerEnabled": false,
   "codeLens.enable": false,
-  "intelephense.environment.documentRoot": "/home/elvessousa/Documentos/Sites/clients/wordpress",
-  "intelephense.environment.includePaths": [
-    "/home/elvessousa/Documentos/Sites/clients/wordpress/wp-includes"
-  ],
+  "intelephense.environment.documentRoot": "/srv/http/wordpress",
+  "intelephense.environment.includePaths": ["/srv/http/wordpress/wp-includes"],
   "intelephense.files.associations": ["*.php", "*.phtml", "*.module", "*.inc"]
 }
