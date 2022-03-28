@@ -14,6 +14,7 @@ call plug#begin()
 	" Plug 'neoclide/coc.nvim',  {'branch': 'master', 'do': 'yarn install'}
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'plasticboy/vim-markdown'
+	Plug 'stephpy/vim-php-cs-fixer'
 	Plug 'pantharshit00/vim-prisma'
 
 	" Git
@@ -112,6 +113,7 @@ map <F12> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 " Auto Commands
 augroup auto_commands
 	autocmd BufWrite *.py call CocAction('format')
-	autocmd BufWrite *.php call CocAction('runCommand','php-cs-fixer.fix')
 	autocmd FileType scss setlocal iskeyword+=@-@
+	autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
 augroup END
+
