@@ -56,7 +56,7 @@ cursor:
 schemes:
   sobrio: &sobrio
     primary:
-      background: "#181818"
+      background: "#101010"
       foreground: "#eeeeee"
 
     # Normal colors
