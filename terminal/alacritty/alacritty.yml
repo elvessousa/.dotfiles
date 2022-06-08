@@ -37,7 +37,7 @@ window:
     y: 0
   title: Terminal
   dynamic_title: false
-  opacity: 0.95
+  opacity: 0.99
 
 live_config_reload: true
 
@@ -56,7 +56,7 @@ cursor:
 schemes:
   sobrio: &sobrio
     primary:
-      background: "#101010"
+      background: "#080808"
       foreground: "#eeeeee"
 
     # Normal colors
