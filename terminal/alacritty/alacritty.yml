@@ -7,15 +7,15 @@ env:
 # Fonts
 font:
   normal:
-    family: IBM Plex Mono 
+    family: BlexMono Nerd Font
     style: Book 
 
   bold:
-    family: IBM Plex Mono 
+    family: BlexMono Nerd Font
     style: Bold
 
   italic:
-    family: IBM Plex Mono 
+    family: BlexMono Nerd Font
     style:  Italic 
   
   size: 11
