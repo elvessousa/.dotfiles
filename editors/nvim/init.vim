@@ -11,7 +11,6 @@ call plug#begin()
 	Plug 'kien/ctrlp.vim'
 
 	" Completion / linters / formatters
-	" Plug 'neoclide/coc.nvim',  {'branch': 'master', 'do': 'yarn install'}
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'plasticboy/vim-markdown'
 	Plug 'stephpy/vim-php-cs-fixer'
@@ -115,7 +114,5 @@ augroup auto_commands
 	autocmd BufWrite *.py call CocAction('format')
 	autocmd FileType scss setlocal iskeyword+=@-@
 	autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
-	autocmd BufWrite *.js call CocAction('runCommand','tsserver.organizeImports')
-	autocmd BufWrite *.ts* call CocAction('runCommand','tsserver.organizeImports')
 augroup END
 
