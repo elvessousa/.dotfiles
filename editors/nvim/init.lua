@@ -5,7 +5,7 @@ set.background = 'dark'
 set.clipboard = 'unnamedplus'
 set.completeopt = 'noinsert,menuone,noselect'
 set.cursorline = true
-set.directory = '$HOME/.config/nvim'
+set.directory = '.'
 set.expandtab = true
 set.foldexpr = 'nvim_treesitter#foldexpr()'
 set.foldmethod = 'manual'
@@ -37,7 +37,7 @@ vim.cmd [[packadd packer.nvim]]
 
 packer.startup(function()
   use 'wbthomason/packer.nvim'
-  use 'elvessousa/sobrio'
+  -- use 'elvessousa/sobrio'
   use 'neovim/nvim-lspconfig'
   use 'nvim-treesitter/nvim-treesitter'
   use 'nvim-treesitter/playground'
@@ -187,6 +187,7 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 -- Language servers
 require('lspconfig')['pyright'].setup { capabilities = capabilities }
 require('lspconfig')['tsserver'].setup { capabilities = capabilities }
+require('lspconfig')['rust_analyzer'].setup { capabilities = capabilities }
 
 -- Theming Utility
 local fn = vim.fn
