@@ -69,8 +69,12 @@ require('neo-tree').setup({
   enable_git_status = true,
   enable_diagnostics = true,
   sort_case_insensitive = false,
-  window = {
-    width = 30,
+  window = { width = 30 },
+  filesystem = {
+    filtered_items = {
+      hide_dotfiles = false,
+      hide_gitignored = false,
+    }
   }
 })
 
@@ -78,18 +82,25 @@ require('neo-tree').setup({
 require('nvim-treesitter.configs').setup {
   ensure_installed = { 
     'bash',
+    'c',
+    'cpp',
     'css',
     'elixir',
+    'fish',
+    'graphql',
     'html',
     'javascript',
     'json',
     'lua',
     'markdown',
+    'markdown_inline',
     'php',
     'python',
     'regex',
+    'ruby',
     'rust',
     'scss',
+    'sql',
     'toml',
     'tsx',
     'typescript',
