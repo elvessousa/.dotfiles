@@ -5,7 +5,6 @@ set.background = 'dark'
 set.clipboard = 'unnamedplus'
 set.completeopt = 'noinsert,menuone,noselect'
 set.cursorline = true
-set.directory = '.'
 set.expandtab = true
 set.foldexpr = 'nvim_treesitter#foldexpr()'
 set.foldmethod = 'manual'
@@ -18,6 +17,7 @@ set.shiftwidth = 2
 set.smarttab = true
 set.splitbelow = true
 set.splitright = true
+set.swapfile = false
 set.tabstop = 2
 set.termguicolors = true
 set.title = true
@@ -36,16 +36,16 @@ local packer = require('packer')
 vim.cmd [[packadd packer.nvim]]
 
 packer.startup(function()
-  use 'wbthomason/packer.nvim'
   -- use 'elvessousa/sobrio'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/nvim-cmp'
   use 'neovim/nvim-lspconfig'
   use 'nvim-treesitter/nvim-treesitter'
   use 'nvim-treesitter/playground'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/nvim-cmp'
+  use 'wbthomason/packer.nvim'
   use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }
@@ -59,7 +59,15 @@ packer.startup(function()
       'MunifTanjim/nui.nvim',
     }
   }
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
 end)
+
+require('lualine').setup({
+  globalstatus = false,
+})
 
 -- Neo tree
 require('neo-tree').setup({
@@ -254,5 +262,7 @@ local on_attach = function(client, bufnr)
   kmap('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
-
+vim.cmd [[
+  autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+]]
 
