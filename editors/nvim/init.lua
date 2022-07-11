@@ -37,19 +37,34 @@ vim.cmd [[packadd packer.nvim]]
 
 packer.startup(function()
   -- use 'elvessousa/sobrio'
+  -- Completion
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-cmdline'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/nvim-cmp'
+  -- Snippet engine
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
+  -- Formatting
+  use 'jose-elias-alvarez/null-ls.nvim'
+  -- Language servers
   use 'neovim/nvim-lspconfig'
+  use 'williamboman/nvim-lsp-installer'
+  -- Syntax parser
   use 'nvim-treesitter/nvim-treesitter'
   use 'nvim-treesitter/playground'
+  -- Plugin manager
   use 'wbthomason/packer.nvim'
+  -- Utilities
+  use 'windwp/nvim-autopairs'
+  use 'lewis6991/gitsigns.nvim'
   use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
+  -- Interface
+  use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
   use {
     'nvim-neo-tree/neo-tree.nvim',
     branch = "v2.x",
@@ -65,6 +80,18 @@ packer.startup(function()
   }
 end)
 
+-- Autopairs
+require("nvim-autopairs").setup { 
+  disable_filetype = { 'TelescopePrompt' }
+} 
+
+-- Git signs
+require('gitsigns').setup()
+
+-- Bufferline
+require("bufferline").setup{}
+
+-- Lualine
 require('lualine').setup({
   globalstatus = false,
 })
@@ -154,12 +181,13 @@ require("nvim-treesitter.configs").setup {
   }
 }
 
-local cmp = require'cmp'
+-- Completion
+local cmp = require('cmp')
 
 cmp.setup({
   snippet = {
     expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)
+      require('luasnip').lsp_expand(args.body)
     end,
   },
   mapping = cmp.mapping.preset.insert({
@@ -171,8 +199,9 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' }, 
-    }, {
-      { name = 'buffer' },
+    { name = 'luasnip' }, 
+    { name = 'buffer' },
+    { name = 'path' },
   })
 })
 
@@ -201,12 +230,46 @@ cmp.setup.cmdline(':', {
   })
 })
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').update_capabilities(
+  vim.lsp.protocol.make_client_capabilities()
+)
 
 -- Language servers
 require('lspconfig')['pyright'].setup { capabilities = capabilities }
-require('lspconfig')['tsserver'].setup { capabilities = capabilities }
+require('lspconfig')['tsserver'].setup { 
+  on_attach = function(client, bufnr)
+    client.resolved_capabilities.document_formatting = false
+  end,
+}
 require('lspconfig')['rust_analyzer'].setup { capabilities = capabilities }
+
+-- Formatting
+local formatting = require("null-ls").builtins.formatting
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+require("null-ls").setup({
+  sources = {
+    formatting.black,
+    formatting.rustfmt,
+    formatting.prettier,
+  },
+  on_attach = function(client, bufnr)
+    if client.name == 'tsserver' then 
+      client.resolved_capabilities.document_formatting = false
+    end
+
+    if client.supports_method("textDocument/formatting") then
+      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = augroup,
+        -- buffer = bufnr,
+        callback = function()
+            vim.lsp.buf.formatting()
+        end,
+      })
+    end
+  end,
+})
 
 -- Theming Utility
 local fn = vim.fn
@@ -263,6 +326,5 @@ local on_attach = function(client, bufnr)
 end
 
 vim.cmd [[
-  autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+  autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()<CR>
 ]]
-
