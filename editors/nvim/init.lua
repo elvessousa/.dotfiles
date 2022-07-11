@@ -23,6 +23,7 @@ set.termguicolors = true
 set.title = true
 set.ttimeoutlen = 0
 set.wildmenu = true
+set.wrap = true
 
 -- Color scheme
 vim.cmd [[
