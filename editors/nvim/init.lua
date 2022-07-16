@@ -22,6 +22,7 @@ set.tabstop = 2
 set.termguicolors = true
 set.title = true
 set.ttimeoutlen = 0
+set.updatetime = 250
 set.wildmenu = true
 set.wrap = true
 
@@ -233,9 +234,38 @@ cmp.setup.cmdline(":", {
 
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+-- Floating diagnostics message
+vim.diagnostic.config({
+	virtual_text = false,
+	signs = true,
+	float = {
+		source = "always",
+		border = border,
+	},
+})
+
 -- Language servers
 require("lspconfig")["pyright"].setup({ capabilities = capabilities })
-require("lspconfig")["phpactor"].setup({ capabilities = capabilities })
+require("lspconfig")["intelephense"].setup({
+	capabilities = capabilities,
+	settings = {
+		intelephense = {
+			stubs = {
+				"Core",
+				"wordpress",
+				"woocommerce",
+			},
+			environment = {
+				-- this line forces the composer path for the stubsin
+				-- in case intelephense don't find it...
+				includePaths = "/home/elvessousa/.config/composer/vendor/php-stubs/",
+			},
+			files = {
+				maxSize = 5000000,
+			},
+		},
+	},
+})
 require("lspconfig")["tsserver"].setup({
 	on_attach = function(client, bufnr)
 		client.resolved_capabilities.document_formatting = false
@@ -250,7 +280,6 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 require("null-ls").setup({
 	sources = {
-		diagnostics.phpcs,
 		formatting.black,
 		formatting.rustfmt,
 		formatting.phpcsfixer,
@@ -329,4 +358,6 @@ local on_attach = function(client, bufnr)
 	kmap("n", "<space>f", vim.lsp.buf.formatting, bufopts)
 end
 
+-- Auto commands
 vim.cmd([[ autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync() ]])
+vim.cmd([[ autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
