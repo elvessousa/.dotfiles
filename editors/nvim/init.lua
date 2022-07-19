@@ -248,6 +248,9 @@ vim.diagnostic.config({
 require("lspconfig")["pyright"].setup({ capabilities = capabilities })
 require("lspconfig")["intelephense"].setup({
 	capabilities = capabilities,
+	on_attach = function(client, bufnr)
+		client.resolved_capabilities.document_formatting = false
+	end,
 	settings = {
 		intelephense = {
 			stubs = {
