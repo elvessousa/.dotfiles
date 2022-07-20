@@ -8,7 +8,7 @@ env:
 font:
   normal:
     family: BlexMono Nerd Font
-    style: Book 
+    style: Book
 
   bold:
     family: BlexMono Nerd Font
@@ -16,13 +16,13 @@ font:
 
   italic:
     family: BlexMono Nerd Font
-    style:  Italic 
-  
-  size: 11
-  use_thin_strokes: true
+    style: Italic
+
+  size: 12
+  use_thin_strokes: false
 
   offset:
-    x: 0
+    x: -1
     y: 0
 
   glyph_offset:
@@ -81,8 +81,7 @@ schemes:
     white: "#ffffff"
     yellow: "#af875f"
 
-  sobrio-light: &sobrio-light
-    # Default colors
+  sobrio-light: &sobrio-light # Default colors
     primary:
       background: "#eeeeee"
       foreground: "#202020"
