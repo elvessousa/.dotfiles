@@ -60,6 +60,7 @@ packer.startup(function()
 	use("wbthomason/packer.nvim")
 	-- Utilities
 	use("windwp/nvim-autopairs")
+	use("norcalli/nvim-colorizer.lua")
 	use("lewis6991/gitsigns.nvim")
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -86,6 +87,9 @@ end)
 require("nvim-autopairs").setup({
 	disable_filetype = { "TelescopePrompt" },
 })
+
+-- Colorizer
+require("colorizer").setup()
 
 -- Git signs
 require("gitsigns").setup()
