@@ -1,4 +1,6 @@
+---------------------------------
 -- Options
+---------------------------------
 local set = vim.opt
 
 set.background = "dark"
@@ -26,14 +28,18 @@ set.updatetime = 250
 set.wildmenu = true
 set.wrap = true
 
+---------------------------------
 -- Color scheme
+---------------------------------
 vim.cmd([[
   filetype plugin indent on
   syntax on
   colorscheme sobrio_ghost
 ]])
 
+---------------------------------
 -- Plugins
+---------------------------------
 local packer = require("packer")
 vim.cmd([[packadd packer.nvim]])
 
@@ -83,6 +89,9 @@ packer.startup(function()
 	})
 end)
 
+---------------------------------
+-- Misc plugins
+---------------------------------
 -- Autopairs
 require("nvim-autopairs").setup({
 	disable_filetype = { "TelescopePrompt" },
@@ -95,12 +104,10 @@ require("colorizer").setup()
 require("gitsigns").setup()
 
 -- Bufferline
-require("bufferline").setup({})
+require("bufferline").setup()
 
 -- Lualine
-require("lualine").setup({
-	globalstatus = false,
-})
+require("lualine").setup({ globalstatus = false })
 
 -- Neo tree
 require("neo-tree").setup({
@@ -119,7 +126,9 @@ require("neo-tree").setup({
 	},
 })
 
+---------------------------------
 -- Syntax highlighting
+---------------------------------
 require("nvim-treesitter.configs").setup({
 	ensure_installed = {
 		"bash",
@@ -168,26 +177,28 @@ require("nvim-treesitter.configs").setup({
 -- Treesitter playground
 require("nvim-treesitter.configs").setup({
 	playground = {
-		enable = true,
 		disable = {},
-		updatetime = 25,
+		enable = true,
 		persist_queries = false,
+		updatetime = 25,
 		keybindings = {
-			toggle_query_editor = "o",
-			toggle_hl_groups = "i",
-			toggle_injected_languages = "t",
-			toggle_anonymous_nodes = "a",
-			toggle_language_display = "I",
 			focus_language = "f",
-			unfocus_language = "F",
-			update = "R",
 			goto_node = "<cr>",
 			show_help = "?",
+			toggle_anonymous_nodes = "a",
+			toggle_hl_groups = "i",
+			toggle_injected_languages = "t",
+			toggle_language_display = "I",
+			toggle_query_editor = "o",
+			unfocus_language = "F",
+			update = "R",
 		},
 	},
 })
 
+---------------------------------
 -- Completion
+---------------------------------
 local cmp = require("cmp")
 
 cmp.setup({
@@ -211,7 +222,7 @@ cmp.setup({
 	}),
 })
 
--- Set configuration for specific filetype.
+-- Set configuration for specific filetype
 cmp.setup.filetype("gitcommit", {
 	sources = cmp.config.sources({
 		{ name = "cmp_git" },
@@ -220,11 +231,10 @@ cmp.setup.filetype("gitcommit", {
 	}),
 })
 
+-- Command line completion
 cmp.setup.cmdline("/", {
 	mapping = cmp.mapping.preset.cmdline(),
-	sources = {
-		{ name = "buffer" },
-	},
+	sources = { { name = "buffer" } },
 })
 
 cmp.setup.cmdline(":", {
@@ -236,51 +246,40 @@ cmp.setup.cmdline(":", {
 	}),
 })
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
 -- Floating diagnostics message
 vim.diagnostic.config({
+	float = { source = "always", border = border },
 	virtual_text = false,
 	signs = true,
-	float = {
-		source = "always",
-		border = border,
-	},
 })
 
+---------------------------------
 -- Language servers
+---------------------------------
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+-- Python
 require("lspconfig")["pyright"].setup({ capabilities = capabilities })
-require("lspconfig")["intelephense"].setup({
-	capabilities = capabilities,
-	on_attach = function(client, bufnr)
-		client.resolved_capabilities.document_formatting = false
-	end,
-	settings = {
-		intelephense = {
-			stubs = {
-				"Core",
-				"wordpress",
-				"woocommerce",
-			},
-			environment = {
-				-- this line forces the composer path for the stubsin
-				-- in case intelephense don't find it...
-				includePaths = "/home/elvessousa/.config/composer/vendor/php-stubs/",
-			},
-			files = {
-				maxSize = 5000000,
-			},
-		},
-	},
-})
+
+-- PHP
+local phpcaps = vim.lsp.protocol.make_client_capabilities()
+phpcaps.textDocument.completion.completionItem.snippetSupport = true
+
+require("lspconfig")["phpactor"].setup({ capabilities = phpcaps })
+
+-- JavaScript/Typescript
 require("lspconfig")["tsserver"].setup({
 	on_attach = function(client, bufnr)
 		client.resolved_capabilities.document_formatting = false
 	end,
 })
+
+-- JavaScript/Typescript
 require("lspconfig")["rust_analyzer"].setup({ capabilities = capabilities })
 
+---------------------------------
 -- Formatting
+---------------------------------
 local diagnostics = require("null-ls").builtins.diagnostics
 local formatting = require("null-ls").builtins.formatting
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -311,13 +310,17 @@ require("null-ls").setup({
 	end,
 })
 
+---------------------------------
 -- Theming Utility
+---------------------------------
 local fn = vim.fn
 local function get_color(group, attr)
 	return fn.synIDattr(fn.synIDtrans(fn.hlID(group)), attr)
 end
 
+---------------------------------
 -- Key bindings
+---------------------------------
 local map = vim.api.nvim_set_keymap
 local kmap = vim.keymap.set
 local opts = { noremap = true, silent = true }
@@ -365,6 +368,8 @@ local on_attach = function(client, bufnr)
 	kmap("n", "<space>f", vim.lsp.buf.formatting, bufopts)
 end
 
+---------------------------------
 -- Auto commands
+---------------------------------
 vim.cmd([[ autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync() ]])
 vim.cmd([[ autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
