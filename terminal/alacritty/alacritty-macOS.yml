@@ -7,22 +7,22 @@ env:
 # Fonts
 font:
   normal:
-    family: BlexMono Nerd Font
-    style: Book
+    family: Hasklug Nerd Font 
+    style: Regular
 
   bold:
-    family: BlexMono Nerd Font
+    family: Hasklug Nerd Font 
     style: Bold
 
   italic:
-    family: BlexMono Nerd Font
+    family: Hasklug Nerd Font 
     style: Italic
 
-  size: 12
+  size: 16
   use_thin_strokes: false
 
   offset:
-    x: -1
+    x: 0
     y: 0
 
   glyph_offset:
@@ -33,7 +33,7 @@ font:
 window:
   dynamic_padding: false
   padding:
-    x: 3
+    x: 0
     y: 0
   title: Terminal
   dynamic_title: false
