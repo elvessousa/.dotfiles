@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# ---------------------------------
+# OS Detection: Linux and macOS
+# ---------------------------------
+case "$OSTYPE" in
+  darwin*)  system="macOS" ;; 
+  linux*)   system="linux" ;;
+  *)        system="" ;;
+esac
+
+# ---------------------------------
+# Paths
+# ---------------------------------
 # VIM
 vim_folder="$(pwd)/editors/vim"
 vim_path="$HOME/.vim"
@@ -33,11 +45,11 @@ fish_path="$HOME/.config/fish/config.fish"
 term_info="$(pwd)/terminal/xterm-256color-italic.terminfo"
 
 # Alacritty
-alacritty_file="$(pwd)/terminal/alacritty/alacritty.yml"
+alacritty_file="$(pwd)/terminal/alacritty/alacritty-$system.yml"
 alacritty_path="$HOME/.config/alacritty/alacritty.yml"
 
 # Kitty
-kitty_file="$(pwd)/terminal/kitty/kitty.conf"
+kitty_file="$(pwd)/terminal/kitty/kitty-$system.conf"
 kitty_path="$HOME/.config/kitty/kitty.conf"
 
 # i3
@@ -49,13 +61,17 @@ sway_files="$(pwd)/wms/sway/sway"
 waybar_files="$(pwd)/wms/sway/waybar"
 sway_path="$HOME/.config/"
 
+# ---------------------------------
 # Colors and formatting
+# ---------------------------------
 b="$(tput bold)"
 d='\033[2m' 
 y='\033[33;33m'
 n='\033[0m'
 
+# ---------------------------------
 # Detect CTRL-C
+# ---------------------------------
 function exitGracefully() {
   printf "\n Good luck."
   exit 2
@@ -63,7 +79,9 @@ function exitGracefully() {
 
 trap exitGracefully 2
 
+# ---------------------------------
 # Create symbolic links 
+# ---------------------------------
 function createLink() {
   if [ "$4" != "show" ]; then
     clear;
@@ -81,7 +99,9 @@ function createLink() {
   fi
 }
 
+# ---------------------------------
 # Configure italics on terminal
+# ---------------------------------
 function configureItalics() {
   clear
   echo -e "\033[3m Is this text in italics? \033[23m"
@@ -101,14 +121,17 @@ function configureItalics() {
   esac
 }
 
+# ---------------------------------
 # Instructions on screen
+# ---------------------------------
 clear
 echo -e "$d-------------------------------------------------------$n"
 echo -e "$b Configuration files setup script $n"
+echo -e "$b Current OS:$n ${y}$system ${d}($OSTYPE)${n}"
 echo -e "$d-------------------------------------------------------$n"
 echo ' Select an action below to start:'
 echo -e " ${y}0)${n} Configure ${b}Vim${n}"
-echo -e " ${y}1)${n} Configure ${b}NVim${n}"
+echo -e " ${y}1)${n} Configure ${b}Neovim${n}"
 echo -e " ${y}2)${n} Configure ${b}Tmux${n}"
 echo -e " ${y}3)${n} Configure ${b}Git${n}"
 echo -e " ${y}4)${n} Configure ${b}Fish Shell${n}"
@@ -120,10 +143,14 @@ echo -e " ${y}9)${n} Configure ${b}i3${n}"
 echo -e " ${y}10)${n} Configure ${b}Sway${n} and ${b}Waybar${n}"
 echo -e "$d-------------------------------------------------------$n"
 
+# ---------------------------------
 # Input option
+# ---------------------------------
 read -p ' - Which option?: ' answer
 
+# ---------------------------------
 # Do the configuration after input
+# ---------------------------------
 while true 
 do
   case $answer in

@@ -1,0 +1,111 @@
+# Alacritty config
+
+# Environment
+env:
+  TERM: xterm-256color
+
+# Fonts
+font:
+  normal:
+    family: BlexMono Nerd Font
+    style: Book
+
+  bold:
+    family: BlexMono Nerd Font
+    style: Bold
+
+  italic:
+    family: BlexMono Nerd Font
+    style: Italic
+
+  size: 12
+  use_thin_strokes: false
+
+  offset:
+    x: -1
+    y: 0
+
+  glyph_offset:
+    x: 0
+    y: 0
+
+# Window
+window:
+  dynamic_padding: false
+  padding:
+    x: 3
+    y: 0
+  title: Terminal
+  dynamic_title: false
+  opacity: 0.99
+
+live_config_reload: true
+
+# Selection
+selection:
+  semantic_escape_chars: ',│`|:"'' ()[]{}<>'
+  save_to_clipboard: true
+
+# Cursors
+cursor:
+  style:
+    shape: Block
+    blinking: On
+
+# Default colors
+schemes:
+  sobrio: &sobrio
+    primary:
+      background: "#080808"
+      foreground: "#eeeeee"
+
+    # Normal colors
+    normal:
+      black: "#3a3b3f"
+      blue: "#87afd7"
+      cyan: "#78DCE8"
+      green: "#2ec27e"
+      magenta: "#d7d7ff"
+      red: "#fd6389"
+      white: "#eeeeee"
+      yellow: "#d7af87"
+
+  # Bright colors
+  bright:
+    black: "#727072"
+    blue: "#87afd7"
+    cyan: "#78DCE8"
+    green: "#2ec27e"
+    magenta: "#d7d7ff"
+    red: "#fd6399"
+    white: "#ffffff"
+    yellow: "#af875f"
+
+  sobrio-light: &sobrio-light # Default colors
+    primary:
+      background: "#eeeeee"
+      foreground: "#202020"
+
+    # Normal colors
+    normal:
+      black: "#eeeeee"
+      red: "#dd4c4f"
+      green: "#2ec27e"
+      yellow: "#af875f"
+      blue: "#6787af"
+      magenta: "#9787af"
+      cyan: "#5fafaf"
+      white: "#3a3b3f"
+
+    # Bright colors
+    bright:
+      black: "#727072"
+      red: "#fd6399"
+      green: "#2ec27e"
+      yellow: "#d7af87"
+      blue: "#6787af"
+      magenta: "#d7d7ff"
+      cyan: "#7cdce7"
+      white: "#ffffff"
+
+colors: *sobrio
