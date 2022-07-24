@@ -4,6 +4,7 @@ set PATH $PATH /usr/local/mysql/bin
 set PATH $PATH $HOME/Applications/bin
 set PATH $PATH $HOME/.local/bin
 set PATH $PATH $HOME/.local/share/gem/ruby/3.0.0/bin
+set PATH $PATH $HOME/Android/Sdk
 export PATH
 
 # Aliases

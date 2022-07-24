@@ -7,22 +7,22 @@ env:
 # Fonts
 font:
   normal:
-    family: BlexMono Nerd Font
-    style: Book
+    family: Hasklug Nerd Font
+    style: Medium
 
   bold:
-    family: BlexMono Nerd Font
-    style: Bold
+    family: Hasklug Nerd Font
+    style: Black
 
   italic:
-    family: BlexMono Nerd Font
+    family: Hasklug Nerd Font
     style: Italic
 
-  size: 12
+  size: 11
   use_thin_strokes: false
 
   offset:
-    x: -1
+    x: 0
     y: 0
 
   glyph_offset:
