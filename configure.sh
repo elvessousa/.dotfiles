@@ -52,6 +52,10 @@ alacritty_path="$HOME/.config/alacritty/alacritty.yml"
 kitty_file="$(pwd)/terminal/kitty/kitty-$system.conf"
 kitty_path="$HOME/.config/kitty/kitty.conf"
 
+# Wezterm
+wezterm_file="$(pwd)/terminal/wezterm/wezterm-$system.lua"
+wezterm_path="$HOME/.config/wezterm/wezterm.lua"
+
 # i3
 i3_files="$(pwd)/wms/i3"
 i3_path="$HOME/.config/"
@@ -138,9 +142,10 @@ echo -e " ${y}4)${n} Configure ${b}Fish Shell${n}"
 echo -e " ${y}5)${n} Configure ${b}italics${n} in terminal"
 echo -e " ${y}6)${n} Configure ${b}Alacritty${n}"
 echo -e " ${y}7)${n} Configure ${b}Kitty${n}"
-echo -e " ${y}8)${n} Install ${b}Vim Plug${n}"
-echo -e " ${y}9)${n} Configure ${b}i3${n}"
-echo -e " ${y}10)${n} Configure ${b}Sway${n} and ${b}Waybar${n}"
+echo -e " ${y}8)${n} Configure ${b}Wezterm${n}"
+echo -e " ${y}9)${n} Install ${b}Vim Plug${n}"
+echo -e " ${y}10)${n} Configure ${b}i3${n}"
+echo -e " ${y}11)${n} Configure ${b}Sway${n} and ${b}Waybar${n}"
 echo -e "$d-------------------------------------------------------$n"
 
 # ---------------------------------
@@ -182,13 +187,16 @@ do
     '7') 
       createLink $kitty_file $kitty_path 'kitty'
       break;;
-    '8')
-      curl -fLo $vimplug_file --create-dirs $vimplug_url
+    '8') 
+      createLink $wezterm_file $wezterm_path 'wezterm'
       break;;
     '9')
-      createLink $i3_files $i3_path 'i3'
+      curl -fLo $vimplug_file --create-dirs $vimplug_url
       break;;
     '10')
+      createLink $i3_files $i3_path 'i3'
+      break;;
+    '11')
       createLink $sway_files $sway_path 'sway'
       createLink $waybar_files $sway_path 'waybar'
       break;;
