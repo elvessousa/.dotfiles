@@ -256,26 +256,35 @@ vim.diagnostic.config({
 ---------------------------------
 -- Language servers
 ---------------------------------
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local lspconfig = require("lspconfig")
+local capabilities = require("cmp_nvim_lsp")
+local snip_caps = vim.lsp.protocol.make_client_capabilities()
+
+-- Capabilities
+capabilities.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+snip_caps.textDocument.completion.completionItem.snippetSupport = true
 
 -- Python
-require("lspconfig")["pyright"].setup({ capabilities = capabilities })
+lspconfig.pyright.setup({ capabilities = capabilities })
 
 -- PHP
-local phpcaps = vim.lsp.protocol.make_client_capabilities()
-phpcaps.textDocument.completion.completionItem.snippetSupport = true
-
-require("lspconfig")["phpactor"].setup({ capabilities = phpcaps })
+lspconfig.phpactor.setup({ capabilities = snip_caps })
 
 -- JavaScript/Typescript
-require("lspconfig")["tsserver"].setup({
+lspconfig.tsserver.setup({
 	on_attach = function(client, bufnr)
 		client.resolved_capabilities.document_formatting = false
 	end,
 })
 
--- JavaScript/Typescript
-require("lspconfig")["rust_analyzer"].setup({ capabilities = capabilities })
+-- Rust
+lspconfig.rust_analyzer.setup({ capabilities = capabilities })
+
+-- Emmet
+lspconfig.emmet_ls.setup({
+	capabilities = snip_caps,
+	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
+})
 
 ---------------------------------
 -- Formatting
