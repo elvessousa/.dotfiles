@@ -14,7 +14,7 @@ return {
 			"3a3b3f",
 			"fd6389",
 			"8ec07c",
-			"af875f",
+			"d7af87",
 			"87afd7",
 			"9787af",
 			"7cdce7",
