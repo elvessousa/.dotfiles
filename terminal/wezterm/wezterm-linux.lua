@@ -13,7 +13,7 @@ return {
 		ansi = {
 			"#3a3b3f",
 			"#fd6389",
-			"#8ec07c",
+			"#2ec27e",
 			"#d7af87",
 			"#87afd7",
 			"#9787af",
@@ -31,7 +31,7 @@ return {
 			"#ffffff",
 		},
 	},
-	window_background_opacity = 0.95,
+	window_background_opacity = 0.99,
 	window_frame = {
 		font_size = 11.0,
 	},
