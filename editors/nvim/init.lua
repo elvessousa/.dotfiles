@@ -261,7 +261,7 @@ local capabilities = require("cmp_nvim_lsp")
 local snip_caps = vim.lsp.protocol.make_client_capabilities()
 
 -- Capabilities
-capabilities.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities.update_capabilities(snip_caps)
 snip_caps.textDocument.completion.completionItem.snippetSupport = true
 
 -- Python
@@ -283,7 +283,15 @@ lspconfig.rust_analyzer.setup({ capabilities = capabilities })
 -- Emmet
 lspconfig.emmet_ls.setup({
 	capabilities = snip_caps,
-	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
+	filetypes = {
+		"css",
+		"html",
+		"javascriptreact",
+		"less",
+		"sass",
+		"scss",
+		"typescriptreact",
+	},
 })
 
 ---------------------------------
@@ -312,7 +320,7 @@ require("null-ls").setup({
 				group = augroup,
 				-- buffer = bufnr,
 				callback = function()
-					vim.lsp.buf.formatting()
+					vim.lsp.buf.formatting_sync()
 				end,
 			})
 		end
