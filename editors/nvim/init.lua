@@ -44,8 +44,6 @@ local packer = require("packer")
 vim.cmd([[packadd packer.nvim]])
 
 packer.startup(function()
-	-- use 'elvessousa/sobrio'
-	-- Completion
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-cmdline")
 	use("hrsh7th/cmp-nvim-lsp")
@@ -68,25 +66,17 @@ packer.startup(function()
 	use("windwp/nvim-autopairs")
 	use("norcalli/nvim-colorizer.lua")
 	use("lewis6991/gitsigns.nvim")
-	use({
-		"nvim-telescope/telescope.nvim",
-		requires = { { "nvim-lua/plenary.nvim" } },
-	})
+	-- Dependences needed
+	use("nvim-lua/plenary.nvim")
+	use("kyazdani42/nvim-web-devicons")
+	use("MunifTanjim/nui.nvim")
+	-- Finder
+	use("nvim-telescope/telescope.nvim")
 	-- Interface
-	use({ "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" })
-	use({
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v2.x",
-		requires = {
-			"nvim-lua/plenary.nvim",
-			"kyazdani42/nvim-web-devicons",
-			"MunifTanjim/nui.nvim",
-		},
-	})
-	use({
-		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-	})
+	use("akinsho/bufferline.nvim")
+	use({ "nvim-neo-tree/neo-tree.nvim", branch = "v2.x" })
+	use("nvim-lualine/lualine.nvim")
+	-- use 'elvessousa/sobrio'
 end)
 
 ---------------------------------
@@ -107,23 +97,23 @@ require("gitsigns").setup()
 require("bufferline").setup()
 
 -- Lualine
-require("lualine").setup({ globalstatus = false })
+require("lualine").setup()
 
 -- Neo tree
 require("neo-tree").setup({
 	-- Close Neo-tree if it is the last window left in the tab
 	close_if_last_window = false,
-	popup_border_style = "rounded",
-	enable_git_status = true,
 	enable_diagnostics = true,
+	enable_git_status = true,
+	popup_border_style = "rounded",
 	sort_case_insensitive = false,
-	window = { width = 30 },
 	filesystem = {
 		filtered_items = {
 			hide_dotfiles = false,
 			hide_gitignored = false,
 		},
 	},
+	window = { width = 30 },
 })
 
 ---------------------------------
@@ -246,7 +236,9 @@ cmp.setup.cmdline(":", {
 	}),
 })
 
+---------------------------------
 -- Floating diagnostics message
+---------------------------------
 vim.diagnostic.config({
 	float = { source = "always", border = border },
 	virtual_text = false,
