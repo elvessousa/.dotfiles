@@ -4,6 +4,7 @@ return {
 	font = wezterm.font("Hasklug Nerd Font", { weight = "Medium" }),
 	font_size = 11.0,
 	use_fancy_tab_bar = true,
+	hide_tab_bar_if_only_one_tab = true,
 	colors = {
 		background = "#080808",
 		foreground = "#ffffff",
@@ -32,9 +33,7 @@ return {
 		},
 	},
 	window_background_opacity = 0.99,
-	window_frame = {
-		font_size = 11.0,
-	},
+	window_frame = { font_size = 10.0 },
 	window_padding = {
 		left = 3,
 		top = 0,
