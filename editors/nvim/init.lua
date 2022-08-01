@@ -155,6 +155,7 @@ require("nvim-treesitter.configs").setup({
 			"html",
 			"javascript",
 			"javascriptreact",
+			"rust",
 			"svelte",
 			"typescript",
 			"typescriptreact",
@@ -249,28 +250,27 @@ vim.diagnostic.config({
 -- Language servers
 ---------------------------------
 local lspconfig = require("lspconfig")
-local capabilities = require("cmp_nvim_lsp")
-local snip_caps = vim.lsp.protocol.make_client_capabilities()
+--local capabilities = require("cmp_nvim_lsp")
+local caps = vim.lsp.protocol.make_client_capabilities()
+local no_format = function(client, bufnr)
+	client.resolved_capabilities.document_formatting = false
+end
 
 -- Capabilities
-capabilities.update_capabilities(snip_caps)
-snip_caps.textDocument.completion.completionItem.snippetSupport = true
+--capabilities.update_capabilities(snip_caps)
+caps.textDocument.completion.completionItem.snippetSupport = true
 
 -- Python
-lspconfig.pyright.setup({ capabilities = capabilities })
+lspconfig.pyright.setup({ capabilities = caps, on_attach = no_format })
 
 -- PHP
-lspconfig.phpactor.setup({ capabilities = snip_caps })
+lspconfig.phpactor.setup({ capabilities = caps })
 
 -- JavaScript/Typescript
-lspconfig.tsserver.setup({
-	on_attach = function(client, bufnr)
-		client.resolved_capabilities.document_formatting = false
-	end,
-})
+lspconfig.tsserver.setup({ capabilities = caps, on_attach = no_format })
 
 -- Rust
-lspconfig.rust_analyzer.setup({ capabilities = capabilities })
+lspconfig.rust_analyzer.setup({ capabilities = snip_caps, on_attach = no_format })
 
 -- Emmet
 lspconfig.emmet_ls.setup({
@@ -302,7 +302,7 @@ require("null-ls").setup({
 		formatting.stylua,
 	},
 	on_attach = function(client, bufnr)
-		if client.name == "tsserver" then
+		if client.name == "tsserver" or client.name == "rust_analyzer" or client.name == "pyright" then
 			client.resolved_capabilities.document_formatting = false
 		end
 
