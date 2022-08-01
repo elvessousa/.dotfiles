@@ -5,6 +5,7 @@ return {
 	font_size = 11.0,
 	use_fancy_tab_bar = true,
 	hide_tab_bar_if_only_one_tab = true,
+	tab_bar_at_bottom = true,
 	colors = {
 		background = "#080808",
 		foreground = "#ffffff",
@@ -31,13 +32,39 @@ return {
 			"#7cdce7",
 			"#ffffff",
 		},
+		tab_bar = {
+			active_tab = {
+				bg_color = "#080808",
+				fg_color = "#ffffff",
+			},
+			inactive_tab = {
+				bg_color = "#080808",
+				fg_color = "#202020",
+			},
+			inactive_tab_hover = {
+				bg_color = "#080808",
+				fg_color = "#444444",
+			},
+			inactive_tab_edge = "#080808",
+			new_tab = {
+				bg_color = "#080808",
+				fg_color = "#ffffff",
+			},
+			new_tab_hover = {
+				bg_color = "#080808",
+				fg_color = "#d7af87",
+			},
+		},
 	},
-	window_background_opacity = 0.99,
-	window_frame = { font_size = 10.0 },
+	window_background_opacity = 0.995,
+	window_frame = {
+		active_titlebar_bg = "#080808",
+		font_size = 10.0,
+	},
 	window_padding = {
-		left = 3,
-		top = 0,
 		bottom = 0,
+		left = 3,
 		right = 0,
+		top = 0,
 	},
 }
