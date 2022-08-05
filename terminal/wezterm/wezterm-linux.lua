@@ -1,8 +1,8 @@
 local wezterm = require("wezterm")
 
 return {
-	font = wezterm.font("Hasklug Nerd Font", { weight = "Medium" }),
-	font_size = 11.0,
+	font = wezterm.font("Victor Mono Nerd Font", { weight = "Medium" }),
+	font_size = 11.5,
 	use_fancy_tab_bar = true,
 	hide_tab_bar_if_only_one_tab = true,
 	tab_bar_at_bottom = true,
