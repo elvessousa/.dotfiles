@@ -6,6 +6,23 @@ return {
 	use_fancy_tab_bar = true,
 	hide_tab_bar_if_only_one_tab = true,
 	tab_bar_at_bottom = true,
+	hyperlink_rules = {
+		-- Localhost links
+		{
+			regex = "\\b\\w+://[\\w.-]+\\S*\\b",
+			format = "$0",
+		},
+		-- Numeric links
+		{
+			regex = [[\b\w+://(?:[\d]{1,3}\.){3}[\d]{1,3}\S*\b]],
+			format = "$0",
+		},
+		-- Repo links
+		{
+			regex = [[["]?([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["]?]],
+			format = "https://www.github.com/$1/$3",
+		},
+	},
 	colors = {
 		background = "#080808",
 		foreground = "#ffffff",
