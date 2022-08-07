@@ -7,15 +7,15 @@ env:
 # Fonts
 font:
   normal:
-    family: Hasklug Nerd Font
+    family: VictorMono Nerd Font
     style: Medium
 
   bold:
-    family: Hasklug Nerd Font
+    family: VictorMono Nerd Font
     style: Black
 
   italic:
-    family: Hasklug Nerd Font
+    family: VictorMono Nerd Font
     style: Italic
 
   size: 11
