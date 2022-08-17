@@ -17,11 +17,6 @@ return {
 			regex = [[\b\w+://(?:[\d]{1,3}\.){3}[\d]{1,3}\S*\b]],
 			format = "$0",
 		},
-		-- Repo links
-		{
-			regex = [[["]?([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["]?]],
-			format = "https://www.github.com/$1/$3",
-		},
 	},
 	colors = {
 		background = "#080808",
