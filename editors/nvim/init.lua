@@ -56,10 +56,12 @@ packer.startup(function()
 	use("jose-elias-alvarez/null-ls.nvim")
 	-- Language servers
 	use("neovim/nvim-lspconfig")
-	use("williamboman/nvim-lsp-installer")
+	use("williamboman/mason.nvim")
+	use("williamboman/mason-lspconfig.nvim")
 	-- Syntax parser
 	use("nvim-treesitter/nvim-treesitter")
 	use("nvim-treesitter/playground")
+	use("wuelnerdotexe/vim-astro")
 	-- Plugin manager
 	use("wbthomason/packer.nvim")
 	-- Utilities
@@ -86,6 +88,9 @@ end)
 require("nvim-autopairs").setup({
 	disable_filetype = { "TelescopePrompt" },
 })
+
+-- LSP Installer
+require("mason").setup()
 
 -- Colorizer
 require("colorizer").setup()
@@ -250,15 +255,16 @@ vim.diagnostic.config({
 -- Language servers
 ---------------------------------
 local lspconfig = require("lspconfig")
---local capabilities = require("cmp_nvim_lsp")
 local caps = vim.lsp.protocol.make_client_capabilities()
 local no_format = function(client, bufnr)
 	client.resolved_capabilities.document_formatting = false
 end
 
 -- Capabilities
---capabilities.update_capabilities(snip_caps)
 caps.textDocument.completion.completionItem.snippetSupport = true
+
+-- Astro
+lspconfig.astro.setup({ capabilities = caps })
 
 -- Python
 lspconfig.pyright.setup({ capabilities = caps, on_attach = no_format })
@@ -382,3 +388,4 @@ end
 ---------------------------------
 vim.cmd([[ autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync() ]])
 vim.cmd([[ autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
+vim.cmd([[ autocmd FileType php setl textwidth=120 softtabstop=4 shiftwidth=4 tabstop=4 colorcolumn=120]])
