@@ -58,6 +58,7 @@ packer.startup(function()
 	use("neovim/nvim-lspconfig")
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
+	use("simrat39/rust-tools.nvim")
 	-- Syntax parser
 	use("nvim-treesitter/nvim-treesitter")
 	use("nvim-treesitter/playground")
@@ -276,7 +277,15 @@ lspconfig.phpactor.setup({ capabilities = caps })
 lspconfig.tsserver.setup({ capabilities = caps, on_attach = no_format })
 
 -- Rust
-lspconfig.rust_analyzer.setup({ capabilities = snip_caps, on_attach = no_format })
+lspconfig.rust_analyzer.setup({
+	capabilities = snip_caps,
+	on_attach = no_format,
+	settings = {
+		inlayHints = {
+			typeHints = true,
+		},
+	},
+})
 
 -- Emmet
 lspconfig.emmet_ls.setup({
@@ -289,6 +298,30 @@ lspconfig.emmet_ls.setup({
 		"sass",
 		"scss",
 		"typescriptreact",
+	},
+})
+
+---------------------------------
+-- Rust tools
+---------------------------------
+local rust_tools = require("rust-tools")
+
+rust_tools.setup({
+	tools = {
+		executor = require("rust-tools/executors").termopen,
+		reload_workspace_from_cargo_toml = true,
+		inlay_hints = {
+			auto = true,
+			only_current_line = false,
+			show_parameter_hints = true,
+			parameter_hints_prefix = "<-",
+			other_hints_prefix = "=>",
+			max_len_align = false,
+			max_len_align_padding = 1,
+			right_align = false,
+			right_align_padding = 7,
+			highlight = "Comment",
+		},
 	},
 })
 
