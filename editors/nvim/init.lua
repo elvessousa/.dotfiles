@@ -58,7 +58,6 @@ packer.startup(function()
 	use("neovim/nvim-lspconfig")
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
-	use("simrat39/rust-tools.nvim")
 	-- Syntax parser
 	use("nvim-treesitter/nvim-treesitter")
 	use("nvim-treesitter/playground")
@@ -302,30 +301,6 @@ lspconfig.emmet_ls.setup({
 })
 
 ---------------------------------
--- Rust tools
----------------------------------
-local rust_tools = require("rust-tools")
-
-rust_tools.setup({
-	tools = {
-		executor = require("rust-tools/executors").termopen,
-		reload_workspace_from_cargo_toml = true,
-		inlay_hints = {
-			auto = true,
-			only_current_line = false,
-			show_parameter_hints = true,
-			parameter_hints_prefix = "<-",
-			other_hints_prefix = "=>",
-			max_len_align = false,
-			max_len_align_padding = 1,
-			right_align = false,
-			right_align_padding = 7,
-			highlight = "Comment",
-		},
-	},
-})
-
----------------------------------
 -- Formatting
 ---------------------------------
 local diagnostics = require("null-ls").builtins.diagnostics
@@ -335,9 +310,9 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 require("null-ls").setup({
 	sources = {
 		formatting.black,
-		formatting.rustfmt,
 		formatting.phpcsfixer,
 		formatting.prettier,
+		formatting.rustfmt,
 		formatting.stylua,
 	},
 	on_attach = function(client, bufnr)
@@ -349,7 +324,7 @@ require("null-ls").setup({
 			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				group = augroup,
-				-- buffer = bufnr,
+				buffer = bufnr,
 				callback = function()
 					vim.lsp.buf.formatting_sync()
 				end,
