@@ -58,6 +58,7 @@ packer.startup(function()
 	use("neovim/nvim-lspconfig")
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
+	use("simrat39/rust-tools.nvim")
 	-- Syntax parser
 	use("nvim-treesitter/nvim-treesitter")
 	use("nvim-treesitter/playground")
@@ -251,6 +252,15 @@ vim.diagnostic.config({
 	signs = true,
 })
 
+local util = require("vim.lsp.util")
+
+local formatting_callback = function(client, bufnr)
+	vim.keymap.set("n", "<leader>f", function()
+		local params = util.make_formatting_params({})
+		client.request("textDocument/formatting", params, nil, bufnr)
+	end, { buffer = bufnr })
+end
+
 ---------------------------------
 -- Language servers
 ---------------------------------
@@ -277,13 +287,11 @@ lspconfig.tsserver.setup({ capabilities = caps, on_attach = no_format })
 
 -- Rust
 lspconfig.rust_analyzer.setup({
-	capabilities = snip_caps,
-	on_attach = no_format,
-	settings = {
-		inlayHints = {
-			typeHints = true,
-		},
-	},
+	capabilities = caps,
+	on_attach = function(client, bufnr)
+		--formatting_callback(client, bufnr)
+		common_on_attach(client, bufnr)
+	end,
 })
 
 -- Emmet
@@ -297,6 +305,30 @@ lspconfig.emmet_ls.setup({
 		"sass",
 		"scss",
 		"typescriptreact",
+	},
+})
+
+---------------------------------
+-- Rust tools
+---------------------------------
+local rust_tools = require("rust-tools")
+
+rust_tools.setup({
+	server = {
+		on_attach = function(client, bufnr)
+			vim.keymap.set("n", "<C-space>", rust_tools.hover_actions.hover_actions, { buffer = bufnr })
+			vim.keymap.set("n", "<Leader>a", rust_tools.code_action_group.code_action_group, { buffer = bufnr })
+			client.resolved_capabilities.document_formatting = false
+		end,
+	},
+	inlay_hints = {
+		auto = true,
+		only_current_line = false,
+		max_len_align = false,
+		max_len_align_padding = 1,
+		right_align = false,
+		right_align_padding = 7,
+		highlight = "Comment",
 	},
 })
 
