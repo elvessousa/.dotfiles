@@ -267,7 +267,7 @@ end
 local lspconfig = require("lspconfig")
 local caps = vim.lsp.protocol.make_client_capabilities()
 local no_format = function(client, bufnr)
-	client.resolved_capabilities.document_formatting = false
+	client.server_capabilities.document_formatting = false
 end
 
 -- Capabilities
@@ -318,7 +318,8 @@ rust_tools.setup({
 		on_attach = function(client, bufnr)
 			vim.keymap.set("n", "<C-space>", rust_tools.hover_actions.hover_actions, { buffer = bufnr })
 			vim.keymap.set("n", "<Leader>a", rust_tools.code_action_group.code_action_group, { buffer = bufnr })
-			client.resolved_capabilities.document_formatting = false
+			client.server_capabilities.document_formatting = false
+			client.server_capabilities.document_range_formatting = false
 		end,
 	},
 	inlay_hints = {
@@ -358,7 +359,7 @@ require("null-ls").setup({
 				group = augroup,
 				buffer = bufnr,
 				callback = function()
-					vim.lsp.buf.formatting_sync()
+					vim.lsp.buf.format()
 				end,
 			})
 		end
