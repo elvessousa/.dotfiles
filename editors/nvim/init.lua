@@ -171,7 +171,9 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 
+---------------------------------
 -- Treesitter playground
+---------------------------------
 require("nvim-treesitter.configs").setup({
 	playground = {
 		disable = {},

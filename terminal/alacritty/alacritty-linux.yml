@@ -19,7 +19,6 @@ font:
     style: Italic
 
   size: 11
-  use_thin_strokes: false
 
   offset:
     x: 0
