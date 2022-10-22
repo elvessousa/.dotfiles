@@ -20,6 +20,10 @@ vim_path="$HOME/.vim"
 nvim_folder="$(pwd)/editors/nvim"
 nvim_path="$HOME/.config/nvim"
 
+# Helix
+helix_folder="$(pwd)/editors/helix"
+helix_path="$HOME/.config/helix"
+
 # Vim Plug
 vimplug_file="$HOME/.config/nvim/autoload/plug.vim"
 vimplug_url='https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -136,16 +140,18 @@ echo -e "$d-------------------------------------------------------$n"
 echo ' Select an action below to start:'
 echo -e " ${y}0)${n} Configure ${b}Vim${n}"
 echo -e " ${y}1)${n} Configure ${b}Neovim${n}"
-echo -e " ${y}2)${n} Configure ${b}Tmux${n}"
-echo -e " ${y}3)${n} Configure ${b}Git${n}"
-echo -e " ${y}4)${n} Configure ${b}Fish Shell${n}"
-echo -e " ${y}5)${n} Configure ${b}italics${n} in terminal"
-echo -e " ${y}6)${n} Configure ${b}Alacritty${n}"
-echo -e " ${y}7)${n} Configure ${b}Kitty${n}"
-echo -e " ${y}8)${n} Configure ${b}Wezterm${n}"
-echo -e " ${y}9)${n} Install ${b}Vim Plug${n}"
-echo -e " ${y}10)${n} Configure ${b}i3${n}"
-echo -e " ${y}11)${n} Configure ${b}Sway${n} and ${b}Waybar${n}"
+echo -e " ${y}2)${n} Configure ${b}Neovim (with Lua)${n}"
+echo -e " ${y}3)${n} Configure ${b}Helix${n}"
+echo -e " ${y}4)${n} Configure ${b}Tmux${n}"
+echo -e " ${y}5)${n} Configure ${b}Git${n}"
+echo -e " ${y}6)${n} Configure ${b}Fish Shell${n}"
+echo -e " ${y}7)${n} Configure ${b}italics${n} in terminal"
+echo -e " ${y}8)${n} Configure ${b}Alacritty${n}"
+echo -e " ${y}9)${n} Configure ${b}Kitty${n}"
+echo -e " ${y}10)${n} Configure ${b}Wezterm${n}"
+echo -e " ${y}11)${n} Install ${b}Vim Plug${n}"
+echo -e " ${y}12)${n} Configure ${b}i3${n}"
+echo -e " ${y}13)${n} Configure ${b}Sway${n} and ${b}Waybar${n}"
 echo -e "$d-------------------------------------------------------$n"
 
 # ---------------------------------
@@ -169,34 +175,42 @@ do
       createLink $nvim_folder/colors/ $nvim_path/colors 'nvim' 'show'
       createLink $coc_json $coc_nvim_path 'nvim' 'show'
       break;;
-    '2') 
-      createLink $tmux_file $tmux_path 'tmux'
+    '2')
+      createLink $nvim_folder/init.lua "$nvim_path/init.lua" 'nvim' 
+      createLink $nvim_folder/colors/ $nvim_path/colors 'nvim' 'show'
+      createLink $nvim_folder/lua/ $nvim_path/lua 'nvim' 'show'
       break;;
-    '3') 
-      createLink $git_file $git_path 'git'
+    '3')
+      createLink $helix_folder/config.toml "$helix_path/config.toml" 'helix' 
       break;;
     '4') 
-      createLink $fish_file $fish_path 'fish'
+      createLink $tmux_file $tmux_path 'tmux'
       break;;
     '5') 
-      configureItalics
+      createLink $git_file $git_path 'git'
       break;;
     '6') 
-      createLink $alacritty_file $alacritty_path 'alacritty'
+      createLink $fish_file $fish_path 'fish'
       break;;
     '7') 
-      createLink $kitty_file $kitty_path 'kitty'
+      configureItalics
       break;;
     '8') 
+      createLink $alacritty_file $alacritty_path 'alacritty'
+      break;;
+    '9') 
+      createLink $kitty_file $kitty_path 'kitty'
+      break;;
+    '10') 
       createLink $wezterm_file $wezterm_path 'wezterm'
       break;;
-    '9')
+    '11')
       curl -fLo $vimplug_file --create-dirs $vimplug_url
       break;;
-    '10')
+    '12')
       createLink $i3_files $i3_path 'i3'
       break;;
-    '11')
+    '13')
       createLink $sway_files $sway_path 'sway'
       createLink $waybar_files $sway_path 'waybar'
       break;;

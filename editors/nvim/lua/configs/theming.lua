@@ -4,7 +4,7 @@
 vim.cmd([[
   filetype plugin indent on
   syntax on
-  colorscheme sobrio_ghost
+  colorscheme sobrio
 ]])
 
 ---------------------------------
