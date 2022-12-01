@@ -46,20 +46,20 @@ return {
 		},
 		tab_bar = {
 			active_tab = {
-				bg_color = "#080808",
+				bg_color = "#343434",
 				fg_color = "#ffffff",
 			},
 			inactive_tab = {
-				bg_color = "#080808",
-				fg_color = "#202020",
+				bg_color = "#343434",
+				fg_color = "#555",
 			},
 			inactive_tab_hover = {
-				bg_color = "#080808",
-				fg_color = "#444444",
+				bg_color = "#343434",
+				fg_color = "#777",
 			},
-			inactive_tab_edge = "#080808",
+			inactive_tab_edge = "#343434",
 			new_tab = {
-				bg_color = "#080808",
+				bg_color = "#343434",
 				fg_color = "#ffffff",
 			},
 			new_tab_hover = {
@@ -77,6 +77,6 @@ return {
 		bottom = 0,
 		left = 3,
 		right = 0,
-		top = 0,
+		top = 4,
 	},
 }
