@@ -70,7 +70,7 @@ return {
 	},
 	window_background_opacity = 0.995,
 	window_frame = {
-		active_titlebar_bg = "#080808",
+		active_titlebar_bg = "#343434",
 		font_size = 10.0,
 	},
 	window_padding = {
