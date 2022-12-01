@@ -1,11 +1,26 @@
 theme = "sobrio"
 
 [editor]
-line-number = "relative"
-cursorline = true
 color-modes = true
+cursorline = true
+line-number = "relative"
 
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
 select = "underline"
+
+[editor.indent-guides]
+render = true
+character = "│"
+
+[keys.normal]
+C-o = ":config-open"
+C-q = ":quit"
+C-r = ":config-reload"
+F11 = ":tree-sitter-scopes"
+F12 = ":tree-sitter-subtree"
+F4 = ":buffer-close"
+
+[keys.select]
+F9 = ":pipe sort"
