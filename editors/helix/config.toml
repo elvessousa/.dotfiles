@@ -4,11 +4,15 @@ theme = "sobrio"
 color-modes = true
 cursorline = true
 line-number = "relative"
+bufferline = "multiple"
 
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
 select = "underline"
+
+[editor.file-picker]
+hidden = false
 
 [editor.indent-guides]
 render = true
@@ -21,6 +25,8 @@ C-r = ":config-reload"
 F11 = ":tree-sitter-scopes"
 F12 = ":tree-sitter-subtree"
 F4 = ":buffer-close"
+S-tab = ":buffer-previous"
+tab = ":buffer-next"
 
 [keys.select]
 F9 = ":pipe sort"
