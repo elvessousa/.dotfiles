@@ -63,7 +63,7 @@ return {
 				fg_color = "#ffffff",
 			},
 			new_tab_hover = {
-				bg_color = "#080808",
+				bg_color = "#343434",
 				fg_color = "#d7af87",
 			},
 		},
