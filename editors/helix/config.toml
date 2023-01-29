@@ -5,6 +5,7 @@ color-modes = true
 cursorline = true
 line-number = "relative"
 bufferline = "multiple"
+# rulers = [80]
 
 [editor.cursor-shape]
 insert = "bar"
@@ -18,6 +19,9 @@ hidden = false
 render = true
 character = "│"
 
+[editor.lsp]
+display-messages = true
+
 [keys.normal]
 C-o = ":config-open"
 C-q = ":quit"
@@ -27,6 +31,8 @@ F12 = ":tree-sitter-subtree"
 F4 = ":buffer-close"
 S-tab = ":buffer-previous"
 tab = ":buffer-next"
+esc = ["collapse_selection", "normal_mode"]
+ret = ["move_line_down", "goto_first_nonwhitespace"]
 
 [keys.select]
 F9 = ":pipe sort"

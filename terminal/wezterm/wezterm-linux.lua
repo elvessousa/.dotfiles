@@ -1,8 +1,8 @@
 local wezterm = require("wezterm")
 
 return {
-	font = wezterm.font("Victor Mono Nerd Font", { weight = "Medium" }),
-	font_size = 11.5,
+	--font = wezterm.font("JetBrains Mono"),
+	font_size = 10.5,
 	use_fancy_tab_bar = true,
 	hide_tab_bar_if_only_one_tab = true,
 	tab_bar_at_bottom = true,
@@ -19,7 +19,7 @@ return {
 		},
 	},
 	colors = {
-		background = "#080808",
+		background = "#121212",
 		foreground = "#ffffff",
 		cursor_bg = "#d7af87",
 		selection_fg = "#928374",
@@ -75,8 +75,8 @@ return {
 	},
 	window_padding = {
 		bottom = 0,
-		left = 3,
+		left = 0,
 		right = 0,
-		top = 4,
+		top = 0,
 	},
 }
