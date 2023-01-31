@@ -26,13 +26,14 @@ display-messages = true
 C-o = ":config-open"
 C-q = ":quit"
 C-r = ":config-reload"
+D = ["kill_to_line_end"]
+esc = ["collapse_selection", "normal_mode"]
 F11 = ":tree-sitter-scopes"
 F12 = ":tree-sitter-subtree"
 F4 = ":buffer-close"
+ret = ["move_line_down", "goto_first_nonwhitespace"]
 S-tab = ":buffer-previous"
 tab = ":buffer-next"
-esc = ["collapse_selection", "normal_mode"]
-ret = ["move_line_down", "goto_first_nonwhitespace"]
 
 [keys.select]
 F9 = ":pipe sort"

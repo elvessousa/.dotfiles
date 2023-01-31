@@ -1,0 +1,23 @@
+[[language]]
+name = "typescript"
+auto-format = true
+config = { format = { "semicolons" = "insert", "insertSpaceBeforeFunctionParenthesis" = false } }
+
+[[language]]
+name = "javascript"
+auto-format = true
+config = { format = { "semicolons" = "insert", "insertSpaceBeforeFunctionParenthesis" = false } }
+
+[[language]]
+name = "tsx"
+auto-format = true
+config = { format = { "semicolons" = "insert", "insertSpaceBeforeFunctionParenthesis" = false } }
+
+[[language]]
+name = "jsx"
+auto-format = true
+config = { format = { "semicolons" = "insert", "insertSpaceBeforeFunctionParenthesis" = false } }
+
+[[language]]
+name = "php"
+auto-format = true

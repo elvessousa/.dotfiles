@@ -182,6 +182,7 @@ do
       break;;
     '3')
       createLink $helix_folder/config.toml "$helix_path/config.toml" 'helix' 
+      createLink $helix_folder/languages.toml "$helix_path/languages.toml" 'helix' 
       break;;
     '4') 
       createLink $tmux_file $tmux_path 'tmux'
