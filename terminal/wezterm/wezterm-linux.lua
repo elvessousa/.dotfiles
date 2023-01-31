@@ -1,8 +1,35 @@
 local wezterm = require("wezterm")
 
 return {
-	--font = wezterm.font("JetBrains Mono"),
-	font_size = 10.5,
+	--font = wezterm.font("VictorMono Nerd Font", { weight = "Medium" }),
+	font = wezterm.font("Fira Code Retina"),
+	font_size = 11.2,
+	font_rules = {
+		{
+			intensity = "Normal",
+			italic = true,
+			font = wezterm.font({
+				family = "Fira Code Retina",
+				italic = false,
+			}),
+		},
+		{
+			intensity = "Bold",
+			italic = false,
+			font = wezterm.font({
+				family = "Fira Code",
+				weight = "Bold",
+			}),
+		},
+		{
+			intensity = "Bold",
+			italic = true,
+			font = wezterm.font({
+				family = "Fira Code",
+				weight = "Bold",
+			}),
+		},
+	},
 	use_fancy_tab_bar = true,
 	hide_tab_bar_if_only_one_tab = true,
 	tab_bar_at_bottom = true,
