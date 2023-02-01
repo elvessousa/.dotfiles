@@ -1,11 +1,11 @@
 theme = "sobrio"
 
 [editor]
+bufferline = "multiple"
 color-modes = true
 cursorline = true
 line-number = "relative"
-bufferline = "multiple"
-# rulers = [80]
+rulers = [80]
 
 [editor.cursor-shape]
 insert = "bar"
@@ -21,6 +21,9 @@ character = "│"
 
 [editor.lsp]
 display-messages = true
+
+[editor.statusline]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-type"]
 
 [keys.normal]
 C-o = ":config-open"

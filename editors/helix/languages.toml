@@ -1,6 +1,7 @@
 [[language]]
 name = "typescript"
 auto-format = true
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 config = { format = { "semicolons" = "insert", "insertSpaceBeforeFunctionParenthesis" = false } }
 
 [[language]]
@@ -11,6 +12,7 @@ config = { format = { "semicolons" = "insert", "insertSpaceBeforeFunctionParenth
 [[language]]
 name = "tsx"
 auto-format = true
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 config = { format = { "semicolons" = "insert", "insertSpaceBeforeFunctionParenthesis" = false } }
 
 [[language]]
@@ -20,4 +22,9 @@ config = { format = { "semicolons" = "insert", "insertSpaceBeforeFunctionParenth
 
 [[language]]
 name = "php"
+auto-format = true
+
+[[language]]
+name = "python"
+formatter = { command = "black", args = ["--quiet", "-"] }
 auto-format = true
