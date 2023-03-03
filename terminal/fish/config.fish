@@ -14,3 +14,6 @@ alias ll='exa -lah'
 alias lt='exa --tree --level=2'
 alias n='nvim .'
 alias v='vim .'
+
+# Starship
+starship init fish | source
