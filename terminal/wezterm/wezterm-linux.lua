@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 
 return {
-	--font = wezterm.font("VictorMono Nerd Font", { weight = "Medium" }),
+	enable_wayland = false,
 	font = wezterm.font("Fira Code Retina"),
 	font_size = 11.2,
 	font_rules = {
