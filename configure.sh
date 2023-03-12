@@ -45,6 +45,12 @@ git_path="$HOME/.gitconfig"
 fish_file="$(pwd)/terminal/fish/config.fish"
 fish_path="$HOME/.config/fish/config.fish"
 
+# Nu Shell
+nu_config_file="$(pwd)/terminal/nushell/config.nu"
+nu_config_path="$HOME/.config/nushell/config.nu"
+nu_env_file="$(pwd)/terminal/nushell/env.nu"
+nu_env_path="$HOME/.config/nushell/env.nu"
+
 # Terminal
 term_info="$(pwd)/terminal/xterm-256color-italic.terminfo"
 
@@ -145,13 +151,14 @@ echo -e " ${y}3)${n} Configure ${b}Helix${n}"
 echo -e " ${y}4)${n} Configure ${b}Tmux${n}"
 echo -e " ${y}5)${n} Configure ${b}Git${n}"
 echo -e " ${y}6)${n} Configure ${b}Fish Shell${n}"
-echo -e " ${y}7)${n} Configure ${b}italics${n} in terminal"
-echo -e " ${y}8)${n} Configure ${b}Alacritty${n}"
-echo -e " ${y}9)${n} Configure ${b}Kitty${n}"
-echo -e " ${y}10)${n} Configure ${b}Wezterm${n}"
-echo -e " ${y}11)${n} Install ${b}Vim Plug${n}"
-echo -e " ${y}12)${n} Configure ${b}i3${n}"
-echo -e " ${y}13)${n} Configure ${b}Sway${n} and ${b}Waybar${n}"
+echo -e " ${y}7)${n} Configure ${b}Nu Shell${n}"
+echo -e " ${y}8)${n} Configure ${b}italics${n} in terminal"
+echo -e " ${y}9)${n} Configure ${b}Alacritty${n}"
+echo -e " ${y}10)${n} Configure ${b}Kitty${n}"
+echo -e " ${y}11)${n} Configure ${b}Wezterm${n}"
+echo -e " ${y}12)${n} Install ${b}Vim Plug${n}"
+echo -e " ${y}13)${n} Configure ${b}i3${n}"
+echo -e " ${y}14)${n} Configure ${b}Sway${n} and ${b}Waybar${n}"
 echo -e "$d-------------------------------------------------------$n"
 
 # ---------------------------------
@@ -194,24 +201,28 @@ do
       createLink $fish_file $fish_path 'fish'
       break;;
     '7') 
-      configureItalics
+      createLink $nu_config_file $nu_config_path 'fish'
+      createLink $nu_env_file $nu_env_path 'fish'
       break;;
     '8') 
-      createLink $alacritty_file $alacritty_path 'alacritty'
+      configureItalics
       break;;
     '9') 
-      createLink $kitty_file $kitty_path 'kitty'
+      createLink $alacritty_file $alacritty_path 'alacritty'
       break;;
     '10') 
+      createLink $kitty_file $kitty_path 'kitty'
+      break;;
+    '11') 
       createLink $wezterm_file $wezterm_path 'wezterm'
       break;;
-    '11')
+    '12')
       curl -fLo $vimplug_file --create-dirs $vimplug_url
       break;;
-    '12')
+    '13')
       createLink $i3_files $i3_path 'i3'
       break;;
-    '13')
+    '14')
       createLink $sway_files $sway_path 'sway'
       createLink $waybar_files $sway_path 'waybar'
       break;;
