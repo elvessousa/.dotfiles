@@ -60,7 +60,7 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 " let t_Co = 256
-colorscheme sobrio
+colorscheme sobrio_vim
 let g:airline_theme='sobrio'
 let g:airline_powerline_fonts = 1
 
