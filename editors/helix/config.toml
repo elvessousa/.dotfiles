@@ -41,6 +41,7 @@ F11 = ":tree-sitter-scopes"
 F12 = ":tree-sitter-subtree"
 F1 = ":toggle-option lsp.display-inlay-hints"
 F4 = ":buffer-close"
+F5 = ":reload"
 ret = ["move_line_down", "goto_first_nonwhitespace"]
 S-tab = ":buffer-previous"
 tab = ":buffer-next"
