@@ -652,9 +652,10 @@ let-env config = {
 }
 
 # Aliases
-alias l = (exa)
-alias ll = (exa -lah)
-alias lt = (exa --tree --level=2)
+alias l = exa
+alias ll = exa -lah
+alias lt = exa --tree --level=2
+alias cat = bat
 
 # Starship
 source ~/.cache/starship/init.nu

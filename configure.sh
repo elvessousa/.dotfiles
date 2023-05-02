@@ -188,8 +188,8 @@ do
       createLink $nvim_folder/lua/ $nvim_path/lua 'nvim' 'show'
       break;;
     '3')
-      createLink $helix_folder/config.toml "$helix_path/config.toml" 'helix' 
-      createLink $helix_folder/languages.toml "$helix_path/languages.toml" 'helix' 
+      createLink $helix_folder/config.toml "$helix_path/config.toml" 'hx' 
+      createLink $helix_folder/languages.toml "$helix_path/languages.toml" 'hx' 
       break;;
     '4') 
       createLink $tmux_file $tmux_path 'tmux'
@@ -201,8 +201,8 @@ do
       createLink $fish_file $fish_path 'fish'
       break;;
     '7') 
-      createLink $nu_config_file $nu_config_path 'fish'
-      createLink $nu_env_file $nu_env_path 'fish'
+      createLink $nu_config_file $nu_config_path 'nu'
+      createLink $nu_env_file $nu_env_path 'nu'
       break;;
     '8') 
       configureItalics
@@ -214,7 +214,7 @@ do
       createLink $kitty_file $kitty_path 'kitty'
       break;;
     '11') 
-      createLink $wezterm_file $wezterm_path 'wezterm'
+      createLink $wezterm_file $wezterm_path 'cd'
       break;;
     '12')
       curl -fLo $vimplug_file --create-dirs $vimplug_url
