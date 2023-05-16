@@ -1,7 +1,6 @@
 ---------------------------------
 -- Key bindings
 ---------------------------------
-local map = vim.api.nvim_set_keymap
 local kmap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
@@ -9,28 +8,27 @@ local opts = { noremap = true, silent = true }
 vim.g.mapleader = " "
 
 -- Vim
-map("n", "<C-p>", ':lua require("telescope.builtin").find_files()<CR>', opts)
-map("n", "<C-q>", ":q!<CR>", opts)
-map("n", "<F12>", ":TSHighlightCapturesUnderCursor<CR>", opts)
-map("n", "<F4>", ":bd<CR>", opts)
-map("n", "<F5>", ":Neotree toggle<CR>", opts)
-map("n", "<F6>", ":sp<CR>:terminal<CR>", opts)
-map("n", "<S-Tab>", "gT", opts)
-map("n", "<Tab>", "gt", opts)
-map("n", "<silent> <Tab>", ":tabnew<CR>", opts)
-map("n", "<space>f", ':lua require("telescope.builtin").find_files()<CR>', opts)
+kmap("n", "<C-p>", ':lua require("telescope.builtin").find_files()<CR>', opts)
+kmap("n", "<C-q>", ":q!<CR>", opts)
+kmap("n", "<F12>", ":TSHighlightCapturesUnderCursor<CR>", opts)
+kmap("n", "<F4>", ":bd<CR>", opts)
+kmap("n", "<F5>", ":Neotree toggle<CR>", opts)
+kmap("n", "<F6>", ":sp<CR>:terminal<CR>", opts)
+kmap("n", "<S-Tab>", "gT", opts)
+kmap("n", "<Tab>", "gt", opts)
+kmap("n", "<silent> <Tab>", ":tabnew<CR>", opts)
+kmap("n", "<space>f", ':lua require("telescope.builtin").find_files()<CR>', opts)
 
 -- Utils
-kmap("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-kmap("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
-kmap("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
-kmap("n", "<space>p", vim.lsp.buf.formatting, bufopts)
-kmap("n", "<space>rn", vim.lsp.buf.rename, bufopts)
-kmap("n", "K", vim.lsp.buf.hover, bufopts)
-kmap("n", "gD", vim.lsp.buf.declaration, bufopts)
-kmap("n", "gd", vim.lsp.buf.definition, bufopts)
-kmap("n", "gi", vim.lsp.buf.implementation, bufopts)
-kmap("n", "gr", vim.lsp.buf.references, bufopts)
+kmap("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+kmap("n", "<space>D", vim.lsp.buf.type_definition, opts)
+kmap("n", "<space>ca", vim.lsp.buf.code_action, opts)
+kmap("n", "<space>rn", vim.lsp.buf.rename, opts)
+kmap("n", "K", vim.lsp.buf.hover, opts)
+kmap("n", "gD", vim.lsp.buf.declaration, opts)
+kmap("n", "gd", vim.lsp.buf.definition, opts)
+kmap("n", "gi", vim.lsp.buf.implementation, opts)
+kmap("n", "gr", vim.lsp.buf.references, opts)
 
 -- Diagnostics
 kmap("n", "<space>e", vim.diagnostic.open_float, opts)
