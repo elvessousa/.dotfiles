@@ -25,7 +25,7 @@ helix_folder="$(pwd)/editors/helix"
 helix_path="$HOME/.config/helix"
 
 # Vim Plug
-vimplug_file="$HOME/.config/nvim/autoload/plug.vim"
+vimplug_file="$HOME/.vim/autoload/plug.vim"
 vimplug_url='https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 # CoC

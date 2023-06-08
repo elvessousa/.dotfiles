@@ -2,14 +2,14 @@ local wezterm = require("wezterm")
 
 return {
 	-- enable_wayland = false,
-	font = wezterm.font("FiraCode NFM"),
+	font = wezterm.font("FiraCode NF"),
 	font_size = 11.2,
 	font_rules = {
 		{
 			intensity = "Normal",
 			italic = true,
 			font = wezterm.font({
-				family = "FiraCode NFM",
+				family = "FiraCode NF",
 				italic = false,
 			}),
 		},
@@ -17,7 +17,7 @@ return {
 			intensity = "Bold",
 			italic = false,
 			font = wezterm.font({
-				family = "FiraCode NFM",
+				family = "FiraCode NF",
 				weight = "Bold",
 			}),
 		},

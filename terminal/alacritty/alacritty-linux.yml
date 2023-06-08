@@ -7,15 +7,15 @@ env:
 # Fonts
 font:
   normal:
-    family: VictorMono Nerd Font
+    family: FiraCode Nerd Font
     style: Medium
 
   bold:
-    family: VictorMono Nerd Font
-    style: Black
+    family: FiraCode Nerd Font
+    style: Bold
 
   italic:
-    family: VictorMono Nerd Font
+    family: FiraCode Nerd Font
     style: Italic
 
   size: 11
@@ -55,7 +55,7 @@ cursor:
 schemes:
   sobrio: &sobrio
     primary:
-      background: "#080808"
+      background: "#121212"
       foreground: "#eeeeee"
 
     # Normal colors
