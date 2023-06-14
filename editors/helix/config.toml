@@ -31,7 +31,7 @@ right = ["diagnostics", "selections", "position", "file-encoding", "file-type"]
 [keys.normal]
 C-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
 C-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
-C-o = ":config-open"
+F10 = ":config-open"
 C-q = ":quit"
 C-r = ":config-reload"
 del = ["delete_char_forward"]
