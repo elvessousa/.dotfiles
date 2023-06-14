@@ -37,6 +37,10 @@ coc_vim_path="$vim_path/coc-settings.json"
 tmux_file="$(pwd)/terminal/tmux/.tmux.conf"
 tmux_path="$HOME/.tmux.conf"
 
+# Zellij
+zellij_file="$(pwd)/terminal/zellij/config.kdl"
+zellij_path="$HOME/.config/zellij/config.kdl"
+
 # Git
 git_file="$(pwd)/git/.gitconfig"
 git_path="$HOME/.gitconfig"
@@ -149,16 +153,17 @@ echo -e " ${y}1)${n} Configure ${b}Neovim${n}"
 echo -e " ${y}2)${n} Configure ${b}Neovim (with Lua)${n}"
 echo -e " ${y}3)${n} Configure ${b}Helix${n}"
 echo -e " ${y}4)${n} Configure ${b}Tmux${n}"
-echo -e " ${y}5)${n} Configure ${b}Git${n}"
-echo -e " ${y}6)${n} Configure ${b}Fish Shell${n}"
-echo -e " ${y}7)${n} Configure ${b}Nu Shell${n}"
-echo -e " ${y}8)${n} Configure ${b}italics${n} in terminal"
-echo -e " ${y}9)${n} Configure ${b}Alacritty${n}"
-echo -e " ${y}10)${n} Configure ${b}Kitty${n}"
-echo -e " ${y}11)${n} Configure ${b}Wezterm${n}"
-echo -e " ${y}12)${n} Install ${b}Vim Plug${n}"
-echo -e " ${y}13)${n} Configure ${b}i3${n}"
-echo -e " ${y}14)${n} Configure ${b}Sway${n} and ${b}Waybar${n}"
+echo -e " ${y}5)${n} Configure ${b}Zellij${n}"
+echo -e " ${y}6)${n} Configure ${b}Git${n}"
+echo -e " ${y}7)${n} Configure ${b}Fish Shell${n}"
+echo -e " ${y}8)${n} Configure ${b}Nu Shell${n}"
+echo -e " ${y}9)${n} Configure ${b}italics${n} in terminal"
+echo -e " ${y}10)${n} Configure ${b}Alacritty${n}"
+echo -e " ${y}11)${n} Configure ${b}Kitty${n}"
+echo -e " ${y}12)${n} Configure ${b}Wezterm${n}"
+echo -e " ${y}13)${n} Install ${b}Vim Plug${n}"
+echo -e " ${y}14)${n} Configure ${b}i3${n}"
+echo -e " ${y}15)${n} Configure ${b}Sway${n} and ${b}Waybar${n}"
 echo -e "$d-------------------------------------------------------$n"
 
 # ---------------------------------
@@ -195,34 +200,37 @@ do
       createLink $tmux_file $tmux_path 'tmux'
       break;;
     '5') 
-      createLink $git_file $git_path 'git'
+      createLink $zellij_file $zellij_path 'zellij'
       break;;
     '6') 
-      createLink $fish_file $fish_path 'fish'
+      createLink $git_file $git_path 'git'
       break;;
     '7') 
+      createLink $fish_file $fish_path 'fish'
+      break;;
+    '8') 
       createLink $nu_config_file $nu_config_path 'nu'
       createLink $nu_env_file $nu_env_path 'nu'
       break;;
-    '8') 
+    '9') 
       configureItalics
       break;;
-    '9') 
+    '10') 
       createLink $alacritty_file $alacritty_path 'alacritty'
       break;;
-    '10') 
+    '11') 
       createLink $kitty_file $kitty_path 'kitty'
       break;;
-    '11') 
+    '12') 
       createLink $wezterm_file $wezterm_path 'cd'
       break;;
-    '12')
+    '13')
       curl -fLo $vimplug_file --create-dirs $vimplug_url
       break;;
-    '13')
+    '14')
       createLink $i3_files $i3_path 'i3'
       break;;
-    '14')
+    '15')
       createLink $sway_files $sway_path 'sway'
       createLink $waybar_files $sway_path 'waybar'
       break;;
