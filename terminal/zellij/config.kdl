@@ -235,6 +235,21 @@ on_force_close "quit"
 //         white 255 255 255
 //     }
 // }
+// themes {
+//     sobrio {
+//         fg "#5f5f5f"
+//         bg "#121212"
+//         red "#121212"
+//         green "#d7af87"
+//         yellow "#d7af87"
+//         blue "#84afd7"
+//         magenta "#fd6389"
+//         orange "#d7af87"
+//         cyan "#7cdce7"
+//         black "#121212"
+//         white "#ffffff"
+//     }
+// }
 themes {
     sobrio {
         fg "#5f5f5f"
@@ -248,6 +263,20 @@ themes {
         cyan "#7cdce7"
         black "#121212"
         white "#ffffff"
+    }
+
+    sobrio_light {
+        fg "#121212"
+        bg "#5f5f5f"
+        red "#eeeeee"
+        green "#af875f"
+        yellow "#af875f"
+        blue "#6787af"
+        magenta "#dd4c4f"
+        orange "#af875f"
+        cyan "#5fafaf"
+        black "#ffffff"
+        white "#121212"
     }
 }
 // Choose the theme that is specified in the themes section.
