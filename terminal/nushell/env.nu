@@ -12,22 +12,22 @@ def create_left_prompt [] {
 
 def create_right_prompt [] {
     let time_segment = ([
-        (date now | date format '%m/%d/%Y %r')
+        (date now | date format '%d/%m/%Y %r')
     ] | str join)
 
     $time_segment
 }
 
 # Use nushell functions to define your right and left prompt
-$env.PROMPT_COMMAND = { create_left_prompt }
+# $env.PROMPT_COMMAND = { create_left_prompt }
 $env.PROMPT_COMMAND_RIGHT = { create_right_prompt }
 
 # The prompt indicators are environmental variables that represent
 # the state of the prompt
-# $env.PROMPT_INDICATOR = { "> " }
-# $env.PROMPT_INDICATOR_VI_INSERT = { ": " }
-# $env.PROMPT_INDICATOR_VI_NORMAL = { "> " }
-# $env.PROMPT_MULTILINE_INDICATOR = { "::: " }
+$env.PROMPT_INDICATOR = { "> " }
+$env.PROMPT_INDICATOR_VI_INSERT = { ": " }
+$env.PROMPT_INDICATOR_VI_NORMAL = { "> " }
+$env.PROMPT_MULTILINE_INDICATOR = { "::: " }
 
 # Specifies how environment variables are:
 # - converted from a string to a value on Nushell startup (from_string)
