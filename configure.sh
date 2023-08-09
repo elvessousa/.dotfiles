@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # ---------------------------------
 # OS Detection: Linux and macOS
