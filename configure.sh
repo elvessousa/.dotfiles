@@ -39,7 +39,8 @@ tmux_path="$HOME/.tmux.conf"
 
 # Zellij
 zellij_file="$(pwd)/terminal/zellij/config.kdl"
-zellij_path="$HOME/.config/zellij/config.kdl"
+zellij_folder="$HOME/.config/zellij"
+zellij_path="$zellij_folder/config.kdl"
 
 # Git
 git_file="$(pwd)/git/.gitconfig"
@@ -47,28 +48,33 @@ git_path="$HOME/.gitconfig"
 
 # Fish
 fish_file="$(pwd)/terminal/fish/config.fish"
-fish_path="$HOME/.config/fish/config.fish"
+fish_folder="$HOME/.config/fish"
+fish_path="$fish_folder/config.fish"
 
 # Nu Shell
 nu_config_file="$(pwd)/terminal/nushell/config.nu"
-nu_config_path="$HOME/.config/nushell/config.nu"
+nu_config_folder="$HOME/.config/nushell"
+nu_config_path="$nu_config_folder/config.nu"
 nu_env_file="$(pwd)/terminal/nushell/env.nu"
-nu_env_path="$HOME/.config/nushell/env.nu"
+nu_env_path="$nu_config_folder/env.nu"
 
 # Terminal
 term_info="$(pwd)/terminal/xterm-256color-italic.terminfo"
 
 # Alacritty
 alacritty_file="$(pwd)/terminal/alacritty/alacritty-$system.yml"
-alacritty_path="$HOME/.config/alacritty/alacritty.yml"
+alacritty_folder="$HOME/.config/alacritty"
+alacritty_path="$alacritty_folder/alacritty.yml"
 
 # Kitty
 kitty_file="$(pwd)/terminal/kitty/kitty-$system.conf"
-kitty_path="$HOME/.config/kitty/kitty.conf"
+kitty_folder="$HOME/.config/kitty"
+kitty_path="$kitty_folder/kitty.conf"
 
 # Wezterm
 wezterm_file="$(pwd)/terminal/wezterm/wezterm-$system.lua"
-wezterm_path="$HOME/.config/wezterm/wezterm.lua"
+wezterm_folder="$HOME/.config/wezterm/"
+wezterm_path="$wezterm_folder/wezterm.lua"
 
 # i3
 i3_files="$(pwd)/wms/i3"
@@ -199,16 +205,19 @@ do
     '4') 
       createLink $tmux_file $tmux_path 'tmux'
       break;;
-    '5') 
+    '5')
+      mkdir -p $zellij_folder
       createLink $zellij_file $zellij_path 'zellij'
       break;;
     '6') 
       createLink $git_file $git_path 'git'
       break;;
     '7') 
+      mkdir -p $fish_folder
       createLink $fish_file $fish_path 'fish'
       break;;
     '8') 
+      mkdir -p $nu_config_folder
       createLink $nu_config_file $nu_config_path 'nu'
       createLink $nu_env_file $nu_env_path 'nu'
       break;;
@@ -216,12 +225,14 @@ do
       configureItalics
       break;;
     '10') 
+      mkdir -p $alacritty_folder
       createLink $alacritty_file $alacritty_path 'alacritty'
       break;;
     '11') 
       createLink $kitty_file $kitty_path 'kitty'
       break;;
     '12') 
+      mkdir -p $wezterm_folder
       createLink $wezterm_file $wezterm_path 'cd'
       break;;
     '13')
