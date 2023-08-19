@@ -11,8 +11,12 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader = {
+      efi = { canTouchEfiVariables = true; };
+      systemd-boot = { consoleMode = "max"; enable = true; };
+    };
+  };
 
   networking.hostName = "elf"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -23,11 +27,10 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  networking.extraHosts =
-    ''
-      127.0.0.1 local.elf
-    '';
-
+  networking.extraHosts = ''
+    127.0.0.1 local.elf
+  '';
+  
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
 
@@ -51,7 +54,7 @@
 
   # Flatpak
   services.flatpak.enable = true;
-
+  
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
@@ -87,79 +90,142 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
-  # HTTPD and Virtual Hosts
-  services.httpd = {
-    enable = true;
-    enablePHP = true;
-    phpPackage = pkgs.php;
-    virtualHosts = 
-      let 
-        makeHost = webroot: {
-          hostName = webroot;
-          adminAddr = "admin@localhost";
-          documentRoot = "/home/elvessousa/Documentos/Sites/server/${webroot}";
-          extraConfig =
-            ''
-              <Directory "/home/elvessousa/Documentos/Sites/server/${webroot}">
-                DirectoryIndex index.php index.htm index.html
-                Allow from All
-                Options FollowSymLinks
-                AllowOverride All
-              </Directory>
-            ''; 
-        };
-      in
-        { "local.elf" = (makeHost "local.elf"); };
+  
+  # Fonts
+  fonts = {
+    fontDir.enable = true;
+    fonts = with pkgs; [
+      fira
+      (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    ];
+    fontconfig = {
+      defaultFonts = {
+        serif = [ "Fira Sans" ];
+        sansSerif = [ "Fira Sans" ];
+        monospace = [ "FiraCode Nerd Font Retina" ];
+      };
+    };
   };
-
-  services.mysql = {
-    enable = true;
-    package = pkgs.mariadb;
-  };
-
+  
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.elvessousa = {
     isNormalUser = true;
     description = "Elves Sousa";
-    extraGroups = [ "networkmanager" "wheel" "wwwrun" ];
+    extraGroups = [ "networkmanager" "wheel" "nginx" ];
     packages = with pkgs; [
       adw-gtk3
       alacritty
+      blender-hip
       firefox
       flatpak
       gimp
-      gnome.gnome-tweaks
+      gnome.gnome-boxes
       gnome.gnome-software
+      gnome.gnome-tweaks
       helix
       inkscape
+      insomnia
       neovim
-      nerdfonts
       nodejs
       nushell
+      onlyoffice-bin
       rustup
       starship
+      vscodium
       zellij
     ];
   };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
+  
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     bat
     exa
-    fira
     gcc
     git
     glibc
+    nil
+    php
     unzip
     vim
-    php
+    wget
   ];
 
+  # LEMP Stack
+  services.nginx = {
+    user = "elvessousa";
+    enable = true;
+    virtualHosts = 
+      let
+        makeHost = address: {
+          root = "/var/www/${address}";
+          serverName = address;
+          serverAliases = [ address ];
+          extraConfig = ''
+            index index.php;
+          '';
+          listen = [{ port = 80;  addr="0.0.0.0"; }];
+          locations = {
+            "/".extraConfig = ''
+              try_files $uri $uri/ /index.php?$args;
+            '';
+            "~* /(?:uploads|files)/.*\.php$".extraConfig = ''
+              deny all; 
+            '';
+            "~ \.php$".extraConfig = ''
+              fastcgi_intercept_errors on;
+              fastcgi_pass  unix:${config.services.phpfpm.pools.mypool.socket};
+            '';
+            "~* \.(js|css|png|jpg|jpeg|gif|ico)$".extraConfig = ''
+                expires max;
+                log_not_found off;
+            '';
+          };
+        };
+      in
+      {
+        "local.elf" = (makeHost "local.elf");
+      };
+  };
+  
+  services.mysql = {
+    enable = true;
+    package = pkgs.mariadb;
+    settings = { "mysqld" = { "port" = 3308; }; };
+    initialScript =
+      pkgs.writeText "initial-script" ''
+        CREATE DATABASE IF NOT EXISTS wordpress;
+        CREATE USER IF NOT EXISTS 'root'@'localhost' IDENTIFIED BY 'root';
+        GRANT ALL PRIVILEGES ON wordpress.* TO 'root'@'localhost';
+      '';
+    ensureDatabases = [ "wordpress" ];
+    ensureUsers = [
+      {
+        name = "root";
+        ensurePermissions = {
+          "root.*" = "ALL PRIVILEGES";
+          "*.*" = "ALL PRIVILEGES";
+        };
+      }
+    ];
+  };
+  
+  services.phpfpm.pools.mypool = {                                                                                                                                                                                                             
+    user = "nobody";                                                                                                                                                                                                                           
+    settings = {                                                                                                                                                                                                                               
+      pm = "dynamic";            
+      "listen.owner" = config.services.nginx.user;                                                                                                                                                                                                              
+      "pm.max_children" = 5;                                                                                                                                                                                                                   
+      "pm.start_servers" = 2;                                                                                                                                                                                                                  
+      "pm.min_spare_servers" = 1;                                                                                                                                                                                                              
+      "pm.max_spare_servers" = 3;                                                                                                                                                                                                              
+      "pm.max_requests" = 500;                                                                                                                                                                                                                 
+    };                                                                                                                                                                                                                                         
+  };
+  
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
