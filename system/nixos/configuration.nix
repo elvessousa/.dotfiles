@@ -4,6 +4,10 @@
 
 { config, pkgs, ... }:
 
+let
+  unstableTarball =
+    fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -14,10 +18,18 @@
   boot = {
     loader = {
       efi = { canTouchEfiVariables = true; };
-      systemd-boot = { consoleMode = "max"; enable = true; };
+      systemd-boot = {
+        configurationLimit = 10;
+        consoleMode = "max";
+        enable = true;
+      };
     };
   };
 
+  # AMD ROCm
+  hardware.opengl.enable = true;
+  hardware.opengl.extraPackages = [ pkgs.rocm-opencl-icd ];
+  
   networking.hostName = "elf"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -106,6 +118,16 @@
       };
     };
   };
+
+  # Allow unfree packages 
+  nixpkgs.config = {
+    allowUnfree = true;
+    packageOverrides = pkgs: {
+      unstable = import unstableTarball {
+        config = config.nixpkgs.config;
+      };
+    };
+  };
   
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.elvessousa = {
@@ -116,9 +138,12 @@
       adw-gtk3
       alacritty
       blender-hip
+      ffmpeg
       firefox
       flatpak
+      fondo
       gimp
+      gnome.dconf-editor
       gnome.gnome-boxes
       gnome.gnome-software
       gnome.gnome-tweaks
@@ -130,17 +155,16 @@
       nushell
       onlyoffice-bin
       rustup
+      ryujinx
       starship
+      # unstable.davinci-resolve
       vscodium
+      wl-clipboard-x11
       zellij
     ];
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-  
   # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     bat
     exa
@@ -213,17 +237,17 @@
     ];
   };
   
-  services.phpfpm.pools.mypool = {                                                                                                                                                                                                             
-    user = "nobody";                                                                                                                                                                                                                           
-    settings = {                                                                                                                                                                                                                               
-      pm = "dynamic";            
-      "listen.owner" = config.services.nginx.user;                                                                                                                                                                                                              
-      "pm.max_children" = 5;                                                                                                                                                                                                                   
-      "pm.start_servers" = 2;                                                                                                                                                                                                                  
-      "pm.min_spare_servers" = 1;                                                                                                                                                                                                              
-      "pm.max_spare_servers" = 3;                                                                                                                                                                                                              
-      "pm.max_requests" = 500;                                                                                                                                                                                                                 
-    };                                                                                                                                                                                                                                         
+  services.phpfpm.pools.mypool = {
+    user = "nobody";
+    settings = {
+      pm = "dynamic";
+      "listen.owner" = config.services.nginx.user;
+      "pm.max_children" = 5;
+      "pm.start_servers" = 2;
+      "pm.min_spare_servers" = 1;
+      "pm.max_spare_servers" = 3;
+      "pm.max_requests" = 500;
+    };
   };
   
   # Some programs need SUID wrappers, can be configured further or are
