@@ -1,11 +1,7 @@
 #!/bin/sh
-
 # Encoder for Davinci Resolve
 
 for i in *.mp4
   do 
-    #ffmpeg -i "$i" -vcodec mjpeg -q:v 2 -acodec pcm_s16be -q:a 0 -f mov "${i%.*}-transcoded.mov" 
-    #ffmpeg -i "$i" -vcodec libxvid -q:v 2 -acodec pcm_s24le -f mov "${i%.*}-transcoded.mov" 
     ffmpeg -i "$i" -c:v prores -profile:v 1 -c:a pcm_s24le -f mov "${i%.*}-transcoded.mov" 
   done
-
