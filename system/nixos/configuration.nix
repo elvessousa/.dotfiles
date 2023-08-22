@@ -167,12 +167,16 @@ in
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
     bat
+    black
     exa
     gcc
     git
     glibc
     nil
     php
+    php81Packages.composer
+    python3Full
+    python310Packages.pip
     unzip
     vim
     wget
