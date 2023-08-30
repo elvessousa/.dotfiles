@@ -201,8 +201,9 @@ do
       createLink $nvim_folder/lua/ $nvim_path/lua 'nvim' 'show'
       break;;
     '3')
-      createLink $helix_folder/config.toml "$helix_path/config.toml" 'helix' 
-      createLink $helix_folder/languages.toml "$helix_path/languages.toml" 'helix' 
+      mkdir -p $helix_folder
+      createLink $helix_folder/config.toml "$helix_path/config.toml" 'hx' 
+      createLink $helix_folder/languages.toml "$helix_path/languages.toml" 'hx' 
       break;;
     '4') 
       createLink $tmux_file $tmux_path 'tmux'
