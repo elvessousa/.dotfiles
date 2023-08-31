@@ -20,9 +20,22 @@ in
       efi = { canTouchEfiVariables = true; };
       systemd-boot = {
         configurationLimit = 10;
-        consoleMode = "max";
+        # consoleMode = "max";
         enable = true;
       };
+    };
+  };
+
+  # Nix
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+
+    settings = {
+      experimental-features = "nix-command flakes";
     };
   };
 
@@ -63,14 +76,14 @@ in
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-  # Flatpak
-  services.flatpak.enable = true;
   
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  # Flatpak
+  services.flatpak.enable = true;
+  
   # Configure keymap in X11
   services.xserver = {
     layout = "br";
@@ -142,6 +155,7 @@ in
       firefox
       flatpak
       fondo
+      fragments
       gimp
       gnome.dconf-editor
       gnome.gnome-boxes
@@ -158,6 +172,7 @@ in
       ryujinx
       starship
       # unstable.davinci-resolve
+      unstable.thunderbird
       vscodium
       wl-clipboard-x11
       zellij
@@ -225,8 +240,8 @@ in
     settings = { "mysqld" = { "port" = 3308; }; };
     initialScript =
       pkgs.writeText "initial-script" ''
-        CREATE DATABASE IF NOT EXISTS wordpress;
         CREATE USER IF NOT EXISTS 'root'@'localhost' IDENTIFIED BY 'root';
+        CREATE DATABASE IF NOT EXISTS wordpress;
         GRANT ALL PRIVILEGES ON wordpress.* TO 'root'@'localhost';
       '';
     ensureDatabases = [ "wordpress" ];
@@ -280,5 +295,4 @@ in
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
-
 }

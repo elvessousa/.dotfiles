@@ -1,0 +1,3 @@
+npm set prefix ~/.npm-global
+touch ~/.profile
+export PATH=$HOME/.npm-global/bin:$PATH
