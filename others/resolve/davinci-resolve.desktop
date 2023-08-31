@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=DaVinci Resolve
+GenericName=DaVinci Resolve
+Exec=davinci-resolve %u
+Type=Application
+Terminal=false
+Icon=/nix/store/vmpm0n901ixm83h7yykc6h324bzd93i6-davinci-resolve-18.1.4/graphics/DV_Resolve.png
+StartupNotify=true
+StartupWMClass=resolve
+MimeType=application/x-resolveproj;
