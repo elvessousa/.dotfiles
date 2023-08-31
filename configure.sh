@@ -195,6 +195,8 @@ do
       createLink $coc_json $coc_nvim_path 'nvim' 'show'
       break;;
     '2')
+      git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+        ~/.local/share/nvim/site/pack/packer/start/packer.nvim
       mkdir -p $nvim_path
       createLink $nvim_folder/init.lua "$nvim_path/init.lua" 'nvim' 
       createLink $nvim_folder/colors/ $nvim_path/colors 'nvim' 'show'
