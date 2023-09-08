@@ -7,7 +7,7 @@ roots = ["package.json", "astro.config.mjs"]
 language-server = { command = "astro-ls", args = ["--stdio"] }
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true 
-config = { "typescript" = { serverPath = "/usr/local/lib/node_modules/typescript/lib/tsserverlibrary.js" }, "environment" = "node" }
+config = { "typescript" = { tsdk = "/home/elvessousa/.npm-global/lib/node_modules/typescript/lib" }, "environment" = "node" }
 
 [[language]]
 name = "html"
