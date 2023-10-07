@@ -17,7 +17,10 @@ in
   # Bootloader.
   boot = {
     loader = {
-      efi = { canTouchEfiVariables = true; };
+      efi = { 
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
+      };
       systemd-boot = {
         configurationLimit = 10;
         # consoleMode = "max";
@@ -132,6 +135,9 @@ in
     };
   };
 
+  # Virtualization
+  virtualisation.libvirtd.enable = true;
+
   # Allow unfree packages 
   nixpkgs.config = {
     allowUnfree = true;
@@ -172,7 +178,6 @@ in
       ryujinx
       starship
       # unstable.davinci-resolve
-      unstable.thunderbird
       vscodium
       wl-clipboard-x11
       zellij
