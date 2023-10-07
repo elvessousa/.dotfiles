@@ -85,6 +85,10 @@ sway_files="$(pwd)/wms/sway/sway"
 waybar_files="$(pwd)/wms/sway/waybar"
 sway_path="$HOME/.config/"
 
+# Bash
+bash_rc="$(pwd)/terminal/bash/.bashrc"
+bash_profile="$(pwd)/terminal/bash/.profile"
+
 # ---------------------------------
 # Colors and formatting
 # ---------------------------------
@@ -170,6 +174,7 @@ echo -e " ${y}12)${n} Configure ${b}Wezterm${n}"
 echo -e " ${y}13)${n} Install ${b}Vim Plug${n}"
 echo -e " ${y}14)${n} Configure ${b}i3${n}"
 echo -e " ${y}15)${n} Configure ${b}Sway${n} and ${b}Waybar${n}"
+echo -e " ${y}16)${n} Configure ${b}Bash${n} and ${b}Profile${n}"
 echo -e "$d-------------------------------------------------------$n"
 
 # ---------------------------------
@@ -249,6 +254,10 @@ do
     '15')
       createLink $sway_files $sway_path 'sway'
       createLink $waybar_files $sway_path 'waybar'
+      break;;
+    '16')
+      createLink $bash_rc "$HOME/.bashrc" 'bash'
+      createLink $bash_profile "$HOME/.profile" 'bash'
       break;;
     *)
       echo " Good luck."
