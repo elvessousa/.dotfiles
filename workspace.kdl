@@ -1,0 +1,11 @@
+layout {
+    tab name="Dotfiles" split_direction="horizontal" focus=true {
+        pane size="80%" name="Editor" command="hx" args="."
+        pane size="20%" name="Console"
+        pane size=1 borderless=true { plugin location="zellij:compact-bar"; }
+    }
+    tab name="Tests" {
+        pane name="Tests"
+        pane size=1 borderless=true { plugin location="zellij:compact-bar"; }
+    }
+}
