@@ -1,15 +1,4 @@
 [[language]]
-name = "astro"
-scope = "source.astro"
-injection-regex = "astro"
-file-types = ["astro"]
-roots = ["package.json", "astro.config.mjs"]
-language-server = { command = "astro-ls", args = ["--stdio"] }
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
-auto-format = true 
-config = { "typescript" = { tsdk = "/home/elvessousa/.npm-global/lib/node_modules/typescript/lib" }, "environment" = "node" }
-
-[[language]]
 name = "html"
 formatter = { command = 'prettier', args = ["--parser", "html"] }
 auto-format = true 
@@ -18,23 +7,19 @@ auto-format = true
 name = "typescript"
 auto-format = true
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
-config = { format = { "semicolons" = "insert", "insertSpaceBeforeFunctionParenthesis" = false } }
 
 [[language]]
 name = "javascript"
 auto-format = true
-config = { format = { "semicolons" = "insert", "insertSpaceBeforeFunctionParenthesis" = false } }
 
 [[language]]
 name = "tsx"
 auto-format = true
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
-config = { format = { "semicolons" = "insert", "insertSpaceBeforeFunctionParenthesis" = false } }
 
 [[language]]
 name = "jsx"
 auto-format = true
-config = { format = { "semicolons" = "insert", "insertSpaceBeforeFunctionParenthesis" = false } }
 
 [[language]]
 name = "php"
