@@ -1,1 +1,1 @@
-export PATH=$HOME/.npm-global/bin:$PATH
+PATH=$HOME/.npm-global/bin:$PATH
