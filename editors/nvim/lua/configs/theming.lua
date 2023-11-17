@@ -1,11 +1,20 @@
 ---------------------------------
--- Color scheme
+-- Indent and syntax
 ---------------------------------
 vim.cmd([[
   filetype plugin indent on
   syntax on
-  colorscheme sobrio
 ]])
+
+---------------------------------
+-- Color scheme
+---------------------------------
+local colorscheme = "sobrio"
+local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
+if not status_ok then
+    print("colorscheme " .. colorscheme .. " not found!")
+    return
+end
 
 ---------------------------------
 -- Treesitter playground
