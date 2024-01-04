@@ -23,7 +23,7 @@ in
       };
       systemd-boot = {
         configurationLimit = 10;
-        # consoleMode = "max";
+        consoleMode = "max";
         enable = true;
       };
     };
@@ -57,6 +57,8 @@ in
   networking.networkmanager.enable = true;
   networking.extraHosts = ''
     127.0.0.1 local.elf
+    127.0.0.1 fepo.elf
+    127.0.0.1 idestudante.elf
   '';
   
   # Set your time zone.
@@ -77,12 +79,32 @@ in
     LC_TIME = "pt_BR.UTF-8";
   };
 
-  # Enable the X11 windowing system.
+    # Enable the X11 windowing system.
   services.xserver.enable = true;
   
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.displayManager.defaultSession = "gnome";
+  
+  # Enable KDE
+  services.xserver.displayManager.defaultSession = "plasmawayland";
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+  
+  # DConf
+  programs.dconf.enable = true;
+
+  # Portals
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-wlr
+        xdg-desktop-portal-gtk
+      ];
+    };
+  };
 
   # Flatpak
   services.flatpak.enable = true;
@@ -108,21 +130,12 @@ in
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-  
   # Fonts
   fonts = {
     fontDir.enable = true;
-    fonts = with pkgs; [
+    packages = with pkgs; [
       fira
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
     ];
@@ -145,7 +158,7 @@ in
       unstable = import unstableTarball {
         config = config.nixpkgs.config;
       };
-    };
+    };    
   };
   
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -157,17 +170,17 @@ in
       adw-gtk3
       alacritty
       blender-hip
+      celluloid
       ffmpeg
-      firefox
       flatpak
       fondo
       fragments
       gimp
       gnome.dconf-editor
+      gnome-extension-manager
       gnome.gnome-boxes
       gnome.gnome-software
       gnome.gnome-tweaks
-      helix
       inkscape
       insomnia
       neovim
@@ -177,7 +190,10 @@ in
       rustup
       ryujinx
       starship
-      # unstable.davinci-resolve
+      thunderbird
+      unstable.firefox
+      unstable.helix
+      unstable.yazi
       vscodium
       wl-clipboard-x11
       zellij
@@ -188,15 +204,17 @@ in
   environment.systemPackages = with pkgs; [
     bat
     black
-    exa
     gcc
     git
     glibc
+    gsettings-qt
+    gsettings-desktop-schemas
     nil
     php
     php81Packages.composer
-    python3Full
     python310Packages.pip
+    python3Full
+    taplo
     unzip
     vim
     wget
@@ -236,6 +254,8 @@ in
       in
       {
         "local.elf" = (makeHost "local.elf");
+        "idestudante.elf" = (makeHost "idestudante.elf");
+        "fepo.elf" = (makeHost "fepo.elf");
       };
   };
   
@@ -246,10 +266,16 @@ in
     initialScript =
       pkgs.writeText "initial-script" ''
         CREATE USER IF NOT EXISTS 'root'@'localhost' IDENTIFIED BY 'root';
+        
         CREATE DATABASE IF NOT EXISTS wordpress;
+        CREATE DATABASE IF NOT EXISTS idestudante;
+        CREATE DATABASE IF NOT EXISTS fepo;
+                
         GRANT ALL PRIVILEGES ON wordpress.* TO 'root'@'localhost';
+        GRANT ALL PRIVILEGES ON idestudante.* TO 'root'@'localhost';
+        GRANT ALL PRIVILEGES ON fepo.* TO 'root'@'localhost';
       '';
-    ensureDatabases = [ "wordpress" ];
+    ensureDatabases = [ "wordpress" "fepo" "idestudante" ];
     ensureUsers = [
       {
         name = "root";
@@ -299,5 +325,5 @@ in
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "23.11"; # Did you read the comment?
 }
