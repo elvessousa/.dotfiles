@@ -10,18 +10,6 @@ def create_left_prompt [] {
     $path_segment
 }
 
-def create_right_prompt [] {
-    let time_segment = ([
-        (date now | date format '%d/%m/%Y %r')
-    ] | str join)
-
-    $time_segment
-}
-
-# Use nushell functions to define your right and left prompt
-# $env.PROMPT_COMMAND = { create_left_prompt }
-$env.PROMPT_COMMAND_RIGHT = { create_right_prompt }
-
 # The prompt indicators are environmental variables that represent
 # the state of the prompt
 $env.PROMPT_INDICATOR = { "> " }
