@@ -11,7 +11,7 @@ language-servers = [ "astro-ls" ]
 [[language]]
 name = "html"
 formatter = { command = 'prettier', args = ["--parser", "html"] }
-file-types = ["html", "tpl"]
+file-types = ["html", "tpl", "svg"]
 auto-format = true 
 
 [[language]]
