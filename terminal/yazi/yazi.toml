@@ -1,2 +1,5 @@
 [opener]
 edit = [{ run='hx "$@"', desc="$EDITOR", block=true }]
+
+[manager]
+show_hidden = true
