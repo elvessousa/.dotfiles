@@ -1,0 +1,64 @@
+live_config_reload = true
+
+[colors.normal]
+black = "#3a3b3f"
+blue = "#87afd7"
+cyan = "#78DCE8"
+green = "#2ec27e"
+magenta = "#d7d7ff"
+red = "#fd6389"
+white = "#eeeeee"
+yellow = "#d7af87"
+
+[colors.primary]
+background = "#121212"
+foreground = "#eeeeee"
+
+[cursor.style]
+blinking = "On"
+shape = "Block"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 11
+
+[font.bold]
+family = "FiraCode Nerd Font"
+style = "Bold"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "FiraCode Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "FiraCode Nerd Font"
+style = "Medium"
+
+[font.offset]
+x = 0
+y = 0
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[shell]
+program = "fish"
+
+[window]
+dynamic_padding = false
+dynamic_title = false
+opacity = 0.99
+decorations = "Full"
+blur = true
+title = "Terminal"
+
+[window.padding]
+x = 3
+y = 0

@@ -62,9 +62,9 @@ nu_env_path="$nu_config_folder/env.nu"
 term_info="$(pwd)/terminal/xterm-256color-italic.terminfo"
 
 # Alacritty
-alacritty_file="$(pwd)/terminal/alacritty/alacritty-$system.yml"
+alacritty_file="$(pwd)/terminal/alacritty/alacritty-$system.toml"
 alacritty_folder="$HOME/.config/alacritty"
-alacritty_path="$alacritty_folder/alacritty.yml"
+alacritty_path="$alacritty_folder/alacritty.toml"
 
 # Kitty
 kitty_file="$(pwd)/terminal/kitty/kitty-$system.conf"
