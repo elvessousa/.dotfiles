@@ -4,6 +4,10 @@ layout {
         pane size="20%" name="Console"
         pane size=1 borderless=true { plugin location="zellij:compact-bar"; }
     }
+    tab name="Files" {
+        pane name="Yazi" command="yazi" start_suspended=true
+        pane size=1 borderless=true { plugin location="zellij:compact-bar"; }
+    }
     tab name="Tests" {
         pane name="Tests"
         pane size=1 borderless=true { plugin location="zellij:compact-bar"; }
