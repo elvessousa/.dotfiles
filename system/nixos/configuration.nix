@@ -16,6 +16,7 @@ in
 
   # Bootloader.
   boot = {
+    supportedFilesystems = [ "ntfs" ];
     loader = {
       efi = { 
         canTouchEfiVariables = true;
@@ -28,6 +29,9 @@ in
       };
     };
   };
+
+  # Time
+  time.hardwareClockInLocalTime = true;
 
   # Nix
   nix = {
@@ -45,7 +49,10 @@ in
   # AMD ROCm
   hardware.opengl.enable = true;
   hardware.opengl.extraPackages = [ pkgs.rocm-opencl-icd ];
-  
+
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+
   networking.hostName = "elf"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -58,9 +65,9 @@ in
   networking.extraHosts = ''
     127.0.0.1 local.elf
     127.0.0.1 fepo.elf
-    127.0.0.1 idestudante.elf
+    127.0.0.1 test.elf
   '';
-  
+
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
 
@@ -79,21 +86,30 @@ in
     LC_TIME = "pt_BR.UTF-8";
   };
 
-    # Enable the X11 windowing system.
+  # Enable the X11 windowing system.
   services.xserver.enable = true;
-  
+
   # Enable the GNOME Desktop Environment.
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
-  # services.xserver.displayManager.defaultSession = "gnome";
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
   
-  # Enable KDE
-  services.xserver.displayManager.defaultSession = "plasmawayland";
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  # Enable the KDE Plasma Desktop Environment.
+  # services.displayManager.sddm.enable = true;
+  # services.desktopManager.plasma6.enable = true;
+  # services.displayManager.defaultSession = "plasma";
   
   # DConf
   programs.dconf.enable = true;
+
+  # Steam
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;    
+  };
+
+  programs.gamemode.enable = true;
 
   # Portals
   xdg = {
@@ -101,19 +117,16 @@ in
       enable = true;
       extraPortals = with pkgs; [
         xdg-desktop-portal-wlr
-        xdg-desktop-portal-gtk
+        # xdg-desktop-portal-gtk
       ];
     };
   };
-
+  
   # Flatpak
   services.flatpak.enable = true;
-  
+
   # Configure keymap in X11
-  services.xserver = {
-    layout = "br";
-    xkbVariant = "";
-  };
+  services.xserver.xkb = { layout = "br"; variant = ""; };
 
   # Configure console keymap
   console.keyMap = "br-abnt2";
@@ -161,6 +174,9 @@ in
     };    
   };
   
+  # Fish Shell
+  programs.fish.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.elvessousa = {
     isNormalUser = true;
@@ -169,33 +185,34 @@ in
     packages = with pkgs; [
       adw-gtk3
       alacritty
+      appimage-run
+      authenticator
       blender-hip
       celluloid
+      chromium
       ffmpeg
+      firefox
       flatpak
-      fondo
       fragments
       gimp
       gnome.dconf-editor
       gnome-extension-manager
-      gnome.gnome-boxes
+      gnome.gnome-disk-utility
       gnome.gnome-software
-      gnome.gnome-tweaks
       inkscape
-      insomnia
+      mdbook
       neovim
       nodejs
-      nushell
       onlyoffice-bin
       rustup
       ryujinx
       starship
       thunderbird
-      unstable.firefox
       unstable.helix
       unstable.yazi
       vscodium
       wl-clipboard-x11
+      zed-editor
       zellij
     ];
   };
@@ -204,12 +221,21 @@ in
   environment.systemPackages = with pkgs; [
     bat
     black
+    bluez
     gcc
+    gccgo
     git
     glibc
-    gsettings-qt
-    gsettings-desktop-schemas
+    gnome.gnome-tweaks
+    gnome.gnome-bluetooth
+    go
+    goimports-reviser
+    gopls
+    lutris
+    # gsettings-desktop-schemas
+    # gsettings-qt
     nil
+    ntfs3g
     php
     php81Packages.composer
     python310Packages.pip
@@ -217,9 +243,20 @@ in
     taplo
     unzip
     vim
+    vivaldi
+    vivaldi-ffmpeg-codecs
     wget
+    wineWowPackages.stable
+    winetricks
   ];
-
+  
+  # Excluded packages
+  services.xserver.excludePackages = [ pkgs.xterm ];
+  environment.gnome.excludePackages = (with pkgs; [
+    gnome.geary
+    gnome-tour
+  ]);
+  
   # LEMP Stack
   services.nginx = {
     user = "elvessousa";
@@ -231,7 +268,7 @@ in
           serverName = address;
           serverAliases = [ address ];
           extraConfig = ''
-            index index.php;
+            index index.php index.html;
           '';
           listen = [{ port = 80;  addr="0.0.0.0"; }];
           locations = {
@@ -254,28 +291,34 @@ in
       in
       {
         "local.elf" = (makeHost "local.elf");
-        "idestudante.elf" = (makeHost "idestudante.elf");
         "fepo.elf" = (makeHost "fepo.elf");
+        "test.elf" = (makeHost "test.elf");
       };
   };
   
   services.mysql = {
     enable = true;
     package = pkgs.mariadb;
-    settings = { "mysqld" = { "port" = 3308; }; };
+    settings = { "mysqld" = { "bind-address" = "0.0.0.0"; "port" = 3308; }; };
     initialScript =
       pkgs.writeText "initial-script" ''
         CREATE USER IF NOT EXISTS 'root'@'localhost' IDENTIFIED BY 'root';
+        CREATE USER IF NOT EXISTS 'fepo'@'%' IDENTIFIED BY 'fepo';
+        CREATE USER IF NOT EXISTS 'auction'@'%' IDENTIFIED BY 'auction';
         
         CREATE DATABASE IF NOT EXISTS wordpress;
-        CREATE DATABASE IF NOT EXISTS idestudante;
         CREATE DATABASE IF NOT EXISTS fepo;
-                
+        CREATE DATABASE IF NOT EXISTS auction;
+        
         GRANT ALL PRIVILEGES ON wordpress.* TO 'root'@'localhost';
-        GRANT ALL PRIVILEGES ON idestudante.* TO 'root'@'localhost';
         GRANT ALL PRIVILEGES ON fepo.* TO 'root'@'localhost';
+        GRANT ALL PRIVILEGES ON auction.* TO 'root'@'localhost';
+        GRANT ALL PRIVILEGES ON bookario.* TO 'root'@'localhost';
+        
+        GRANT ALL PRIVILEGES ON auction.* TO 'auction'@'%';
+        GRANT ALL PRIVILEGES ON fepo.* TO 'fepo'@'%';
       '';
-    ensureDatabases = [ "wordpress" "fepo" "idestudante" ];
+    ensureDatabases = [ "wordpress" "fepo" "auction" "bookario" ];
     ensureUsers = [
       {
         name = "root";
@@ -299,7 +342,7 @@ in
       "pm.max_requests" = 500;
     };
   };
-  
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -326,4 +369,5 @@ in
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
+
 }
