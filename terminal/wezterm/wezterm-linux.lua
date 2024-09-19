@@ -2,14 +2,14 @@ local wezterm = require("wezterm")
 
 return {
 	-- enable_wayland = false,
-	font = wezterm.font("FiraCode NF"),
+	font = wezterm.font("FiraCode Nerd Font"),
 	font_size = 11.2,
 	font_rules = {
 		{
 			intensity = "Normal",
 			italic = true,
 			font = wezterm.font({
-				family = "FiraCode NF",
+				family = "FiraCode Nerd Font",
 				italic = false,
 			}),
 		},
@@ -17,7 +17,7 @@ return {
 			intensity = "Bold",
 			italic = false,
 			font = wezterm.font({
-				family = "FiraCode NF",
+				family = "FiraCode Nerd Font",
 				weight = "Bold",
 			}),
 		},
@@ -25,11 +25,12 @@ return {
 			intensity = "Bold",
 			italic = true,
 			font = wezterm.font({
-				family = "FiraCode NFM",
+				family = "FiraCode Nerd Font",
 				weight = "Bold",
 			}),
 		},
 	},
+	default_prog = { "fish" },
 	use_fancy_tab_bar = true,
 	hide_tab_bar_if_only_one_tab = true,
 	tab_bar_at_bottom = true,
@@ -99,11 +100,13 @@ return {
 	window_frame = {
 		active_titlebar_bg = "#343434",
 		font_size = 10.0,
+		font = wezterm.font({ family = "Fira Sans", weight = "Bold" }),
+	  font_size = 9,
 	},
 	window_padding = {
-		bottom = 0,
-		left = 0,
-		right = 0,
-		top = 0,
+		bottom = 10,
+		left = 10,
+		right = 10,
+		top = 10,
 	},
 }
