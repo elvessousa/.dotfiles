@@ -18,10 +18,6 @@ in
   boot = {
     supportedFilesystems = [ "ntfs" ];
     loader = {
-      efi = { 
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";
-      };
       systemd-boot = {
         configurationLimit = 10;
         consoleMode = "max";
@@ -29,9 +25,6 @@ in
       };
     };
   };
-
-  # Time
-  time.hardwareClockInLocalTime = true;
 
   # Nix
   nix = {
@@ -47,13 +40,13 @@ in
   };
 
   # AMD ROCm
-  hardware.opengl.enable = true;
-  hardware.opengl.extraPackages = [ pkgs.rocm-opencl-icd ];
+  hardware.graphics.enable = true;
 
   # Bluetooth
   hardware.bluetooth.enable = true;
 
-  networking.hostName = "elf"; # Define your hostname.
+  # Networking
+  networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -70,6 +63,7 @@ in
 
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
+  time.hardwareClockInLocalTime = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "pt_BR.UTF-8";
@@ -92,12 +86,10 @@ in
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-  
-  # Enable the KDE Plasma Desktop Environment.
   # services.displayManager.sddm.enable = true;
+  # services.displayManager.sddm.wayland.enable = true;
   # services.desktopManager.plasma6.enable = true;
-  # services.displayManager.defaultSession = "plasma";
-  
+
   # DConf
   programs.dconf.enable = true;
 
@@ -109,24 +101,17 @@ in
     dedicatedServer.openFirewall = true;    
   };
 
+  # Gamemode
   programs.gamemode.enable = true;
 
-  # Portals
-  xdg = {
-    portal = {
-      enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-wlr
-        # xdg-desktop-portal-gtk
-      ];
-    };
-  };
-  
   # Flatpak
   services.flatpak.enable = true;
 
   # Configure keymap in X11
-  services.xserver.xkb = { layout = "br"; variant = ""; };
+  services.xserver.xkb = {
+    layout = "br";
+    variant = "";
+  };
 
   # Configure console keymap
   console.keyMap = "br-abnt2";
@@ -135,7 +120,6 @@ in
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -163,6 +147,62 @@ in
 
   # Virtualization
   virtualisation.libvirtd.enable = true;
+  virtualisation.kvmgt.enable = true;
+
+  # Fish Shell
+  programs.fish.enable = true;
+
+  # ADB
+  programs.adb.enable = true;
+
+  # Java
+  programs.java.enable = true;
+
+  # Install firefox.
+  programs.firefox.enable = true;
+  
+  # Enable touchpad support (enabled default in most desktopManager).
+  # services.xserver.libinput.enable = true;
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.elvessousa = {
+    isNormalUser = true;
+    description = "Elves Sousa";
+    extraGroups = [ "networkmanager" "wheel" "nginx" "kvm" "adbusers" ];
+    packages = with pkgs; [
+      adw-gtk3
+      alacritty
+      appimage-run
+      authenticator
+      blender-hip
+      celluloid
+      chromium
+      # epiphany
+      ffmpeg
+      flatpak
+      fragments
+      # geary
+      gimp
+      dconf-editor
+      gnome-extension-manager
+      gnome-disk-utility
+      gnome-software
+      mdbook
+      neovim
+      nodejs
+      onlyoffice-bin
+      rustup
+      ryujinx
+      starship
+      unstable.helix
+      yazi
+      vscodium
+      wezterm
+      winetricks
+      wl-clipboard-x11
+      zellij
+    ];
+  };
 
   # Allow unfree packages 
   nixpkgs.config = {
@@ -172,68 +212,25 @@ in
         config = config.nixpkgs.config;
       };
     };    
-  };
-  
-  # Fish Shell
-  programs.fish.enable = true;
+  }; 
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.elvessousa = {
-    isNormalUser = true;
-    description = "Elves Sousa";
-    extraGroups = [ "networkmanager" "wheel" "nginx" ];
-    packages = with pkgs; [
-      adw-gtk3
-      alacritty
-      appimage-run
-      authenticator
-      blender-hip
-      celluloid
-      chromium
-      ffmpeg
-      firefox
-      flatpak
-      fragments
-      gimp
-      gnome.dconf-editor
-      gnome-extension-manager
-      gnome.gnome-disk-utility
-      gnome.gnome-software
-      inkscape
-      mdbook
-      neovim
-      nodejs
-      onlyoffice-bin
-      rustup
-      ryujinx
-      starship
-      thunderbird
-      unstable.helix
-      unstable.yazi
-      vscodium
-      wl-clipboard-x11
-      zed-editor
-      zellij
-    ];
-  };
-
-  # List packages installed in system profile. To search, run:
+  # List packages installed in system profile
   environment.systemPackages = with pkgs; [
     bat
     black
     bluez
+    binutils
+    eza
     gcc
-    gccgo
     git
     glibc
-    gnome.gnome-tweaks
-    gnome.gnome-bluetooth
+    gnome-tweaks
+    gnome-bluetooth
     go
     goimports-reviser
     gopls
-    lutris
-    # gsettings-desktop-schemas
-    # gsettings-qt
+    # lutris
+    mkcert
     nil
     ntfs3g
     php
@@ -248,15 +245,10 @@ in
     wget
     wineWowPackages.stable
     winetricks
+    watchman
   ];
-  
-  # Excluded packages
-  services.xserver.excludePackages = [ pkgs.xterm ];
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome.geary
-    gnome-tour
-  ]);
-  
+
+
   # LEMP Stack
   services.nginx = {
     user = "elvessousa";
@@ -295,7 +287,8 @@ in
         "test.elf" = (makeHost "test.elf");
       };
   };
-  
+
+  # MySQL
   services.mysql = {
     enable = true;
     package = pkgs.mariadb;
@@ -329,7 +322,8 @@ in
       }
     ];
   };
-  
+
+  # PHPFM
   services.phpfpm.pools.mypool = {
     user = "nobody";
     settings = {
@@ -368,6 +362,5 @@ in
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
-
+  system.stateVersion = "24.11"; # Did you read the comment?
 }
