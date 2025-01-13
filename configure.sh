@@ -91,6 +91,7 @@ bash_profile="$(pwd)/terminal/bash/.profile"
 
 # Yazi
 yazi_file="$(pwd)/terminal/yazi/yazi.toml"
+yazi_folder="$HOME/.config/yazi/"
 
 # ---------------------------------
 # Colors and formatting
@@ -193,17 +194,20 @@ while true
 do
   case $answer in
     '0')
+      # Vim
       createLink $vim_folder/.vimrc "$HOME/.vimrc" 'vim' 
       createLink $nvim_folder/colors/ $vim_path/colors 'vim' 'show'
       createLink $coc_json $coc_vim_path 'vim' 'show'
       break;;
     '1')
+      # Neovim
       mkdir -p $nvim_path
       createLink $nvim_folder/init.vim "$nvim_path/init.vim" 'nvim' 
       createLink $nvim_folder/colors/ $nvim_path/colors 'nvim' 'show'
       createLink $coc_json $coc_nvim_path 'nvim' 'show'
       break;;
     '2')
+      # Packer
       git clone --depth 1 https://github.com/wbthomason/packer.nvim\
         ~/.local/share/nvim/site/pack/packer/start/packer.nvim
       mkdir -p $nvim_path
@@ -212,58 +216,81 @@ do
       createLink $nvim_folder/lua/ $nvim_path/lua 'nvim' 'show'
       break;;
     '3')
+      # Helix
       mkdir -p $helix_folder
-      createLink $helix_folder/config.toml "$helix_path/config.toml" 'hx' 
-      createLink $helix_folder/languages.toml "$helix_path/languages.toml" 'hx' 
+
+      # Check for Arch linux, as Helix uses the 'helix' command there
+      if [ -f "/etc/arch-release" ]; then
+        createLink $helix_folder/config.toml "$helix_path/config.toml" 'helix' 
+        createLink $helix_folder/languages.toml "$helix_path/languages.toml" 'helix'
+      else
+        createLink $helix_folder/config.toml "$helix_path/config.toml" 'hx' 
+        createLink $helix_folder/languages.toml "$helix_path/languages.toml" 'hx'
+      fi 
       break;;
     '4') 
+      # Tmux
       createLink $tmux_file $tmux_path 'tmux'
       break;;
     '5')
+      # Zellij
       mkdir -p $zellij_folder
       createLink $zellij_file $zellij_path 'zellij'
       break;;
-    '6') 
+    '6')
+      # Git
       createLink $git_file $git_path 'git'
       break;;
-    '7') 
+    '7')
+      # Fish shell
       mkdir -p $fish_folder
       createLink $fish_file $fish_path 'fish'
       break;;
-    '8') 
+    '8')
+      # Nu shell
       mkdir -p $nu_config_folder
       createLink $nu_config_file $nu_config_path 'nu'
       createLink $nu_env_file $nu_env_path 'nu'
       break;;
-    '9') 
+    '9')
+      # Italics
       configureItalics
       break;;
-    '10') 
+    '10')
+      # Alacritty
       mkdir -p $alacritty_folder
       createLink $alacritty_file $alacritty_path 'alacritty'
       break;;
-    '11') 
+    '11')
+      # Kitty
       createLink $kitty_file $kitty_path 'kitty'
       break;;
-    '12') 
+    '12')
+      # Wezterm
       mkdir -p $wezterm_folder
       createLink $wezterm_file $wezterm_path 'cd'
       break;;
     '13')
+      # VimPlug
       curl -fLo $vimplug_file --create-dirs $vimplug_url
       break;;
     '14')
+      # i3
       createLink $i3_files $i3_path 'i3'
       break;;
     '15')
+      # Sway
       createLink $sway_files $sway_path 'sway'
       createLink $waybar_files $sway_path 'waybar'
       break;;
     '16')
+      # Bash and profile
       createLink $bash_rc "$HOME/.bashrc" 'bash'
       createLink $bash_profile "$HOME/.profile" 'bash'
       break;;
     '17')
+      # Yazi
+      mkdir -p $yazi_folder
       createLink $yazi_file "$HOME/.config/yazi/yazi.toml" 'yazi'
       break;;
     *)
