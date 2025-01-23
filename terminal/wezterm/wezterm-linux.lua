@@ -96,7 +96,7 @@ return {
 			},
 		},
 	},
-	window_background_opacity = 0.995,
+	window_background_opacity = 0.95,
 	window_frame = {
 		active_titlebar_bg = "#343434",
 		font_size = 10.0,
