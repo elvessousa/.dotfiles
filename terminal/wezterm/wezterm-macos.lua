@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 
 return {
 	font = wezterm.font("Fira Code", { weight = "Medium" }),
-	font_size = 15.0,
+	font_size = 15.5,
 	font_rules = {
 		{
 			intensity = "Normal",

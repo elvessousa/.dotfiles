@@ -9,9 +9,9 @@ export PATH
 
 # Aliases
 alias cat='bat'
-alias l='exa'
-alias ll='exa -lah'
-alias lt='exa --tree --level=2'
+alias l='eza'
+alias ll='eza -lah'
+alias lt='eza --tree --level=2'
 alias n='nvim .'
 alias v='vim .'
 
