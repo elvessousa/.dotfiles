@@ -1,11 +1,15 @@
 layout {
     tab name="Dotfiles" split_direction="horizontal" focus=true {
-        pane size="80%" name="Editor" command="hx" { args "."; focus true; }
+        pane size="80%" name="Editor" command="helix" { args "."; focus true; }
         pane size="20%" name="Console"
         pane size=1 borderless=true { plugin location="zellij:compact-bar"; }
     }
     tab name="Files" {
         pane name="Yazi" command="yazi" start_suspended=true
+        pane size=1 borderless=true { plugin location="zellij:compact-bar"; }
+    }
+    tab name="Git" {
+        pane name="Git" command="lazygit" start_suspended=true
         pane size=1 borderless=true { plugin location="zellij:compact-bar"; }
     }
     tab name="Tests" {

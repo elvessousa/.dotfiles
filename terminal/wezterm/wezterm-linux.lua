@@ -2,14 +2,14 @@ local wezterm = require("wezterm")
 
 return {
 	front_end = "WebGpu",
-	font = wezterm.font("FiraCode Nerd Font"),
-	font_size = 11.2,
+	font = wezterm.font("FiraCode Nerd Font Propo"),
+	font_size = 12,
 	font_rules = {
 		{
 			intensity = "Normal",
 			italic = true,
 			font = wezterm.font({
-				family = "FiraCode Nerd Font",
+				family = "FiraCode Nerd Font Propo",
 				italic = false,
 			}),
 		},
@@ -17,7 +17,7 @@ return {
 			intensity = "Bold",
 			italic = false,
 			font = wezterm.font({
-				family = "FiraCode Nerd Font",
+				family = "FiraCode Nerd Font Propo",
 				weight = "Bold",
 			}),
 		},
@@ -25,7 +25,7 @@ return {
 			intensity = "Bold",
 			italic = true,
 			font = wezterm.font({
-				family = "FiraCode Nerd Font",
+				family = "FiraCode Nerd Font Propo",
 				weight = "Bold",
 			}),
 		},
@@ -100,7 +100,7 @@ return {
 	window_frame = {
 		active_titlebar_bg = "#343434",
 		font_size = 10.0,
-		font = wezterm.font({ family = "Fira Sans", weight = "Bold" }),
+		font = wezterm.font({ family = "Adwaita Sans", weight = "Bold" }),
 	  font_size = 9,
 	},
 	window_padding = {
