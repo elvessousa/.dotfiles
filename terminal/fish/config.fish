@@ -1,11 +1,16 @@
 # Environment variables
+export ANDROID_HOME=$HOME/Library/Android/sdk
 set PATH $PATH $HOME/.cargo/bin
 set PATH $PATH /usr/local/mysql/bin
+set PATH $PATH /usr/local/bin
 set PATH $PATH $HOME/Applications/bin
 set PATH $PATH $HOME/.local/bin
 set PATH $PATH $HOME/.npm-global/bin
 set PATH $PATH $HOME/.local/share/gem/ruby/3.0.0/bin
 set PATH $PATH $HOME/Android/Sdk
+set PATH $PATH /opt/homebrew/bin
+set PATH $PATH $ANDROID_HOME/emulator
+set PATH $PATH $ANDROID_HOME/platform-tools
 export PATH
 
 # Aliases

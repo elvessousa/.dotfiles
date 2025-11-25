@@ -1,0 +1,12 @@
+# ==========================
+# Ghostty config
+# ==========================
+background = 121212
+background-opacity = 0.95
+command = /opt/homebrew/bin/fish
+font-family = FiraCode Nerd Font Propo
+font-size = 15
+link-url = true
+shell-integration = detect
+theme = Sobrio
+window-padding-x = 10

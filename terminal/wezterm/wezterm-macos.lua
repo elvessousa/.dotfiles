@@ -1,14 +1,14 @@
 local wezterm = require("wezterm")
 
 return {
-	font = wezterm.font("Fira Code", { weight = "Medium" }),
+	font = wezterm.font("FiraCode Nerd Font Propo"),
 	font_size = 15.5,
 	font_rules = {
 		{
 			intensity = "Normal",
 			italic = true,
 			font = wezterm.font({
-				family = "Fira Code Retina",
+				family = "FiraCode Nerd Font Propo",
 				italic = false,
 			}),
 		},
@@ -16,7 +16,7 @@ return {
 			intensity = "Bold",
 			italic = false,
 			font = wezterm.font({
-				family = "Fira Code",
+				family = "FiraCode Nerd Font Propo",
 				weight = "Bold",
 			}),
 		},
@@ -24,11 +24,12 @@ return {
 			intensity = "Bold",
 			italic = true,
 			font = wezterm.font({
-				family = "Fira Code",
+				family = "FiraCode Nerd Font Propo",
 				weight = "Bold",
 			}),
 		},
 	},
+	default_prog = { "/opt/homebrew/bin/fish" },
 	use_fancy_tab_bar = true,
 	hide_tab_bar_if_only_one_tab = true,
 	tab_bar_at_bottom = true,
