@@ -1,5 +1,5 @@
 [opener]
-edit = [{ run='hx "$@"', desc="$EDITOR", block=true }]
+edit = [{ run='hx %s', desc="Helix", block=true }]
 
 [mgr]
 show_hidden = true

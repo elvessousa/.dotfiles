@@ -91,6 +91,7 @@ bash_profile="$(pwd)/terminal/bash/.profile"
 
 # Yazi
 yazi_file="$(pwd)/terminal/yazi/yazi.toml"
+yazi_theme="$(pwd)/terminal/yazi/theme.toml"
 yazi_folder="$HOME/.config/yazi/"
 
 # ---------------------------------
@@ -292,6 +293,7 @@ do
       # Yazi
       mkdir -p $yazi_folder
       createLink $yazi_file "$HOME/.config/yazi/yazi.toml" 'yazi'
+      createLink $yazi_theme "$HOME/.config/yazi/theme.toml" 'yazi'
       break;;
     *)
       echo " Good luck."
