@@ -3,6 +3,7 @@
 # ==========================
 background = 121212
 background-opacity = 0.95
+background-blur = 10
 command = /opt/homebrew/bin/fish
 font-family = FiraCode Nerd Font Propo
 font-size = 15
@@ -10,3 +11,4 @@ link-url = true
 shell-integration = detect
 theme = Sobrio
 window-padding-x = 10
+# link = "[[\b\w+://(?:[\d]{1,3}\.){3}[\d]{1,3}\S*\b]]"
